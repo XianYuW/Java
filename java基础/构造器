@@ -1,1 +1,42 @@
-
+ * 构造器的使用(constructor):
+ * 
+ * 
+ * 1.构造器的作用:
+ * 				创建对象,给对象进行初始化	
+ * 
+ * 2.说明：
+ * 			①如果没有显示地定义构造器，则系统默认提供一个空参的构造器
+ * 			②定义构造器的形式： 权限修饰符 +类名(形参列表){}
+ * 			③一个类中定义多个构造器，彼此构成重载
+ * 			④一旦显示地定义了构造器，系统就不再天宫默认的空参构造器
+ class person{
+    private String name;
+    private int age;
+    
+    //空参构造器
+    public person(){
+    }
+    
+    public person(String name,int age){//this关键字的使用：1、代表当前对象
+                                                           2、this就是所在函数所属对象的引用，简单来说，
+                                                              哪个对象调用了this所在的函数，this就代表哪个对象
+        this.name=name;
+        this.age=age;
+    }
+    
+    public void setName(String name){
+        this.name=name;
+    }
+    
+    public void setAge(int age){
+        this.age=age;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public int getAge(){
+        return age;
+    }
+ }
