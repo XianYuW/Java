@@ -1,4 +1,34 @@
-setXxx(){
+JavaBean是一种java语言写的可重用组件；
+        ①其中类是具体的和公共的(public);
+        ②并且具有无参数的构造器。
+        通过提供符合一致性设计模式的公共方法将内部域暴露成员属性，set和get方法获取
+        其他java类可以通过自省机制(反射机制)发现和操作这些JavaBean的属性
+ 
+JavaBean的组成：属性(properties)
+                方法(method)
+                事件(events)
+
+ * 封装与隐藏：
+ * 			避免用户使用”对象.属性“的方式对属性赋值————即将需要的属性声明为私有的(private)
+ * 			同时对方法进行限制条件的添加(setLegs)
+ * 			--->此时，针对属性就体现了封装性
+ * 
+ * 封装性的体现：
+ * 			我们将类的属性(Xxx)私有化(private),同时提供公共(public)的方法来获取(getXxx)和设置(setXxx)此属性的值
+ * 
+ * 拓展：封装性的体现：① 如上 ② 不对外暴露的私有的方法 ③单例模式。。。
+ * 
+ * 封装性的体现：需要权限修饰符来配合
+ * 1.java中的4种权限：private,default/缺省,protected,public
+ * 2.4种权限可以用来修饰类及类的内部结构：属性，方法，构造器，内部类
+ * 3.具体的：4种权限都可以用来修饰 类内部结构：属性，方法，构造器，内部类
+ * 		修饰类的话，只能使用：缺省，public
+
+
+private int Xxx;
+public void setXxx(int Xxx){
+    this.Xxx=Xxx;
 }
-getXxx(){
+public int getXxx(){
+    return Xxx;
 }
