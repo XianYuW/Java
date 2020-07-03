@@ -3,6 +3,8 @@
   
 2.匿名对象就是只有右边的对象，没有左边的名字和赋值运算符：
   new 类名称（）；
+  注：匿名对象只能使用唯一的一次，下次使用不得不在创建一个新对象，
+  使用建议：如果确定有一个对象只能使用唯一的一次，则可以使用匿名对象
   
 public class PersonTest{
   public static void main(String[] args){
@@ -12,8 +14,8 @@ public class PersonTest{
       System.out.println(one.name);//高XX
       
       //匿名格式
-      
-      System.out.println(new Person().name);//null
+      new Person().name = "王XX";//此时new Person().name为王XX
+      System.out.println(new Person().name);//然而此时，为null
       
   }
 }
