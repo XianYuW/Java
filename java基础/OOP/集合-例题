@@ -63,3 +63,42 @@ public class ArrayListStudent{
         }
     }
 }
+
+题目三：
+    用一个大集合存入20个随机数字，然后筛选出其中的偶数元素，将其存入小集合中
+    要求使用自定义的方法实现筛选(该方法的三要素：返回值类型（ArrayList 小集合）、方法名称（getSmall）、参数列表（ArrayList 大集合）)
+    
+public class ListReturn{
+    public static void mainString[] args){
+        ArrayList<Integer> big = new ArrayList<>();
+        random r = new Random();
+        
+        //将生成的随机数放入集合中
+        for(int i = 0; i < 20 ;i++){
+            int num = r.nextInt(100) + 1;//num 的范围 1~100
+            big.add(num);
+        }
+        
+        ArrayList<Integer> smallList = getSmall(big);//用smallList接收 返回的小集合
+        
+        //遍历小集合
+        for(int i = 0; i < smallList.size(); i++){
+            System.out.println(smallList.get(i));
+        }
+        
+    }
+    
+    //该方法接受大集合参数，返回小集合结果
+    public static Arraylist<Integer> getSmall(ArrayList<Integer> bigList){
+        ArrayList<Integer> small = new ArrayList<>();
+        
+        for(int i = 0;i < big.size(); i++){
+            int num = big.get(i);
+            if(num % 2 == 0){
+                small.add(num);
+            }
+        }
+        
+        return small;
+    }
+}
