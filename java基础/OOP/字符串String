@@ -1,0 +1,39 @@
+java.lang.String类代表字符串：
+    也就是说，java程序中的所有字符串的字面值(如："abc")都以此类的实例实现，也就是说程序中所有双引号字符串，都是String类的对象(就算没有new，也是)
+    
+字符串的特点：
+     >字符串的内容永不可变
+     >因为字符串不可改变，所以字符串是共享使用的
+     >字符串效果上相当于是char[]型字符数组，但底层原理是byte[]字节数组
+     
+ 字符串的常见的 3 + 1 种实现方式：
+ 
+     三种构造方法：
+     
+         >public String():创建一个空白内容，不含有任何内容
+         >public String(char[] array):根据字符数组的内容，来创建对应的字符串
+         >public String(byte[] array):根据字节数组的内容，来创建对应的字符串
+         
+     一种直接创建：String str = "hello";
+     
+ 注：直接写上双引号，就是字符串对象
+     
+     
+ public class StringTest{
+     public static void main(String[] args){
+         //空参构造
+         String str1 = new String();
+         System.out.println("第一个打印出来是:" + str1);//第一个打印出来是:
+         
+         //字符数组构造
+         char[] chaarArray = {'a','b','c'};
+         String str2 = new String(charArray);
+         System.out.println("第二个打印出来是:" + str2);//第二个打印出来是:abc
+         
+         //字节数组构造
+         byte[] byteArray = { 97 , 98 , 99 };//97对应的AASIIC码为a
+         String strr3 = new String(byteArray);
+         System.out.println("第三个打印出来是:" + str3);//第三个打印出来是:abc
+         
+     }
+ }
