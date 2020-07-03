@@ -1,0 +1,19 @@
+1.创建对象的标准格式：
+  类名称  对象名 = new 类名称（）；
+  
+2.匿名对象就是只有右边的对象，没有左边的名字和赋值运算符：
+  new 类名称（）；
+  
+public class PersonTest{
+  public static void main(String[] args){
+      //标准格式
+      Person one = new Person();
+      one.name = "高XX";
+      System.out.println(one.name);//高XX
+      
+      //匿名格式
+      
+      System.out.println(new Person().name);//null
+      
+  }
+}
