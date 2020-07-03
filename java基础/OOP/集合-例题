@@ -1,0 +1,65 @@
+题目一：
+生成6个1~33之间的随机数，添加到集合，并遍历集合
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ArrayListRandom{
+    public static void main(String[] args){
+    
+        ArrayList<Integer> list = new ArrayList<>();
+        Random r = new Random();
+        
+        int num;
+        
+        for(int i = 0; i < 6; i++){
+            num = (r.nextInt(32) + 1); 
+            list.add(num);
+        }
+        
+        //遍历集合
+        for(int j = 0; j < list.size(); j++){
+            System.out.println(lis.get(j));
+        }
+    }
+}
+
+题目二：
+    自定义4个学生对象，添加到集合，并遍历
+    
+class Student{
+    private String name;
+    private int age;
+    
+    public Student(){
+    }
+    
+    public Student(String nme,int age){
+        super();
+        this.name = name;
+        this.age = age;
+    }
+    //getter和setter方法省略
+}
+public class ArrayListStudent{
+    publi static void main(String[] args){
+        ArrayList<Student> stu = new ArrayList<>();
+        
+        Student one = new Student("张三",20);
+        Student two = new Student("李四",18);
+        Student three = new Student("王五",16);
+        Student four = new Student("二狗",22);
+        
+        stu.add(one);
+        stu.add(two);
+        stu.add(three);
+        stu.add(four);
+        
+        //遍历集合
+        for(int i = 0;i < stu.size(); i++ ){
+            Student student = stu.get(i);
+            Sytem.out.println("姓名为：" + student.getName() + ",年龄为：" + student.getAge());
+            //疑问：此时如果直接打印stu，打印出来的是什么
+        }
+    }
+}
