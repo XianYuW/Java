@@ -1,0 +1,19 @@
+Random类用来生成随机数字。
+    Random num = new Random();
+
+如int型：
+     int num = r.nextInt();   //代表num的范围是int范围之内，有正负两种
+     int num = r.nextInt(3);  //代表num的范围是[0,3),左闭右开区间
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class RandomTest{
+    public static void main(String[] args){
+        Random r = new Random();
+        int num = r.nextInt();
+        System.out.println("随机数是" + num);//打印随机数
+        
+    }
+}
