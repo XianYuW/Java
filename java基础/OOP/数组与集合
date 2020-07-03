@@ -80,3 +80,30 @@
         
     }
   }
+
+
+题目：
+生成6个1~33之间的随机数，添加到集合，并遍历集合
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ArrayListRandom{
+    public static void main(String[] args){
+    
+        ArrayList<Integer> list = new ArrayList<>();
+        Random r = new Random();
+        
+        int num;
+        
+        for(int i = 0; i < 6; i++){
+            num = (r.nextInt(32) + 1); 
+            list.add(num);
+        }
+        
+        //遍历集合
+        for(int j = 0; j < list.size(); j++){
+            System.out.println(lis.get(j));
+        }
+    }
+}
