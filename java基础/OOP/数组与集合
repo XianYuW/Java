@@ -24,3 +24,59 @@
 
 
 集合(ArrayList)：长度可以随意变化
+ >对arrayList来说有一个<>代表泛型。
+ >泛型：指集合内的所有元素都是统一的类型
+ 
+ >注意：泛型只能是引用类型，不能使基本类型
+ 
+ >其中常用的方法有：
+     public boolean add(E e);//向集合中添加元素，参数类型和泛型一致，返回值代表的是否成功
+     备注：对于ArrayList集合来说，add添加动作一定是成功的所以返回值可用可不用。
+     但是对于其它集合来说，add添加动作不一定成功。
+     
+     public E get(int index);//从集合中获取元素，参数是索引编号，返回值是对应位置元素
+     
+     public E remove(int index);//从集合中删除元素，参数是索引编号，返回值是被删除的元素
+     
+     public int size();//获取集合中的尺寸长度，返回值是集合包含的个数
+ 
+ 
+ >如果希望集合ArrayList中存储基本数据类型，必须使用基本数据类型对应的“包装类”
+ 
+     基本类型            包装类（引用类型，包装类都位于java.lang包下）
+     byte                Byte
+     short               Short
+     int                 Integer[特殊]
+     long                Long
+     float               Float
+     double              Double
+     boolean             Boolean
+     char                Character[特殊]
+     
+     
+ >从JDK1.5开始，支持自动装箱、自动拆箱
+ 
+    自动装箱：基本类型-->包装类型
+    自动拆箱：包装类型--?基本类型
+    
+  例：
+  import java.util.ArrayList;
+  
+  public class arrayListTest{
+  
+    public static void main(String[] args){
+        //从JDK1.7开始，右侧的<>里面可以不写内容，但是右侧的<>必须写上
+        ArrayList<String> list = new ArrayList<>();
+        
+        System.out.println(list);//[]
+        //打印出来的是[]，对于ArrayList来说，直接打印得到的不是地址，而是内容，如果内容为空，则得到[]
+        
+        boolean success = list.add("李XX");//[李XX]
+        System.out.println(list);//李XX
+        
+        
+        ArrayList<Integer> listA = new ArrayList<>();
+        listA.add(100);
+        
+    }
+  }
