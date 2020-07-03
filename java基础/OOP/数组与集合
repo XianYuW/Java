@@ -1,0 +1,26 @@
+数组(Array)：数组长度不能改变
+
+ 有个缺点：一旦运行，数组长度不允许改变
+  例：定义一个数组，存储3个Person对象
+  
+  public class PersonArray{
+      public static void main(String[] args){
+          Person[] array = new Person[3];
+          
+          Person one = new Person(name:"迪丽热巴"，age:18);
+          Person two = new Person(name:"古力娜扎"，age:18);
+          Person three = new Person(name:"马尔扎哈"，age:18);
+          
+          array[0] = one;
+          array[1] = two;
+          array[2] = three;
+          
+          System.out,println(array[0]);//地址值
+          System.out,println(array[1]);//地址值
+          
+          System.out.println(array[2].getName());//马尔扎哈
+      }
+  }
+
+
+集合(ArrayList)：长度可以随意变化
