@@ -13,6 +13,23 @@
  *	     >equals方法具有对称性，也就是a.equals(b)和b.equals(a)效果一样。
  *	     >如果双方一个常量一个变量，推荐把常量字符串写在前面。（推荐："abc".equals(str1)   不推荐：str1.equals("abc")  ）
  *		    不推荐原因写进函数了
+ *
+ *	>public boolean equaksIgnoreCase(String str):忽略大小写，进行内容比较。
+ *
+ *	String 中与获取相关的常用方法：
+ *
+ *		>public int length();获取字符串当中含有的字符个数，拿到字符串长度
+ *		>public String concat(String str);将当前字符串和参数字符串拼接成为返回值新的字符串
+ *		>public char cgarAt(int index);获取指定索引位置的单个字符（索引从0开始）
+ *		>public int indexof(String str);查找参数字符串在本字符串当中首次出现的索引位置，如果没有则返回-1
+ *
+ *字符串的截取方法：
+ *
+ *	publci String substring(int index);截取从参数位置一直到字符串末尾，返回新字符串(参数位置范围是 0 ~ str.length（）-1)
+ *	public String substring(int begin,int end);截取从begin开始，一直到end结束，返回中间的字符串
+ *		备注:[begin.end)  包含左边，不包含右边。
+ *
+ *
  */
 
 
@@ -35,6 +52,42 @@ public class StrongPool {
 		
 		String str4 = null;
 		System.out.println(str4.equals(”abc“));//false
-		System.out.println("abc".equals(str4));//报错
+//		System.out.println("abc".equals(str4));//报错，控空指针异常NullPointerException
+
+		String strA = "Abc";
+		System.out.println(str1.equals(strA));//false
+		System.out.println(str1.equalsIgnoreCase(strA));//true
+		
+		//获取字符串长度
+		int length = "hello".length();//length = 5
+		System.out.println(length);
+		
+		//拼接字符串
+		String stra = "hello";
+		String strb = "world";
+		Strign strc = stra.concat(strb);//strc = "helloworld";
+		System.out.println(strc);
+		
+		//获取指定位置的打那个字符
+		char ch = "hello".chatAt(0);
+		System.ou.println(ch);//ch = 'h';
+		
+		//查找参数字符在指定字符串中出现的第一次索引位置
+		//如果根本没有，则返回-1
+		String str = "HelloWorld";
+		int index = str.indexof("llo");
+		System.out.println(index);//index = 2
+		
+		//截取字符串
+		String strd = strc.substring(5);//world
+		String strf = strc.substring(4，7);//owo
+		
+		//下面这种写法，字符串内容依旧没有改变,字符串的内容是不可以被改变的，只不过是创建了新的字符串。
+		//下面有两个字符串：”hello“."Java"
+		//str666保存的是地址值，本来地址值是”hello“的地址值，后来变成了”Java“的地址值
+		String str666 = "hello";
+		System.out.println(str666);//hello
+		str666 = "Java";
+		Sytem.out.println(str666);//Java
 	}
 }
