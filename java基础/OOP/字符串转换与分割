@@ -1,0 +1,59 @@
+String当与转换有关的中常用的方法有：
+
+        >public char[] toCharArray();将当前字符串拆分成字符数组作为返回值
+        >public byte[] getBytes()：获得当前字符串底层的字节数组
+        >public String replace(CharSequence oldString ,CharSequence newString):
+              将所有出现的老字符串替换成为新字符串，返回替换之后的新字符串
+              备注：charSequence意思就是可以接受字符串类型
+              
+public class StringConvert {
+	public static void main(String[] args) {
+		//转换成为字符数组
+		char[] ch = "hello".toCharArray();
+		System.out.println(ch);//hello
+		System.out.println(ch[0] + "\t" + ch.length);//h     5
+		
+		//转换成为字节数组
+		byte[] bytes = "abc".getBytes();
+		System.out.println(bytes);//abc
+		for (int i = 0; i < bytes.length; i++) {
+			System.out.println(bytes[i] ); //97,98,99
+			
+		}
+		//字符串的内容替换
+		String str1 = "Are you ok?";
+		String str2 = str1.replace("o", "*");
+		System.out.println(str1);//Are you ok?
+		System.out.println(str2);//Are y*u *k?
+		
+		String lang1 = "三个打一个被反杀，辣鸡，会不会玩！！！辣鸡";
+		String lang2 = lang1.replace("辣鸡", "**");
+		System.out.println(lang2);
+	}
+}
+
+
+
+字符串的分割方法：
+
+          >public String[] split(String regex);按照参数的规则，将字符串分割成若干部分
+              >如果按照 "." 规则进行切割，则切割失败，因为split方法的参数其实是一个正则表达式；
+              >如果要按照英文句点“.”进行切分，则必须写“\\.”(两个\\)
+public class StringSplit {
+	public static void main(String[] args) {
+		String str1 = "aaa,bbb,ccc";
+		String[] split1 = str1.split(",");
+		for (int i = 0; i < split1.length; i++) {
+			System.out.println(split1[i]);
+		}
+		System.out.println("++++++++++++");
+		
+		String str2 = "aaa.bbb.ccc";
+		String[] split2 = str2.split("\\.");
+		System.out.println(split2.length);//0
+		for (int i = 0; i < split2.length; i++) {
+			System.out.println(split2[i]);
+		}
+		
+	}
+}
