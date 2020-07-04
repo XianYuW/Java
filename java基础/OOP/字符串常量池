@@ -2,9 +2,17 @@
 /*
  * 字符串常量池： 
  * 		程序当中直接协商的双引号字符串，就在字符串常量池中
- * 
- * 对于基本类型来说，==  是进行数值的比较。
- * 对于引用类型来说，== 是进行【地址值】的比较。
+ * 	注：
+ * 	   >对于基本类型来说，==  是进行数值的比较。
+ * 	   >对于引用类型来说，== 是进行【地址值】的比较。
+ *
+ *因此，String类型中 == 是对地址值进行比较，如果要对内容进行比较，可以使用两个方法：
+ *	>public boolean equals(Object obj):参数可以是任何对象，只有参数是一个字符串并且内容相同时才会给true，否则返回fals
+ *	  注：
+ *	     >任何对象都能用Object接收
+ *	     >equals方法具有对称性，也就是a.equals(b)和b.equals(a)效果一样。
+ *	     >如果双方一个常量一个变量，推荐把常量字符串写在前面。（推荐："abc".equals(str1)   不推荐：str1.equals("abc")  ）
+ *		    不推荐原因写进函数了
  */
 
 
@@ -19,5 +27,14 @@ public class StrongPool {
 		System.out.println(str1 == str2);//true
 		System.out.println(str1 == str3);//false
 		System.out.println(str3 == str2);//false
+		
+		System.out.println(str1.equals(str2));//true
+		System.out.println(str2.equals(str3));//true
+		System.out.println(str3.equals(”abc“));//true
+		System.out.println("abc".equals(str1));//true
+		
+		String str4 = null;
+		System.out.println(str4.equals(”abc“));//false
+		System.out.println("abc".equals(str4));//报错
 	}
 }
