@@ -1,0 +1,60 @@
+一旦使用了static关键字，
+那么这样的内容则不再属于对象自己。而是属于类的
+凡是属于本类的对象，都共享同一份
+
+既：如果一个成员变量使用了static关键字，那么这个变量不再属于对象自己，而是属于所在的类。多个对象共享同一份数据。
+  用法如下：既可以设置room，也可以用来设置id，实现创建一个对象就使id++
+
+public class Student {
+	private int id;
+	private String name;
+	private int age;
+	static String room;//所在教室
+	private static int idCounter = 0;//学号计数器，每当new了一个对象时。计数器++
+	
+	public Student() {
+		super();
+		this.id = ++idCounter;
+	}
+	public Student(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.id = ++idCounter;
+	}
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+}
+
+public class StudentTest {
+	public static void main(String[] args) {
+		Student one = new Student("王",19);
+		Student two = new Student("刘",16);
+		
+		one.room = "1号教室";
+		
+		System.out.println("id:" + one.getId() + ",姓名:" + one.getName() + ",年龄:" + one.getAge() + ",教室:" + one.room);
+		//id:1,姓名:王,年龄:19,教室:1号教室
+		System.out.println("id:" + two.getId() + ",姓名:" + two.getName() + ",年龄:" + two.getAge() + ",教室:" + two.room);
+		//id:2,姓名:刘,年龄:16,教室:1号教室
+	}
+}
