@@ -1,0 +1,70 @@
+因为需要抽取一个公共方法，用来解决两个默认方法之间重复代码的问题。
+但是这个公共方法不应该让实现类使用，应该是私有化的
+
+因此，从Java9开始，接口中允许定义私有方法
+1.普通私有方法：解决多个【默认】方法之间重复代码问题
+        格式：
+            private 返回值类型 方法名称（参数列表）{
+                方法体
+            }
+2.静态私有方法：解决多个【静态】方法之间重复代码问题
+        格式：
+            private stati 返回值类型 方法名称（参数列表）{
+                方法体
+            }
+            
+
+//接口
+public interface MyInterfacePrivate {
+	public default void methodDefault1() {
+		System.out.println("这是接口的默认方法111111");
+		methodCommon();
+	}
+	public default void methodDefault2() {
+		System.out.println("这是接口的默认方法222222");
+		methodCommon();
+	}
+	private void methodCommon() {
+		System.out.println("AAA");
+		System.out.println("BBB");
+		System.out.println("CCC");
+	}
+	public static void methodStatic1() {
+		System.out.println("这是接口的静态方法111111");
+		methodStaticCommon();
+	}
+	public static void methodStatic2() {
+		System.out.println("这是接口的静态方法222222");
+		methodStaticCommon();
+	}
+	private static void methodStaticCommon() {
+		System.out.println("AAA");
+		System.out.println("BBB");
+		System.out.println("CCC");
+	}
+
+}
+
+//接口的实现类
+public class MyInterfacePrivateAImpl implements MyInterfacePrivate{
+	
+	public void metohdAnother() {
+		//直接访问了私有方法，是错误的
+//		methodCommon();
+		System.out.println("这是实现类的其他方法");
+	}
+}
+
+//测试
+public class MyInterfacePrivatTest {
+	public static void main(String[] args) {
+		
+		MyInterfacePrivate.methodStatic1();//这是接口的静态方法111111
+		MyInterfacePrivate.methodStatic2();//这是接口的静态方法222222
+		
+		MyInterfacePrivateAImpl impl = new MyInterfacePrivateAImpl();
+		impl.methodDefault1();//这是接口的默认方法111111
+		impl.methodDefault2();//这是接口的默认方法222222
+		impl.metohdAnother();//这是实现类的其他方法
+	}
+}	
