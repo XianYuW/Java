@@ -1,0 +1,68 @@
+1.类与类之间是【单继承】的。直接父类只有一个
+2.接口与接口之间是【多实现】的，一个类可以实现多个接口
+3.接口和接口之间是【多继承】的
+
+注意：
+  >多个父接口中的抽象方法如果重复，没关系
+  >多个父接口中的默认方法如果重复，那么子接口必须进行默认方法的覆盖重写，【并且带着default关键字】
+  
+ 
+
+例如：
+//A，B的子接口
+public interface Interface extends InterfaceA, InterfaceB{
+	
+//	public abstract void method();
+	//此时该接口有3个方法（从A接口继承methodA，B接口继承methodB，自己带一个）
+	
+	public abstract void method();
+	//此时该接口有4个方法(A:methodA,B:methodB,A&B:methodCommon,this.method)
+
+	@Override
+	default void metodDefault() {//如果没有覆盖重写父接口的默认方法，则会报错
+	}	
+}
+//接口A
+public interface InterfaceA {
+	public abstract void methodA();
+	public abstract void methodCommon();
+	public default void metodDefault() {//默认方法
+		System.out.println("这是默认方法：AAA！");
+	}
+}
+//接口B
+public interface InterfaceB {
+	public abstract void methodB();
+	public abstract void methodCommon();
+	public default void metodDefault() {//默认方法
+		System.out.println("这是默认方法：BBB！");
+	}
+}
+
+//实现类
+public class InterfaceImpl implements Interface{
+
+	@Override
+	public void methodB() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void methodA() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void methodCommon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void method() {
+		// TODO Auto-generated method stub
+		
+	}
+}
