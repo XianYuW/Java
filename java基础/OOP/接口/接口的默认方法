@@ -1,0 +1,61 @@
+从Java 8开始，接口里允许定义默认方法，格式
+      public default 返回值类型 方法名称(参数列表){
+          //...
+      }
+ 
+备注：接口中的默认方法，可以解决接口升级的问题
+            例如：一个接口有两个实现类A，B，并且已经投入使用，此时 接口中添加了一个新的抽象方法，如果没有定义的默认方法
+                  则A，B啷个实现类就没有覆盖重写接口的所有抽象方法，报错。 
+                  
+1.接口的默认方法，可以通过接口实现类对象，直接调用
+2.接口的默认方法，也可以通过接口实现类覆盖重写
+
+//接口
+public interface MyInterfaceDefault {
+	//抽象方法
+	public abstract void methodAbs();
+	//新添加了一个抽象方法
+//	public abstract void methodAbs2();//这样写A，B会报错
+	public default void methodDefault() {
+		System.out.println("这是新添加的抽象方法");
+	}
+}
+//接口实现类A
+public class MyInterfaceDefaultA implements MyInterfaceDefault{
+
+	@Override
+	public void methodAbs() {
+		// TODO Auto-generated method stub
+		System.out.println("实现了抽象方法。AAA");
+	}
+	
+}
+//接口实现类B
+public class MyInterfaceDefaultB implements MyInterfaceDefault{
+	@Override
+	public void methodAbs() {
+		// TODO Auto-generated method stub
+		System.out.println("实现了抽象方法。BBB");
+	}
+
+	@Override
+	public void methodDefault() {
+		// TODO Auto-generated method stub
+		System.out.println("实现类B覆盖重写了接口的默认方法。BBB");
+	}
+	
+}
+//测试
+public class InterfaceTest {
+	public static void main(String[] args) {
+		//创建了实现类对象
+		MyInterfaceDefaultA A = new MyInterfaceDefaultA();
+		A.methodAbs();//调用抽象方法，实际运行的是右侧的实现类
+		//调用默认方法，如果实现类没有，会向上找接口
+		A.methodDefault();//这是新添加的抽象方法
+		
+		MyInterfaceDefaultB b = new MyInterfaceDefaultB();
+		b.methodAbs();
+		b.methodDefault();//实现类B覆盖重写了接口的默认方法。BBB
+	}
+}
