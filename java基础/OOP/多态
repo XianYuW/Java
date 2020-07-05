@@ -1,0 +1,41 @@
+entends或者implements的实现是多态性的前提。
+多态：一个对象有多种形态。
+      代码中体现多态性，其实就是【父类引用指向子类对象】，格式：  父类名称  对象名 = new 子类名称(); 
+                                                           或者： 接口名称  对象名 = new 实现类名称();
+                                                           
+                                                           
+属性的使用有两种方式：
+      1.直接通过对象名称访问：看等号左边是谁，优先用谁，没有则向上找
+              例如，Fu obj = new Zi();  print(obj.num);//这个num优先使用Fu类，没有则向上找，不会向下找
+      2.间接通过成员方法访问：看该方法属于谁，优先用谁，没有则向上找
+              例如：Fu obj = new Zi();  obj.showNum();//如果子类没有覆盖重写该方法，则调用父类里的方法
+                                                       //如果子类覆盖重写该方法，就调用子类里的方法
+                                                       
+成员方法的访问规则：
+      看new的是谁，则优先用谁，没有则向上找
+       口诀：编译看左边，运行看右边。
+               例如：Fu obj = new Zi();  obj.method();//父子都有，优先用子
+                                        obj.methodFu();//子类没有，父类有，向上找到父
+                                        //编译看左边，左边是Fu，Fu中没有methodZi方法，所以编译报错
+                                        obj.methodZi();//错误写法
+                                        
+对比一下：
+      成员变量：编译看左边，运行还看左边
+      成员方法：编译看左边，运行看右边
+      
+
+使用多态的好处：class Teacher{work(){讲课}}  class Assistent{work(){辅导}}  
+              class Employee extends或implement Teacher,Assistent{}
+
+      如果不用多态，只用子类，那么写法为：
+              Teacher one = new Teacher();
+              one.work();//讲课
+              Assistent two = new Assistent();
+              two.work();//辅导
+      使用多态：
+              Employee one = new Teacher();
+              one.work();//讲课
+              Employee two = new Assistent();
+              two.work();//辅导
+              
+      好处：无论右边new的时候换成哪个在子类对象，等号左边调用方法都不会变化
