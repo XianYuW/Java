@@ -16,6 +16,11 @@
                                     Dog dog = (Dog)animal;//错误，本来new的时候是一只猫，现在非要当作狗
                                                           //错误写法，编译不会报错，但是运行会报异常java.lang.ClassCatException,类转换异常
                                                           
+                                    因此，使用对象的向下转型，要用instanceof进行判断：
+                                    if(animal instanceof cat){
+                                          Cat cat = (Cat)animal;
+                                    }
+                                                          
 ※注意事项：
           
           >必须保证对象本来创建的时候，就是猫，才能向下转型成为猫
