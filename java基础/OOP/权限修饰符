@@ -1,0 +1,5 @@
+public > protected > (default) > private
+定义一个类的时候，权限修饰符的使用规则：
+1.外部类： public / (default)
+2.成员内部类：public / protected / (default) / private
+3.局部内部类：什么都不能写
