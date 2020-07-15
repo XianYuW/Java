@@ -1,0 +1,57 @@
+成员内部类
+           定义格式：
+               修饰符 class 外部类名称{
+                    修饰符 class 内部类名称{
+                        //....
+                    }
+                    //....
+               }
+            注意：内用外，随意访问；外用内，需要内部类对象
+            
+            如何使用：
+                    1.间接方式：在外部类的方法中，使用内部类；然后main只是调用外部类的方法
+                    2.直接方式： 格式：
+                                   类名称 对象名 = new 类名称();
+                                   【外部类名称.内部类名称 对象名 = new 外部类名称().new 内部类名称();】
+                                   
+//Body类
+public class Body {//外部类
+	
+	public class Heart {//成员内部类
+		public void beat() {
+			System.out.println("心脏跳动：砰砰砰");
+			System.out.println("我叫" + name);
+		}
+	}
+	//外部类的成员变量
+	private String name;
+	//外部类方法
+	public void methodBody() {
+		System.out.println("外部类的方法");
+//		Heart heart = new Heart();
+//		heart.beat();
+		new Heart().beat();
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}	
+}
+//测试类
+public class InnerClass {
+	public static void main(String[] args) {
+		
+		//间接方法
+		Body body = new Body();//外部类的对象
+		//通过调用外部类对象，调用外部类的方法，间接使用内部类Heart
+		body.methodBody();//外部类的方法 \n 心脏跳动：砰砰砰 \n 我叫null
+		System.out.println("========================");
+		
+		//直接方法
+		Body.Heart h1 = new Body().new Heart();
+		h1.beat();//心脏跳动：砰砰砰 \n 我叫null
+		System.out.println(h1);//day04.Body$Heart@50040f0c
+	}
+}
