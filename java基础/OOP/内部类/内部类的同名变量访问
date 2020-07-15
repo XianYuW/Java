@@ -22,3 +22,4 @@ public class OuterTest {
 		test.methodInner();// 30  20  10
 	}
 }
+
