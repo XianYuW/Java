@@ -1,0 +1,81 @@
+//接口：技能
+public interface Skill {
+	void use();//释放技能的抽象方法
+}
+//接口实现类
+public class SkillImpl implements Skill {
+
+	@Override
+	public void use() {
+		// TODO Auto-generated method stub
+		System.out.println("hasaki~");
+	}
+}
+//英雄
+public class Hero {
+	private String name;//英雄的名称
+	private Skill skill;//英雄的技能
+	public Hero() {
+		super();
+	}
+	public Hero(String name, Skill skill) {
+		super();
+		this.name = name;
+		this.skill = skill;
+	}
+	public void attack() {
+		System.out.println("英雄" + name + "开始使用技能" );
+		skill.use();//调用接口的中的抽象方法
+		System.out.println("释放技能完成");
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Skill getSkill() {
+		return skill;
+	}
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+}
+//测试
+public class Test {
+	public static void main(String[] args) {
+		Hero hero = new Hero();
+		hero.setName("亚索");
+		//技能
+		hero.setSkill(new SkillImpl());
+		hero.attack();////英雄亚索开始使用技能  hasaki~ 释放技能完成
+    
+		//技能的多态写法
+		Skill skill1 = new SkillImpl();
+		hero.setSkill(skill1);
+		hero.attack();//英雄亚索开始使用技能  hasaki~ 释放技能完成
+    
+		//技能的匿名内部类写法
+		Skill skill2 = new Skill() {
+			
+			@Override
+			public void use() {
+				// TODO Auto-generated method stub
+				System.out.println("踏浪斩");
+			}
+		};
+		hero.setSkill(skill2);
+		hero.attack();//英雄亚索开始使用技能 踏浪斩  释放技能完成
+		
+		//同时使用匿名内部类和匿名对象
+		hero.setSkill(new Skill() {
+			
+			@Override
+			public void use() {
+				// TODO Auto-generated method stub
+				System.out.println("风墙");
+			}
+		});
+		hero.attack();//英雄亚索开始使用技能 风墙  释放技能完成
+	}
+}
