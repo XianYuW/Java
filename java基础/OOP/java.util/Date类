@@ -19,4 +19,5 @@ java.util.Date: 表示日期和时间的类
          例如 ： Date date = new Dat(0L);//传递参数为0毫秒
                  System.out.println(date);//打印的就是时间原点
                  
-  long getTime(): 返回时间原点
+  long getTime(): 将日期转换为相对应的毫秒值(相当于System.currentTimeMilis())方法，
+                  返回自时间原点以来此对象表示的毫秒数
