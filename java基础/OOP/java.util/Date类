@@ -8,3 +8,15 @@ java.util.Date: 表示日期和时间的类
         就是计算当前日期到时间原点之间一共经历多少毫秒
      将毫秒转换为日期：
         1 天 = 24 *60 * 60 = 86400 秒 = 86400 * 1000 = 86400000毫秒
+        
+      System.out.println(System.currentTimeMillis());//获取当前系统时间到时间原点经历了多少毫秒
+  Date类空参数的构造方法
+      Date() 获取当前系统的日期和时间：例如： Date date = new Date();
+                                             System.out.println(date);//打印的是当前系统的时间
+                                             
+  Date类带参数的构造方法
+      Date(long date)：传递毫秒值，将毫秒值转换为Date日期，
+         例如 ： Date date = new Dat(0L);//传递参数为0毫秒
+                 System.out.println(date);//打印的就是时间原点
+                 
+  long getTime(): 返回时间原点
