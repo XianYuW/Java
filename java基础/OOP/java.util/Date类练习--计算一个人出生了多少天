@@ -1,0 +1,24 @@
+分析：
+    1.使用Scanner类中的方法next，获取出生日期
+    2.使用SimpleDateFormat类中的方法parse，将出生日期解析为birthDay
+    3.使用Date类获取当前的时间today
+    4.使用Date类中的getTime方法，将两个日期都转换为毫秒值
+    5.计算毫秒值的差值time，将其转换为天
+    
+代码：
+public class DemoDatePro01 {
+	public static void main(String[] args) throws ParseException {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("请输入日期，格式为：yyyy-MM-dd");
+		String birth = scan.next();
+		SimpleDateFormat test = new SimpleDateFormat("yyyy-MM-dd");
+		Date birthDay = test.parse(birth);
+		System.out.println(birthDay);
+		
+		Date today = new Date();
+		long time1 = birthDay.getTime();
+		long time2 = today.getTime();
+		long time = time2 - time1;
+		System.out.println(time/1000/60/60/24/365);	
+	}
+}
