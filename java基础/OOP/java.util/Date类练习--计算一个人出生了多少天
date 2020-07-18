@@ -13,12 +13,16 @@ public class DemoDatePro01 {
 		String birth = scan.next();
 		SimpleDateFormat test = new SimpleDateFormat("yyyy-MM-dd");
 		Date birthDay = test.parse(birth);
-		System.out.println(birthDay);
-		
-		Date today = new Date();
+		//把出生日期转换为毫秒值
 		long time1 = birthDay.getTime();
-		long time2 = today.getTime();
+		//把当前日期转换为毫秒值
+		long time2 = new Date().getTime();
+		//当前日期毫秒值- 出生日期毫秒值
 		long time = time2 - time1;
-		System.out.println(time/1000/60/60/24/365);	
+		//转换为天数
+		long day = time/1000/60/60/24;
+		long year = day/365;
+		System.out.println(day);	
+		System.out.println(year);	
 	}
 }
