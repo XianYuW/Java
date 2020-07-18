@@ -1,2 +1,71 @@
-字符串是常量，他们的值在创建后不可更改；
-字符串缓冲区支持可变的字符串
+字符串缓冲区：
+      构造方法：
+          StringBuilder():构造一个不带任何字符的字符串生成器，其初始容量为16个字符
+          StringBuilder(String str):构造一个字符串生成器，并初始化为指定的字符串内容
+          
+          //代码
+          public class DemoStringBuilder {
+            public static void main(String[] args) {
+              //空参构造方法
+              StringBuilder biu1 = new StringBuilder();
+              System.out.println("biu1:" + biu1);//biu1:
+              //带字符串的构造方法
+              StringBuilder biu2 = new StringBuilder("abc");
+              System.out.println("biu2:" + biu2);//biu2:abc
+            }
+          }
+          
+      常用的成员方法：
+           public StringBuilder append(...):添加任意类型数据的字符串形式，并返回当前对象自身
+           public String toString();将当前StringBuilder对象转换为String对象
+                String--->StringBuilder: 使用StringBuilder的构造方法
+                      StringBuilder(String str)构造一个字符串生成器，并初始化为指定的字符串内容
+                StringBuilder--->String:使用StringBuilder中的toString方法
+                      public String toString():将当前StringBuilder对象转换为String对象
+
+            append方法：
+            //代码
+            public class DemoStringBuilderTest {
+              public static void main(String[] args) {
+                //创建StringBuilder对象
+                StringBuilder biu = new StringBuilder();
+                
+                //使用append方法添加数据
+                //append方法返回的是this，调用方法的对象biu
+                //StringBuilder biu2 = biu.append("abc");//把biu的地址赋值给biu2
+                //System.out.println(biu);//abc
+                //System.out.println(biu2);//abc
+                //System.out.println(biu == biu2);//地址值相同true
+                
+                //因此使用append方法无需接收返回值
+                //biu.append("abc");
+                //biu.append(1);
+                //biu.append(2020);
+                //biu.append("年");
+                //biu.append(7.18);
+                //System.out.println(biu);//abc12020年7.18
+
+                //链式编程，方法返回值是一个对象，可以继续调用方法
+                biu.append("abc").append(1).append(2020).append("年").append(7.18);
+                System.out.println(biu);//abc12020年7.18
+              }
+            }
+            
+            toString方法：
+            //代码
+            public class DemoStringBuilderToString {
+              public static void main(String[] args) {
+                //String->StringBuilder
+                String str = "hello";
+                System.out.println("str:" + str);//str:hello
+                
+                StringBuilder biu = new StringBuilder(str);
+                //往StringBuilder中添加数据
+                biu.append(" world");
+                System.out.println("biu:" + biu);//biu:hello world
+
+                //StringBuilder-> String 
+                String s = biu.toString();
+                System.out.println("s:" + s);//s:hello world
+              }
+            }
