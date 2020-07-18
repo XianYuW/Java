@@ -1,0 +1,122 @@
+java.util.Calendar是一个日历类，在Date后出现，替换了许多Date的方法，该类将所有可能用到的时间信息封装
+Calendar类试一个抽象类，为YEAR、MONTH、DAY_OF_MONTH、HOUR等日历字段之间的转换提供了方法，
+                      并为操作日历字段提供了方法，使用的是距离时间原点(1997-01-01 00:00:00.000)的偏移量
+
+Calendar类提供了一个静态方法 getInstance获得此类型的通用对象，其日历字段由当前日期和时间初始化
+      Calendar rightNow = Calendar.getInstance();
+      
+Calendar类的常用方法有:
+    public int get(int field):返回给定日历字段的值
+    public void set(int field,int value):将给定的日历字段设置为给定值
+    public abstract void add(int field,int amount):将给定的日历字段添加或者减去指定的时间量
+    public Date getTime():把日历(Calendar)转换为日期(Date)
+        成员方法的参数：
+              int field :日历类的字段，可以使用Calendar类的静态成员变量获取
+                      public static final int YAER = 1;      年
+                      public static final int MONTH = 2;     月
+                      public static final int Date = 5;      月中的某一天
+                      public static final int Day_OF_MONTH = 5;   月中的某一天
+                      public static final int HOUR = 10;     时
+                      public static final int MINUTE = 12;   分
+                      public static final int SECOND = 13;   秒
+                      
+//常用方法示例
+//代码
+public class DemoCalendar {
+	public static void main(String[] args) {
+//		Calendar calendar = Calendar.getInstance();
+//		System.out.println(calendar);
+		  demo04();
+	}
+	/**
+	 * public Date getTime()
+	 * 方法描述：   把日历对象转换为日期对象
+	 * 创建人：tao   
+	 * 创建时间：2020年7月18日 下午7:54:19
+	 */
+	private static void demo04() {
+		// 用getInstance方法获取Calendar对象
+		Calendar c =Calendar.getInstance();//2020-6-18
+		
+		Date date = c.getTime();
+		System.out.println(date);//Sat Jul 18 19:55:50 CST 2020
+		
+	}
+	/**
+	 * public abstract void add(int field,int amount)
+	 * 方法描述：   将给定的日历字段添加或者减去指定的时间量
+	 * 参数：
+	 * 		int field:传递给定的日历字段(YEAR、MONTH....)
+	 * 		int amount:增加(+)/减少(-)指定值
+	 * 创建人：jijun 
+	 * 创建时间：2020年7月18日 下午7:48:49
+	 */
+	private static void demo03() {
+		// 用getInstance方法获取Calendar对象
+		Calendar c =Calendar.getInstance();//2020-6-18
+		//把年增加两年
+		c.add(Calendar.YEAR, 2);
+		//把月减少3
+		c.add(Calendar.MONTH, -3);
+		
+		int year = c.get(Calendar.YEAR);
+		System.out.println(year);//2022
+		
+		int month = c.get(Calendar.MONTH);
+		System.out.println(month);//3  西方的月份为0-11，东方的月份为1-12
+		
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		System.out.println(day);//18
+		
+	}
+	/**
+	 * public void set(int field,int value)
+	 * 方法描述：   将给定的日历字段设置为给定值
+	 * 参数：
+	 * 		int field:传递指定的日历字段
+	 * 		int value:给指定字段设置的值
+	 * 创建人：jijun   
+	 * 创建时间：2020年7月18日 下午7:39:13
+	 */
+	private static void demo02() {
+		// 用getInstance方法获取Calendar对象
+		Calendar c =Calendar.getInstance();
+		//设置年为9999
+		c.set(Calendar.YEAR,9999);
+		//设置月为9月
+		c.set(Calendar.MONTH, 9);
+		//设置天为9
+		c.set(Calendar.DATE, 9);
+		//同时设置年月日，可以使用set的重载方法【set(int year,int month,int date)】
+		c.set(8888, 8, 8);//8888-8-8 
+		
+		int year = c.get(Calendar.YEAR);
+		System.out.println(year);//9999
+		
+		int month = c.get(Calendar.MONTH);
+		System.out.println(month);//9  西方的月份为0-11，东方的月份为1-12
+		
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		System.out.println(day);//9
+	}
+	/**
+	 * public int get(int field)
+	 * 方法描述：   返回给定日历字段的值
+	 * 参数：传递给定的日历字段(YEAR、MONTH....)
+	 * 返回值：日历字段代表的具体的值
+	 * 创建人：jijun  
+	 * 创建时间：2020年7月18日 下午6:54:23
+	 */
+	private static void demo01() {
+		// 用getInstance方法获取Calendar对象
+		Calendar c =Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		System.out.println(year);//2020
+		
+		int month = c.get(Calendar.MONTH);
+		System.out.println(month);//6  西方的月份为0-11，东方的月份为1-12
+		
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		System.out.println(day);//18
+	}
+}
