@@ -1,1 +1,68 @@
+java.text.DateFormat ：是日期/时间格式化子类的抽象类，我们通过这个类可以帮助我们完成日期和文本之间的转换
+                       也就是可以在Data对象与String对象之间实现来回转换
+                       
+                       Date--->String（格式化）: 
+                       String--->Date（解析）:
+                       
+                       成员方法：
+                              String format(Date date):按照指定的模式，把Date日期格式化为符合模式的字符串
+                              Date parse(String source):把符合模式的字符串，解析为Date日期
+      由于DateFormat为抽象类，不能直接使用，通常使用它的子类java.text.SimpleDateFormet
+      这个类需要一个格式 来指定格式化的标准，构造方法为：
+            public SimpleDateFormat(String pattern):用指定的格式和默认语言环境的日期格式符号构造
+                参数：pattern试一个字符串，代表日期时间的自定义格式
+                模式：区分大小写
+                    y       年
+                    M       月
+                    d       日
+                    H       时
+                    m       分
+                    s       秒
+                    写对应的模式，会把模式替换为对应的日期，如："yyyy-MM-dd HH:mm:ss"
+                        注：模式中的字母不能更改，单连接模式的符号可以改变："yyyy年MM月dd日 HH时mm分ss秒"
 
+//代码练习
+public class DemoDateFormat {
+	public static void main(String[] args) throws ParseException {
+    demo01();
+		demo02();
+	}
+	/**
+	 * 
+	 * 方法描述： 使用DateFormat类中的方法parse，把文本转化为日期 
+	 * 创建人：jijun
+	 * 创建时间：2020年7月18日 下午5:57:18
+	 * 使用步骤：
+	 * 	  		1.创建SimpleDateFormat对象，并在构造模式中传递指定的模式
+	 * 			2.调用SimpleDateFormat对象中的方法parse，进行转换
+	 * 
+	 * 		注：该方法声明了异常    ParseException 解析异常，如果字符串和构造方法的模式不一样，那么程序就会抛出异常
+	 * 			public Date parse(String source) throws ParseException{}
+	 * 				调用一个抛出了异常的方法，就必须处理这个异常，要么throws继续抛出这个异常，要么try catch 自己处理
+	 * @throws ParseException 
+	 */
+	private static void demo02() throws ParseException {
+		// TODO Auto-generated method stub
+		SimpleDateFormat test = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+		Date date = test.parse("2020年07月18日 17时56分10秒");
+		System.out.println(date);//Sat Jul 18 17:56:10 CST 2020
+	}
+	/**
+	 * 
+	 * 方法描述：使用DateFormat类中的方法format，把日期转化为文本   
+	 * 创建人：jijun  
+	 * 创建时间：2020年7月18日 下午5:56:19
+	 * 使用步骤：
+	 * 			1.创建SimpleDateFormat对象，并在构造模式中传递指定的模式
+	 * 			2.调用SimpleDateFormat对象中的方法format，进行转换
+	 */
+	private static void demo01() {
+		// TODO Auto-generated method stub
+		Date date =new Date();
+		System.out.println(date);//Sat Jul 18 17:56:10 CST 2020
+		SimpleDateFormat test = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+		String format = test.format(date);
+		System.out.println(format);//2020年07月18日 17时56分10秒
+
+	}
+}
