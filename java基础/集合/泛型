@@ -1,0 +1,18 @@
+泛型是一种位置的数据类型。当我们不知道使用什么数据类型的时候，可以使用泛型
+泛型也可以看成是一个变量，用来接收数据类型
+      E  e:Element 元素
+      T  t:Type  类型
+ArrayList集合在定义的时候不知带集合中会存储什么类型的数据，所以类型使用泛型
+      E ：未知的数据类型                             
+      public class ArrayList<E> {                    
+           public boolean add(E e){}
+           public E get(int index){}
+      }
+      
+      创建集合对象的时候，就会确定泛型的数据类型
+      ArrayList<String> list = new ArrayList<String>();
+                          ↓
+      public class ArrayList<String> {      //会把数据类型作为参数传递，把String赋值给泛型E                 
+           public boolean add(String e){}
+           public String get(int index){}
+      }
