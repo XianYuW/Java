@@ -1,0 +1,69 @@
+定义含有泛型的接口：
+    格式：
+        public interface 接口名<I> {
+	          public abstract 返回值类型 方法名(I i);
+        }
+        
+     含有泛型的接口，第一种使用方式：
+           定义接口的实现类，实现接口，指定接口的泛型
+              既实现类确定泛型类型
+           例如：
+                public interface Iterator<E>{
+                    E next();
+                }
+                Scanner 类实现了Iterator接口，并指定接口的泛型为String，所以重写的next方法泛型默认就是String
+                public final class Scanner implements Iterator<String>{
+                    public String next(){}
+                }
+                
+     含有泛型的接口，第二种使用方式：
+            接口使用什么泛型，实现类就使用什么泛型，类跟着接口走
+                就相当于定义了一个含有泛型的类，创建对象的时候确定泛型的类型
+                既实现类不确定泛型，实例化对象的时候确定泛型
+            例如：
+                public interface list<E>{
+                    boolean add(E e);
+                    E get(int index);
+                }
+                public class ArrayList<E> implements List<E>{
+                    public boolean add(E e){}
+                    public E get(int index){}
+                }
+                
+//代码练习
+//接口
+public interface GenericInterface<I> {
+	public abstract void method01(I i);
+}
+//接口实现类1
+public class GenericInterfaceImpl01 implements GenericInterface<String>{
+	@Override
+	public void method01(String s) {
+		// TODO Auto-generated method stub
+		System.out.println(s);
+	}
+}
+//接口实现类2
+public class GenericInterfaceImpl02<I> implements GenericInterface<I>{
+	@Override
+	public void method01(I i) {
+		// TODO Auto-generated method stub
+		System.out.println(i);
+	}
+}
+//测试类
+public class GenericInterfaceImplTest {
+	public static void main(String[] args) {
+		//测试含有泛型的接口
+		//创建GenericInterfaceImpl01对象
+		GenericInterfaceImpl01 impl = new GenericInterfaceImpl01();
+		impl.method01("字符串");
+		
+		//创建GenericInterfaceImpl02对象
+		GenericInterfaceImpl02<Integer> impl2 = new GenericInterfaceImpl02<>();
+		impl2.method01(10);
+		
+		GenericInterfaceImpl02<Double> impl3 = new GenericInterfaceImpl02<>();
+		impl3.method01(8.8);
+	}
+}
