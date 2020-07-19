@@ -1,0 +1,33 @@
+格式：
+    修饰符 class 类名<代表泛型的变量>{}
+
+定义一个含有泛型的类，模拟ArrayList集合
+泛型试一个未知的数据类型，当我们不确定什么数据类型的时候，可以使用泛型
+泛型可以接收任意的数据类型，可以使用Integer，String,Student...
+创建对象的时候确定泛型的数据类型
+
+//代码练习
+public class GenericClass<E> {
+	private E name;
+
+	public E getName() {
+		return name;
+	}
+
+	public void setName(E name) {
+		this.name = name;
+	}
+}
+public class GenericClassTest {
+	public static void main(String[] args) {
+		//不写泛型默认为Object类型
+		GenericClass gc0= new GenericClass();
+		gc0.setName("只能是字符串");
+		Object obj = gc0.getName();
+		
+		//写了泛型为String类型
+		GenericClass<String> gc = new GenericClass<>();
+		gc.setName("jijun");
+		System.out.println(gc.getName());//jijun
+	}
+}
