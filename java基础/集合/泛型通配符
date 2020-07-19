@@ -1,0 +1,49 @@
+当使用泛型或者接口时，泛型的类型不确定可以通过通配符<?>表示
+但是一旦使用泛型通配符后，只能使用Object类中的共性方法，集合中元素方法无法使用
+
+基本使用：
+    不能创建对象使用
+    只能作为方法的参数使用     
+  例如：
+      
+      public static void main(String[] args){
+          Collection<Integer> list1 = new ArrayList<>();
+          
+          Collection<String> list2 = new ArrayList<>();
+          
+          getElements(list1);
+          getElements(list2);
+      }
+      public static void getElement(Collection<Integer> coll){}//如果是Integer，则String类型不可用
+      public static void getElement(Collection<Object> coll){}//两个都不可用
+                                                              //因为泛型没有继承概念
+      //因此，要定义一个方法，使其能接收所有类型的Collection集合
+      public static void getElement(Collection<?> coll){}//?代表可以接收任意类型
+      
+泛型的上限限定： ? extends E ,代表使用的泛型只能是E类型的子类/本身
+泛型的下限限定： ? super E ，代表使用的泛型只能是E类型的父类/本身
+
+    例如：
+        Integer extends Number extends Object
+        String extends Object
+        
+        public static void main(String[] args){
+            Collection<Integer> list1 = new ArrayList<>();
+            Collection<String> list2 = new ArrayList<>();
+            Collection<Number> list3 = new ArrayList<>();
+            Collection<Object> list4 = new ArrayList<>();
+            
+            method01(list1);
+            method01(list2);//报错
+            method01(list3);
+            method01(list4);//报错
+            
+            method02(list1);//报错
+            method02(list2);//报错
+            method02(list3);
+            method02(list4);
+        }
+        //泛型的上限：此时泛型<?>必须是Number类型或者Number类型的子类
+        public static void method01(Collection<? extends Number> coll){}
+        //泛型的下限：此时的泛型<?>必须是Number类型或者Number类型的子类
+        public static void method02(Collection<? super Number> coll){}
