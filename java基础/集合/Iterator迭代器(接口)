@@ -1,0 +1,44 @@
+Collection集合中，Set集合是无序的，因此不能用普通的for循环遍历
+java.util.Iterator主要用于迭代访问(遍历)Collection中的元素
+
+    迭代器是接口，无法直接使用，并且其实现类比较特殊
+    Collection接口中有一个方法，叫iterator()，这个方法返回的是迭代器的实现对象
+    其获取迭代器的方法：
+        public Iterator<E> iterator():获取Collection集合对应的迭代器，用于遍历集合中的元素
+        
+     迭代：Collection集合元素的通用获取方式。取元素之前先判断集合中是否有元素，
+            如果有，则取出，继续判断下一个，如果还有就再取出来，直到取出了全部元素。
+            
+     Iterator接口的常用方法：
+          public E next():返回迭代的下一个元素
+          public boolean hasNext():如果仍有元素可以迭代，则返回true
+          
+     迭代器的使用步骤：
+          1.使用集合方法iterator()获取迭代器的实现类对象，使用Iterator接口接收(多态)
+              注：Iterator<E>的泛型跟着集合走
+          2.使用Iterator接口中的方法hasNext判断还有没有下一个元素
+          3.使用Iterator接口中的方法next取出集合中的下一个元素
+          
+//代码练习
+public class DemoIterator {
+	public static void main(String[] args) {
+		//创建一个集合对象
+		Collection<String> coll =new ArrayList<>();
+		//添加对象
+		coll.add("迪丽热巴");
+		coll.add("古力娜扎");
+		coll.add("马儿扎哈");
+		
+		//1.使用集合方法iterator()获取迭代器的实现类对象，使用Iterator接口接收(多态)
+		//多态    接口				实现类对象
+		Iterator<String> it = coll.iterator();
+		
+		//2.使用Iterator接口中的方法hasNext判断还有没有下一个元素
+		//3.使用Iterator接口中的方法next取出集合中的下一个元素
+		while(it.hasNext()) {
+			String s = it.next();
+			System.out.println(s);//迪丽热巴  古力娜扎  马儿扎哈
+      String s1 = it.next();//没有元素，再取出元素会抛出java.util.NoSuchElementException异常
+		}
+	}
+}	
