@@ -1,0 +1,53 @@
+创建集合对象，不使用泛型：
+      好处：
+          不使用泛型，默认的类型就是Object类型，可以存储任意类型的数据
+      弊端：
+          不安全，会引发异常
+          
+创建集合对象，使用泛型：
+      好处：
+          避免了类型转换的麻烦，存储的是什么类型，去除的就是什么类型
+          把运行期异常(代码运行之后会抛出的异常)，提升到了编译期(写代码的时候会报错)
+      弊端:
+          泛型是什么类型，只能存储什么类型
+          
+//代码练习
+public class DemoGeneric {
+	public static void main(String[] args) {
+		show02();
+	}
+	/**使用泛型
+	 */
+	private static void show02() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("abc");
+		//list.add(1);//The method add(int) in the type ArrayList<String> is not applicable for the arguments (int)
+		
+		//使用迭代器获取集合
+		Iterator<String> it = list.iterator();
+		while(it.hasNext()) {
+			String s = it.next();
+			System.out.println(s + "->" + s.length());//abc->3
+		}
+	}
+	/**
+	 * 不使用泛型
+	 */
+	private static void show01() {
+		ArrayList list = new ArrayList();
+		list.add("abc");
+		list.add(1);
+		//使用迭代器遍历list集合
+		Iterator it = list.iterator();
+		while(it.hasNext()) {
+			//取出元素是Object类型
+			Object obj = it.next();
+			System.out.println(obj);
+			
+			//使用String类特有的方法，length获取字符串长度，不能使用   多态 Object obj = “abc”;
+			//需要向下转型
+			String s = (String)obj;
+			System.out.println(s);//会抛出java.lang.ClassCastException异常，不能把Integer转型为String
+		}
+	}
+}
