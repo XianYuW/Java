@@ -1,0 +1,66 @@
+1.准备阶段：54张牌，存储到一个集合中
+            特殊牌：大小王
+            其他52张牌：
+                  定义一个数组/集合：存储4种花色：，♦，♥，♣，♠
+                  定义一个数组/集合：存储13个序号：2，A，K，Q，J...
+            循环嵌套两个数组/集合，组成52张牌
+                  ♦2，♦A，♦K...
+                  
+、2.洗牌
+            使用集合工具类Collections的方法
+            static void shuffle(list<?> list)使用指定的随机源对指定列表进行置换
+            会随机的打乱集合中元素的顺序
+            
+3.发牌
+            要求：每人17张牌，剩余3张牌作为底牌，一人一张轮流发牌，集合的索引%3
+            定义4个集合，存储3个玩家的牌和底牌
+            索引》=51，将剩下的牌存到底牌
+            
+4.看牌
+            直接打印集合，遍历存储玩家和底牌的集合
+            
+//代码
+public class Poker {
+	public static void main(String[] args) {
+		
+		String[] s1 = {"♦","♣","♥","♠"};		
+		ArrayList<String> poker = new ArrayList<>();
+		poker.add("大王");
+		poker.add("小王");
+		String[] s2 = {"2","A","K","Q","J","10","9","8","7","6","5","4","3"};
+		
+//		for (int i = 0; i < s2.length; i++) {
+//			for (int j = 0; j < s1.length; j++) {
+//				//System.out.println(s1[j]+s2[i]);
+//				poker.add(s1[j] + s2[i]);
+//			}
+//		}
+		for (String number : s2) {
+			for (String color : s1) {
+				poker.add(color + number);
+			}
+		}
+		Collections.shuffle(poker);
+		
+		ArrayList<String> p1 = new ArrayList<>();
+		ArrayList<String> p2 = new ArrayList<>();
+		ArrayList<String> p3 = new ArrayList<>();
+		ArrayList<String> dipai = new ArrayList<>();
+		
+		for (int i = 0; i < poker.size(); i++) {
+			if(i >=poker.size() -3) {
+				dipai.add(poker.get(i));
+			}else if(i%3 == 0) {
+				p1.add(poker.get(i));
+			}else if(i%3 == 1) {
+				p2.add(poker.get(i));
+			}else if(i%3 == 2) {
+				p3.add(poker.get(i));
+			}
+		}
+		System.out.println(p1  +"共有：" + p1.size() + "张");
+		System.out.println(p2  +"共有：" + p2.size() + "张");
+		System.out.println(p3  +"共有：" + p3.size() + "张");
+		System.out.println(dipai  +"共有：" + dipai.size() + "张");
+	}
+}
