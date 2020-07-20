@@ -1,0 +1,3 @@
+Set集合保证元素唯一(如何保证---必须重写hashCode和equals方法)：
+    存储的元素(String,Integer,...,Student,Person...),必须重写hashCode和equals方法
+
