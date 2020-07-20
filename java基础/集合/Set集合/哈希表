@@ -1,0 +1,28 @@
+哈希值：是一个十进制的整数，由系统随机给出(就是对象的地址值，是一个逻辑地址)
+在Object类中有一个方法，可以获取对象的哈希值
+        int hashCode()  返回该对象的哈希码值
+        hashCode的源码：
+                Public native int hashCode();
+                native:代表该方法调用的是本地系统的方法
+                
+        toString方法的源码：
+                return getClass().getName + "@" + Integer.toHexString(hashCode());
+                
+//代码练习
+public class DemoHashCode {
+	public static void main(String[] args) {
+		Person p1 = new Person();
+		int h1 = p1.hashCode();
+		System.out.println(h1);//2046562095
+		
+		Person p2 = new Person();
+		int h2 = p2.hashCode();
+		System.out.println(h2);//1342443276
+		
+		/**
+		 * toString 
+		 */
+		System.out.println(p1);//DemoSet.Person@79fc0f2f
+		System.out.println(p2);//DemoSet.Person@50040f0c
+	}
+}
