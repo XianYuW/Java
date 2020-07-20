@@ -9,3 +9,42 @@ List接口中带索引的方法(特有)：
       public E get(int index):返回集合中指定位置的元素
       public E remove(int index):移除列表中指定位置的元素，返回的是被移除的元素
       public E set(int index,E element):用指定元素替换指定位置的元素，返回值是被替换的元素
+      注：
+         操作索引的时候，一定要注意防止索引越界异常
+         IndexOutOfBoundsException：索引越界异常，一般集合会报
+         ArrayIndexOutOfBoundsException：数组索引越界异常
+         StringIndexOutOfBoundsException：字符串索引越界异常
+            代码示例：
+                  List<String> list = new List<>();
+                  //使用add添加元素
+                  list.add("a");//[a]    
+                  list.add("b");//[a,b]
+                  list.add("c");//[a,b,c]
+                  list.add("d");//[a,b,c,d]
+                  
+                  //在c，d之间添加指定元素(一个S)
+                  list.add(3,"S")//[a,b,c,S,d]
+                  //移除元素
+                  String remoE = list.remove(4);//被移除的元素remoE = d;[a,b,c,S]
+                  //替换指定位置的元素
+                  String setE = list.set(3,"d");//被替换的元素setE = S ,[a,b,c,d]
+                  //get获取元素
+                  //如果get时索引越界
+                  String r = list.get(5);//报异常，IndexOutOfBoundsException
+List集合遍历有三种方法：
+      1.使用普通的for循环
+            for(int i = 0 ,i <list.size();i++){
+                  //public E get(index):获取集合指定位置的元素
+                  String s = list.get(i);
+                  Sysout/out/println(s);
+            }
+      2.使用迭代器
+             Iterator<String> it = list.iterator();
+             while(it.hasNext(0){
+                  String s = it.next();
+                  System.out.println(s);
+             }
+      3.使用增强for循环
+            for(String s : list){
+                  System.out.println(s);
+            }
