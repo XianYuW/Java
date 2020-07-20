@@ -1,0 +1,11 @@
+java.util.List接口继承Collection接口，是单列集合的一个重要分支，习惯性地将实现了List接口的对象称为List集合
+List集合的特点：
+      1.允许出现重复元素，所有元素线性存储
+      2.有索引，可以通过索引来访问指定元素，包含了一些带索引的方法
+      3.元素有序，元素的存入顺序和取出顺序一致(存123 取123)
+      
+List接口中带索引的方法(特有)：
+      public void add(int index,E element):将指定元素，添加到该集合的位置上
+      public E get(int index):返回集合中指定位置的元素
+      public E remove(int index):移除列表中指定位置的元素，返回的是被移除的元素
+      public E set(int index,E element):用指定元素替换指定位置的元素，返回值是被替换的元素
