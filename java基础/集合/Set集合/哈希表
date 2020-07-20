@@ -19,10 +19,19 @@ public class DemoHashCode {
 		int h2 = p2.hashCode();
 		System.out.println(h2);//1342443276
 		
-		/**
-		 * toString 
-		 */
 		System.out.println(p1);//DemoSet.Person@79fc0f2f
 		System.out.println(p2);//DemoSet.Person@50040f0c
+		System.out.println(p1 == p2);//false
+		
+		//String类型重写了Object类中的hashCode方法
+		String s1 = new String("abc");
+		String s2 = new String("abc");
+		System.out.println(s1.hashCode());//96354
+		System.out.println(s2.hashCode());//96354
+		System.out.println(s1 == s2);//false,String是引用类型，比较的是对象
+		
+		System.out.println("重地".hashCode());//1179395
+		System.out.println("通话".hashCode());//1179395
+		System.out.println("种地".hashCode());//988931
 	}
 }
