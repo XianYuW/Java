@@ -1,0 +1,30 @@
+java.util.LinkedList集合数据存储的结构是链表结构，方便元素添加、删除的集合
+        是List接口的链表实现，此实现不是同步的
+        
+该集合的特点：
+        1.底层试一个链表结构：查询慢，增删快
+        2.里面包含了大量操作首尾元素的方法
+            注意：使用LinkedList集合特有的方法，不能使用多态
+            
+            //添加的方法，LinkedList特有
+            -public void addFirst(E e):将指定元素插入此列表的开头
+            -public void addLast(E e):将指定元素添加到此列表的结尾
+            -public void push(E e):将元素推入此列表所表示的堆栈
+            
+            //获取的方法，注：若集合中没有元素，则会报异常 ：NoSuchElementException
+            //因此在进行获取之前可以加一个判断--判空操做  
+            -public E getFirst():返回列表第一个元素
+            -public E getLast():返回最后一个元素
+            
+            //删除的方法
+            -public E removeFirst():移除并返回第一个元素
+            -public E removeLast():移除并返回最后一个元素 
+            -public E pop():从此列表所表示的堆栈处弹出一个元素（弹出第一个）
+            
+            //判空
+            -public boolean isEmpty():如果列表为空，则返回true
+            
+            其中：
+                addFirst(E e)方法等效于push(E e)方法
+                addLast(E e)方法等效于add(E e)方法
+                removeFirst()方法相等效于pop()方法
