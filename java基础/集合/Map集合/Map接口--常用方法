@@ -1,1 +1,8 @@
 常用的如下：
+    
+    -public V put(K key,V value):把指定的key与指定的value添加到Map集合中
+    -public V remove(Object key):把指定的key所对应的value元素在Map集合中删除，返回被删除元素的value
+    -public V get(Object key):根据指定的key，在Map集合中获取对应的value
+    -Boolean containsKey(Object key):判断集合中是否包含指定的key
+    -public Set<K> keySet():获取Map集合中所有的key，存储到Set集合中
+    -public Set<Map.Entry<K,V>> entrySet():获取到Map集合中所有的key-value对 对象的集合(Set集合)
