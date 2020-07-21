@@ -1,7 +1,24 @@
 常用的如下：
     
     -public V put(K key,V value):把指定的key与指定的value添加到Map集合中
+            存储key-value对 的时候，key不重复，返回值是null
+                                    key重复，会使用新的value替换Map中重复的value，返回被替换的value值
+            例：
+                Map<String,String> map = new HashMap<>();
+                String v1 = map.put("A","a1");//v1:null
+                String v1 = map.put("A","a2");//v2:a1
+                Sout(map);//{A=a2}
     -public V remove(Object key):把指定的key所对应的value元素在Map集合中删除，返回被删除元素的value
+            返回值V：
+                 key存在，返回被删除的值
+                 key不存在，返回null
+            例： 
+                 Map<String,Integer> map = new HashMap<>();
+                 map.put("A",65)；
+                 map.put("B",66);
+                 map.put("C",67);//map = {A=65,B=66,C=67}
+                 Integer v1 = map.remove("A");//v1:65, map = {B=66,C=67}
+                 Integer v2 = map.remove("D");//v2:null
     -public V get(Object key):根据指定的key，在Map集合中获取对应的value
     -Boolean containsKey(Object key):判断集合中是否包含指定的key
     -public Set<K> keySet():获取Map集合中所有的key，存储到Set集合中
