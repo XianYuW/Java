@@ -1,1 +1,18 @@
+Public static void sleep(long millis)：是当前正在执行的线程以指定的毫秒数暂停(暂时停止运行)
 
+
+//代码练习
+public class DemoSleep {
+	public static void main(String[] args) {
+		for (int i = 0; i < 20; i++) {
+			System.out.println(i);
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
