@@ -20,3 +20,21 @@ throws关键字：异常处理的第一种方式，交给别人处理
             要么继续使用throws声明抛出，交给方法的调用者处理，最终交给JVNM
             要么try...catch自己处理异常
     
+
+//代码练习
+public class DemoThrows {
+	public static void main(String[] args) throws FileNotFoundException,IOException {
+//		readFile("c:\\b.txt");//java.io.FileNotFoundException: 文件路径找不到
+		readFile("c:\\a.tx");//java.io.IOException: 文件后缀错误
+	}
+
+	private static void readFile(String fileName) throws FileNotFoundException,IOException{
+//		if(!fileName.equals("c:\\a.txt")) {
+//			throw new FileNotFoundException("文件路径找不到");
+//		}
+		if(!fileName.endsWith(".txt")) {
+			throw new IOException("文件后缀错误");
+		}
+		System.out.println("路径正确，打开文件");
+	}
+}
