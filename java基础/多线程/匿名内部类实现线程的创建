@@ -1,0 +1,46 @@
+格式：
+    new 父类/接口(){
+        重写父类/接口中的方法
+    };
+    
+//代码练习
+public class InnerClassThread {
+	public static void main(String[] args) {
+		//线程的父类Thread
+		new Thread() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 10; i++) {
+					System.out.println(Thread.currentThread().getName()+"-->"+i);
+				}
+			}
+			
+		}.start();
+		//线程的接口Runnale
+		
+		//Runnable r = new RunnableImpl();//多态
+		Runnable r = new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 10; i++) {
+					System.out.println(Thread.currentThread().getName()+"-->"+i);
+				}
+			}
+			
+		};
+		new Thread(r).start();
+		
+		//简介写法
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < 10; i++) {
+					System.out.println(Thread.currentThread().getName()+"-->"+i);
+				}
+			}
+		}).start();
+	}
+}
