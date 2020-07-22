@@ -1,0 +1,4 @@
+Throwable类中定义了一些查看方法：
+    1.String getMessage() 返回此throwable 的简短消息字符串
+    2.String toString()  返回此throwable 的详细消息字符串
+    3.void printStackTrace() JVM打印异常对象，默认此方法，打印的异常信息是最全面的
