@@ -1,0 +1,42 @@
+获取线程得名称：
+    1.使用线程Thread类中得方法getName()
+        String getName()返回线程名称
+    2.可以先获取当前正在执行得线程，使用线程中的方法getName()获取线程的名称
+        static Thread currentThread() 返回对当前正在执行的线程对象的引用
+        
+设置线程名称：
+    1.使用Thread类中的方法setName(名字)
+        void setName(String name)改变线程名称
+            例如：MyThread mt = new MyThread();
+                  mt.setName("线程A");
+                  mt.start();//
+    2.创建一个带参数的构造方法，参数传递线程的名称；调用父类的带参数的构造方法，把线程名称传递给父类，让父类给子线程起一个名字
+        Thread(String name)分配新的Threa 对象
+        
+//代码练习
+//MyThread类
+public class MyThread extends Thread{
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println(Thread.currentThread().getName());
+	}
+	public MyThread() {
+	}
+	public MyThread(String name) {
+		super(name);
+	}
+}
+//Test类
+public class MyThreadTest {
+	public static void main(String[] args) {
+		//1.使用Thread类中的方法setName(名字
+		MyThread mt = new MyThread();
+		mt.setName("线程A");
+		mt.start();//线程A
+		
+		//2.Thread(String name)分配新的Threa 对象
+		new MyThread("线程B").start();//线程B
+	}
+}
