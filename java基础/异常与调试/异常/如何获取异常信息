@@ -2,3 +2,27 @@ Throwable类中定义了一些查看方法：
     1.String getMessage() 返回此throwable 的简短消息字符串
     2.String toString()  返回此throwable 的详细消息字符串
     3.void printStackTrace() JVM打印异常对象，默认此方法，打印的异常信息是最全面的
+    
+    
+//代码练习
+public class DemoTryCatch {
+	public static void main(String[] args) {
+		try {
+			readFile("c:\\b.tt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());//文件后缀错误
+			System.out.println(e.toString());//java.io.IOException: 文件后缀错误
+			e.printStackTrace();//java.io.IOException: 文件后缀错误
+								//		at Java02/DemoException.DemoTryCatch.readFile(DemoTryCatch.java:20)
+								//		at Java02/DemoException.DemoTryCatch.main(DemoTryCatch.java:9)
+		}
+		System.out.println("后续代码");
+	}
+	private static void readFile(String fileName) throws IOException{
+		if(!fileName.endsWith(".txt")) {
+			throw new IOException("文件后缀错误");
+		}
+		System.out.println("后缀正确，打开文件");
+	}
+}
