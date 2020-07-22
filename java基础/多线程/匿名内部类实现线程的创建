@@ -12,7 +12,7 @@ public class InnerClassThread {
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < 10; i++) {
-					System.out.println(Thread.currentThread().getName()+"-->"+i);
+					System.out.println(Thread.currentThread().getName()+"-->"+"Thread"+i);
 				}
 			}
 			
@@ -25,20 +25,20 @@ public class InnerClassThread {
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < 10; i++) {
-					System.out.println(Thread.currentThread().getName()+"-->"+i);
+					System.out.println(Thread.currentThread().getName()+"-->"+"Runnable"+i);
 				}
 			}
 			
 		};
 		new Thread(r).start();
 		
-		//简介写法
+		//简洁写法
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < 10; i++) {
-					System.out.println(Thread.currentThread().getName()+"-->"+i);
+					System.out.println(Thread.currentThread().getName()+"-->"+"简洁Runnable"+i);
 				}
 			}
 		}).start();
