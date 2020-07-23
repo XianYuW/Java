@@ -23,10 +23,8 @@ class RunnableImpl implements Runnable{
     
     @override
     public void run(){
-        while(true){
-            synchronized(obj){
-                //...
-            }
-        } 
+        synchronized(obj){
+            //...
+        }
     }
 }
