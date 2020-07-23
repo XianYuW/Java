@@ -1,0 +1,6 @@
+java.util.concurrent.locks.lock接口提供了比synchronized代码块和synchronized方法更广泛的锁定操作
+同步代码块/同步方法具有的功能Lock都有，除此之外更强大，更体现面向对象
+
+Lock接口中的方法：
+    void loc() 获取锁
+    void unlock() 释放锁
