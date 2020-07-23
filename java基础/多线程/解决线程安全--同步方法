@@ -1,1 +1,16 @@
+同步方法：使用synchronized修饰的方法。
+    作用：保证A执行该方法的时候，其他线程只能在方法外等待
+    
+格式：
+    public synchronized void method(){
+        可能会产生线程安全问题的代码
+    }
 
+//代码示例
+@override
+public void run(){
+    method();
+}
+public synchronized void method(){
+        可能会产生线程安全问题的代码
+    }
