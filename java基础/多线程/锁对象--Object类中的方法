@@ -1,0 +1,13 @@
+void wait()：在其他线程调用此对象的notify()/notifyAll()方法之前，该线程无限等待
+
+void notify()：唤醒在此对象监视器上等待的单个线程
+                会继续执行wait方法之后的代码
+                
+进入到TimeWaiting(计时等待)有两种方法：
+      1.使用sleep(long m)方法，在毫秒值结束后，线程睡醒进入到Runnble/Blocked状态
+      2.使用wait(long m)方法，wait方法如果在毫秒值结束之后，还没有被notify唤醒，就会自动醒来
+           线程睡醒进入到Runnble/Blocked状态
+           
+唤醒的方法：
+      1.void notify() 唤醒在此对象监视器上等待的单个线程(随机唤醒)
+      2.void notifyAll() 唤醒在此对象监视器上的所有线程
