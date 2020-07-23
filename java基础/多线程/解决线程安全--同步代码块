@@ -15,3 +15,18 @@
                     归还之后，该线程才能获取锁对象进入同步代码块执行
                     
 同步代码块中的线程，没有执行完毕不会释放锁对象，同步外的线程没有锁对象进不去同步
+
+//代码练习
+class RunnableImpl implements Runnable{
+    //创建锁对象
+    Object obj = new Object();
+    
+    @override
+    public void run(){
+        while(true){
+            synchronized(obj){
+                //...
+            }
+        } 
+    }
+}
