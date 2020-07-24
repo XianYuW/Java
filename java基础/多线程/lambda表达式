@@ -23,3 +23,12 @@ lambda表达式的标准格式：
             }
         ).start();
     }
+
+上述代码中，使用到的Thread构造器的源码：
+    public Thread(Runnable target) {
+        this(null, target, "Thread-" + nextThreadNum(), 0);
+    }
+调用Runnable接口的源码：
+    public interface Runnable {
+        public abstract void run();
+    }
