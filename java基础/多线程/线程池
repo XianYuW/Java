@@ -10,9 +10,9 @@
     3.提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线程的数目，防止因消耗过多的内存，从而导致服务器死机
         每个线程大概需要1MB内存，线程开的越多，消耗内存越大，最后死机
         
-java.util.concurrent.Execution:线程池的工厂类，用来生产线程池
+java.util.concurrent.Executor:线程池的工厂类，用来生产线程池
 
-Execution类中的静态方法：
+Executor类中的静态方法：
         static ExecutorService newFixedThreadPool(int nThreads)创建一个可重用固定线程数的线程池
         
         参数：int nThreads 创建线程池中包含的线程数量
