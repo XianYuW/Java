@@ -1,0 +1,40 @@
+ * java.io.FileReader extends InputStreamReader extends Reader
+ * 		FileReader:文件字符输入流
+ * 		作用：把硬盘文件中的	数据以字符的方式读取到内存中
+ * 
+ * 构造方法：
+ * 		FileReader(String FileName)
+ * 		FileReader(File file)
+ * 		参数：fileName：文件的路径	file：一个文件
+ * 		作用：
+ * 			1.创建一个FileReader对象
+ * 			2.把FileReader对象指向要读取的文件
+ * 
+ * 字符输入流的使用步骤：
+ * 		1.创建FileReader对象，构造方法中绑定要读取的数据源
+ * 		2.使用FileReader对象中的方法read读取文件
+ * 		3，释放资源
+ //代码练习
+ public class DemoReader {
+	public static void main(String[] args) throws IOException {
+		FileReader fr = new FileReader("src\\DemoIO\\c.txt");
+//		//int read()读取单个字符串并返回
+//		int read;
+//		while((read = fr.read())!= -1) {
+//			System.out.print((char)read);
+//		}
+		//int read(char[] cbuf)一次读取多个字符串，将字符读入数组
+		char[] read = new char[2];
+		int len = 0;//每次读取的有效个数
+		while((len = fr.read(read)) != -1){
+			/*
+			 * String 类的构造方法
+			 * String(char[] value)把字符数组转换为字符串
+			 * String(char[] value,int off,int count)把字符数组的一部分转换为字符串
+			 */
+			System.out.print(read);
+			System.out.print(new String(read,0,len));
+		}
+		fr.close();
+	}
+}
