@@ -1,0 +1,25 @@
+/**
+ * JDK7之后的新特性：在try的后面可以增加一个括号，在括号中可以定义流对象
+ * 		那么这个流对象的作用域就在try中有效
+ * try中的代码执行完毕，会自动把流对象释放，不用再写finally
+ * 格式：
+ * 		try(定义流对象;定义流对象;...){
+ * 			可能会产生异常的代码
+ * 		}catch(异常类变量 变量名){
+ * 			异常的处理逻辑
+ * 		}
+ */
+public class DemoTryCatch2 {
+	public static void main(String[] args) {
+		try(FileInputStream fis = new FileInputStream("src\\DemoIO\\1.png");
+			FileOutputStream fos = new FileOutputStream("src\\DemoIO\\TryCatchcopy1.png");){
+			int len =0;
+			while((len = fis.read()) != -1) {
+				fos.write(len);
+			}
+		}catch (IOException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}	
+	}
+}
