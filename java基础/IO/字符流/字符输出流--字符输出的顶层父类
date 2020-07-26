@@ -1,0 +1,9 @@
+ * java.io.Writer:字符输出流，是所有字符输出流的最顶层的父类。是一个抽象类
+ * 共性的成员方法：
+ * 		void write(int c)写入单个字符
+ * 		void writer(char[] cbuf)写入字符数组
+ * 		abstract void writer(char[] cbuf,int off,int len)写入字符数组的某一部分
+ * 		void writer(String str)写入字符串
+ * 		void String(String str,int off,int len)写入字符串 的某一部分
+ * 		void flush()刷新该流的缓冲
+ * 		void close()关闭该流，但先会执行刷新操作
