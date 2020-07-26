@@ -1,0 +1,18 @@
+public class DemoCopy2 {
+	public static void main(String[] args) throws IOException {
+		long s = System.currentTimeMillis();
+		FileInputStream fis = new FileInputStream("src\\DemoIO\\1.png");
+		FileOutputStream fos = new FileOutputStream("src\\DemoIO\\copy2.png");
+		
+		byte[] bytes = new byte[1024];
+		int len =0;//返回每次读取的有效字节数
+		while((len = fis.read(bytes)) != -1) {
+			fos.write(bytes, 0, len);;
+		}
+		fis.close();
+		fos.close();
+		long e = System.currentTimeMillis();
+		System.out.print("copy2花费时间：" + (e-s) + "毫秒");//copy2花费时间：62659毫秒
+		
+	}
+}
