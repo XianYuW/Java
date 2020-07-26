@@ -1,0 +1,38 @@
+ * java.io.FileWriter entends OutputStreamWriter extends Writer
+ * FileWriter:文件字符输出流	
+ * 		作用：把内存中的字符数据写入到文件中
+ * 		构造方法：
+ * 		FileWriter(String FileName)根据给定的文件名构造一个FileWriter对象
+ * 		FileWriter(File file)根绝给定的File对象构造一个FileWriter对象
+ * 		参数：fileName：文件的路径	file：一个文件  ；
+ * 				写入数据的目的地
+ * 		作用：
+ * 			1.创建一个FileWriter对象
+ * 			2.根据构造方法中传递的文件/文件路径，创建文件
+ * 			3.把FileReader对象指向创建好的文件
+ * 
+ * 字符输出流的使用步骤：
+ * 		1.创建FileWriter对象，构造方法中绑定要写入数据的目的地
+ * 		2.使用FileWriter中的方法write，把数据写入到内存缓冲区中(字符转换为字节的过程)
+ * 		3.使用FileWriter中的方法flush，把内存缓冲区的数据，刷新到文件中
+ * 		4.释放资源(会先把内存缓冲区中的数据刷新到文件中)
+ * 
+ * 		flush和close的区别：
+ * 				-flush：刷新缓冲区，流对象可以继续使用
+ * 				-close：先刷新缓冲区，然后通知系统释放资源。流对象不可再被使用
+ //代码练习
+ public class DemoWriter1 {
+	public static void main(String[] args) throws IOException {
+		//1.创建FileWriter对象，构造方法中绑定要写入数据的目的地
+		FileWriter fw = new FileWriter("src\\DemoIO\\d.txt");
+		//2.使用FileWriter中的方法writer，把数据写入到内存缓冲区中(字符转换为字节的过程)
+		fw.write(97);
+		//3.使用FileWriter中的方法flush，把内存缓冲区的数据，刷新到文件中
+		fw.flush();
+		//4.释放资源(会先把内存缓冲区中的数据刷新到文件中)
+		fw.close();
+		//close方法之后流已经关闭了，就不能再使用了
+//		fw.write(99);//java.io.IOException: Stream closed
+		
+	}
+}
