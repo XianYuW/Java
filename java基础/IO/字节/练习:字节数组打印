@@ -12,7 +12,7 @@ public class DemoCopy2 {
 		fis.close();
 		fos.close();
 		long e = System.currentTimeMillis();
-		System.out.print("copy2花费时间：" + (e-s) + "毫秒");//copy2花费时间：62659毫秒
+		System.out.print("copy2花费时间：" + (e-s) + "毫秒");//copy2花费时间：73毫秒
 		
 	}
 }
