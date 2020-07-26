@@ -1,0 +1,30 @@
+/**
+ * JDK9新特性：
+ * 		try的前边可以定义流对象
+ * 		在try的后边()可以直接引入流对象名称(变量名)
+ * 		在try代码执行完毕之后，流对象也可以释放掉，不用写finally；
+ * 格式：
+ * 		A a = new A();
+ * 		B b = new B();
+ * 		try(a;b){
+  * 			可能会产生异常的代码
+ * 		}catch(异常类变量 变量名){
+ * 			异常的处理逻辑
+ * 		}
+ */
+public class DemoTryCatch3 {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis = new FileInputStream("src\\DemoIO\\1.png");
+		FileOutputStream fos = new FileOutputStream("src\\DemoIO\\TryCatch3copy1.png");
+		
+		try(fis;fos){
+			int len =0;
+			while((len = fis.read()) != -1) {
+				fos.write(len);
+			}
+		}catch (IOException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+}
