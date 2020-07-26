@@ -1,0 +1,22 @@
+//代码练习
+public class DemoInputStream {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis = new FileInputStream("src\\DemoIO\\a.txt");
+//		int len = fis.read();
+//		System.out.println(len);
+		
+		int read = 0;
+		while((read = fis.read()) != -1) {//循环，读取到的字节不为-1，则输出
+//			System.out.print(read);//97 98 99 100
+			System.out.print((char)read);//abcd
+		}
+//		//为什么这样写不行
+//		//因为第一次read时，值为97 != -1，输出(下一个字节) fis.read=98，，输出98，然后继续判定，99 != -1，输出 fis.read=100
+//		while(fis.read() != -1) {
+//			System.out.println(fis.read());// 98 100
+//		}
+//		
+		fis.close();
+		
+	}
+}
