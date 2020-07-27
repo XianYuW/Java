@@ -1,5 +1,5 @@
- * java.io.BufferOutputStream extends OutputStream
- * BufferOutputStream :字节缓冲输出流
+ * java.io.BufferedOutputStream extends OutputStream
+ * BufferedOutputStream :字节缓冲输出流
  * 
  * 继承父类的共性成员方法：
  * 		-public void close():关闭此输出流并释放与此流关联的任何系统资源
