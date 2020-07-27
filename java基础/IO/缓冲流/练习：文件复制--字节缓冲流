@@ -4,3 +4,30 @@
     3.使用字节缓冲输入流对象中的方法read，读取文件
     4.使用字节缓冲输出流中的方法write，把读取到的数据写入到内部缓冲区中
     5.释放资源（会先把缓冲区的数据，刷新到文件中）
+    
+//代码练习
+
+/**
+ * 程序大小：3697KB
+ * 程序运行时间：33毫秒
+ */
+public class FileCopy1 {
+	public static void main(String[] args) throws IOException {
+		long s = System.currentTimeMillis();//获取开始时间
+	    //1.创建字节缓冲输入流对象，构造方法中传递字节输入流
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream("src\\DemoBuffer\\1.png"));
+	    //2.创建字节缓冲输出流对象。构造方法中传递字节输出流
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("src\\DemoBuffer\\copy1.png"));
+	    //3.使用字节缓冲输入流对象中的方法read，读取文件
+		int len =  0;//一次读写一个字符
+		while((len = bis.read())!= -1) {
+			//4.使用字节缓冲输出流中的方法write，把读取到的数据写入到内部缓冲区中
+			bos.write(len);
+		}
+	    //5.释放资源（会先把缓冲区的数据，刷新到文件中）
+		bis.close();
+		bos.close();
+		long e = System.currentTimeMillis();//获取结束时间
+		System.out.print(" 程序运行时间：" + (e - s) + "毫秒");
+	}
+}
