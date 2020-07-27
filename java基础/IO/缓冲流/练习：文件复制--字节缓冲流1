@@ -11,7 +11,7 @@
  * 程序大小：3697KB
  * 程序运行时间：33毫秒
  */
-public class FileCopy1 {
+public class FileCopyByte2 {
 	public static void main(String[] args) throws IOException {
 		long s = System.currentTimeMillis();//获取开始时间
 	    //1.创建字节缓冲输入流对象，构造方法中传递字节输入流
