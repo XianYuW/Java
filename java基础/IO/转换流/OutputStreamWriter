@@ -18,7 +18,7 @@
  * 		OutputStreamWriter(OutputStream out,String charsetName)创建使用指定字符集的OutputStreamWriter.
  * 
  * 		参数：
- * 			OutputStream out
+ * 			OutputStream out：字节输出流，用来将指定的字节输出到目标文件
  * 			String charsetName：指定的编码表名称，不区分大小写，可以是utf-8/UTF-8，GBK/gbk，...不指定默认使用UTF-8
  * 
  * 使用步骤：
