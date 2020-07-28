@@ -5,10 +5,10 @@
  * 		-void write(int c)写入单个字符
  * 		-void write(char[] cbuf)写入字符数组
  * 		-abstract void write(char[] cbuf,int off,int len)写入字符数组的某一部分，
- * 													off开始索引，len写入的字符个数
+ * 							off开始索引，len写入的字符个数
  * 		-void write(String str)写入字符串
  * 		-void write(String str,int off,int len)写入字符串的某一部分
- * 													off开始索引，len写入的字符个数
+ * 						off开始索引，len写入的字符个数
  * 		-void flush()刷新该流的缓冲
  * 		-void close()关闭此流，会先执行刷新操作，再关闭
  * 
