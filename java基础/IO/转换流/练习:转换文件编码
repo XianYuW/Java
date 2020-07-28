@@ -1,0 +1,52 @@
+/**
+ *转换文件编码，将GBK编码的文本文件，转换为UTF-8编码的文本文件
+ *
+ *分析：
+ *	1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表名称
+ *	2.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称
+ *	3.使用InputStreamReader对象中的方法read读取文件
+ *	4.使用OutputStreamWriter对象中的方法write，将读取到的数据写入文件中
+ *	5.释放资源
+ */
+public class DemoTrans {
+	public static void main(String[] args) throws IOException{
+		GBK_Trans_utf_8();
+		utf_8_Trans_GBK();
+	}
+	private static void utf_8_Trans_GBK() throws IOException {
+		//1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表名称
+		InputStreamReader isr = new InputStreamReader(new FileInputStream("src\\DemoTransfersStream\\utf-8.txt"),"UTF-8");
+		//2.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称
+		OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("src\\DemoTransfersStream\\UTF_8TransGBK.txt"),"GBK");
+		//3.使用InputStreamReader对象中的方法read读取文件
+		char[] c = new char[1024];
+		int len ;
+		while((len=isr.read(c))!= -1) {
+			//4.使用OutputStreamWriter对象中的方法write，将读取到的数据写入文件中
+//			System.out.println(new String(c,0,len));
+			osw.write(c, 0, len);
+		}
+		
+		//5.释放资源
+		isr.close();
+		osw.close();
+	}
+	private static void GBK_Trans_utf_8() throws IOException {
+		//1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表名称
+		InputStreamReader isr = new InputStreamReader(new FileInputStream("src\\DemoTransfersStream\\GBK.txt"),"GBK");
+		//2.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称
+		OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("src\\DemoTransfersStream\\GBKTransUTF_8.txt"),"UTF-8");
+		//3.使用InputStreamReader对象中的方法read读取文件
+		char[] c = new char[1024];
+		int len ;
+		while((len=isr.read(c))!= -1) {
+			//4.使用OutputStreamWriter对象中的方法write，将读取到的数据写入文件中
+//			System.out.println(new String(c,0,len));
+			osw.write(c, 0, len);
+		}
+		
+		//5.释放资源
+		isr.close();
+		osw.close();
+	}
+}
