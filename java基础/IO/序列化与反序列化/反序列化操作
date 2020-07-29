@@ -1,0 +1,13 @@
+1.对于JVM可以反序列化对象，它必须是能找到class文件，如果找不到该类的class文件，会抛出NotSerializableException异常
+
+2.当JVM反序列化对象时，能找到class文件，但那时class文件再序列化对象之后发生了修改，那么反序列化的操作也会失败，会抛出InvalidClassEXception异常。
+        异常原因：
+            1.该类的序列号与从流中读取的类描述符的序列号不匹配
+            2.该类包含未知数据类型
+            4.该类没有可访问的无参数构造方法
+            
+            Serializable接口给需要序列化的类，提供了一个序列版本号，该序列版本号的目的在于验证序列化的对象和对应类是否版本匹配
+            我们也可以手动添加序列号：
+                private static final long serialVersionUID = 数字L;
+                
+                    例如：private static final long serialVersionUID = 42L；
