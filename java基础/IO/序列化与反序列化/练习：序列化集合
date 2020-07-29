@@ -1,0 +1,29 @@
+/**
+ *序列化集合
+ */
+public class Test {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		//1.定义一个存储Person对象的ArrayList集合
+		ArrayList<Person> list = new ArrayList<Person>();
+		//2.存储对象
+		list.add(new Person("迪丽热巴",18));
+		list.add(new Person("古力娜扎",19));
+		list.add(new Person("马尔扎哈",20));
+		 //3.创建ObjectOutputStream对象，构造方法中传递字节输出流
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src\\DemoObjectStream\\Person.txt"));
+		//4.使用ObjectOutputStream对象中的方法writeObject，把对象写入到文件中
+		oos.writeObject(list);
+		//5.创建ObjectInputStream对象，构造方法中传递字节输入流
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src\\DemoObjectStream\\Person.txt"));
+		//6.使用ObjectInputStream对象中的方法readObject读取保存对象的文件
+		Object o = ois.readObject();
+		//7.释放资源
+		ois.close();
+		oos.close();
+		//8.使用读取出来的资源(对象)
+		ArrayList<Person> list2 = (ArrayList<Person>)o;
+		for (Person p : list2) {
+			System.out.println(p);
+		}	
+	}
+}
