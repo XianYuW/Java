@@ -1,0 +1,45 @@
+/**
+ * java.io.ObjectInputStream extends InputStream;
+ * ObjectInputStream:对象的反序列化流
+ * 作用：
+ * 		把文件中保存的对象，以流的方式读取出来使用
+ * 构造方法：
+ * 		ObjectInputStream(InputStream in)创建以指定的InputStream读取的ObjectInputStream
+ * 		参数：
+ * 			InputStream in：字节输入流
+ * 特有的成员方法：
+ * 		Object readObject()  从ObjectInputStream读取对象
+ * 
+ * 使用步骤：
+ * 		1.创建ObjectInputStream对象，构造方法中传递字节输入流
+ * 		2.使用ObjectInputStream对象中的方法readObject读取保存对象的文件
+ * 		3.释放资源
+ * 		4.使用读取出来的资源(对象)
+ * 
+ * readObject()声明抛出了ClassNotFoundException异常(class文件找不到)
+ * 		当不存在对象的class文件时抛出异常
+ * 		反序列化的前提：
+ * 			1.类必须实现Serializable
+ * 			2.类必须存在类对应的class文件
+ */
+public class DemoObjectInputStream {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		//1.创建ObjectInputStream对象，构造方法中传递字节输入流
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src\\DemoObjectStream\\Person.txt"));
+		//2.使用ObjectInputStream对象中的方法readObject读取保存对象的文件
+		Object o1 = ois.readObject();
+		Object o2 = ois.readObject();
+		Object o3 = ois.readObject();
+		//3.释放资源
+		ois.close();
+		//4.使用读取出来的资源(对象)
+		Person p1 = (Person)o1;
+		Person p2 = (Person)o2;
+		Person p3 = (Person)o3;
+		
+		System.out.println(p1);
+		System.out.println(p2);
+		System.out.println(p3);
+		
+	}
+}
