@@ -1,0 +1,7 @@
+static关键字：静态关键字
+    静态关键字优先于非静态加载到内存中(静态优先于对象进入到内存中)
+    被static修饰的成员变量不能被序列化，序列化的都是对象
+    private static int age;
+    oos.writeObject(new Person("迪丽热巴",18));//序列化
+    Object o1 = ois.readObject();//反序列化
+    Person [name=迪丽热巴, age=0]
