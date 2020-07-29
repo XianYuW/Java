@@ -5,3 +5,10 @@ static关键字：静态关键字
     oos.writeObject(new Person("迪丽热巴",18));//序列化
     Object o1 = ois.readObject();//反序列化
     Person [name=迪丽热巴, age=0]
+
+transient关键字：瞬态关键字
+    被transient修饰的成员变量，布恩那个被序列化
+    private transient int age;
+    oos.writeObject(new Person("迪丽热巴",18));//序列化
+    Object o1 = ois.readObject();//反序列化
+    Person [name=迪丽热巴, age=0]
