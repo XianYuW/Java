@@ -22,3 +22,20 @@
  * 		注意：
  * 			如果使用继承自父类的write的方法写数据，那么查看数据的时候会查询编码表  ：例  97->a
  * 			如果使用自己特有的方法print/println写数据，写的数据原样输出，  例：97->97
+ 
+ //代码练习
+ 
+ public class DemoPrintStream {
+	public static void main(String[] args) throws IOException {
+		//创建PrintStream对象，构造方法中绑定要输出的目的地
+		PrintStream ps = new PrintStream("src\\DemoPrintStream\\Print.txt");
+		//使用PrintStream对象继承自父类的方法write写数据
+		ps.write(97);
+		ps.write("Hello World".getBytes());
+		//使用自己特有的方法print/println写数据，写的数据原样输出
+		ps.print(97);
+		ps.println("Hello World");
+		//释放资源
+		ps.close();
+	}
+}
