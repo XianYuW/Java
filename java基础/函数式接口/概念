@@ -1,0 +1,18 @@
+函数式接口：在java中指有且仅有一个抽象方法的接口
+函数式接口，即适用于函数式编程场景的接口。而java中函数式编程的体现就是lambda，所以函数式接口就是可以适用于lambda使用的接口。
+    只有确保接口中有且仅有一个抽象方法，java中的lambda才能顺利推导
+    
+    注：“语法糖”是指使用更方便，但是原理不变的代码语法。例如遍历集合时使用的for-each语法，底层实现原理仍然是迭代器
+                  从应用层面来讲，java中的lambda可以被当做是匿名内部类的“语法糖”，但是二者在原理上是不同的
+                  
+格式：
+    只要确保接口中有且仅有一个抽象方法即可。
+    修饰符 interface 接口名称{
+        public abstract 返回值类型 方法名称(可选参数信息);
+    }
+    由于抽象方法中的public abstract是可以省略的，所以定义一个函数式接口很简单就可以实现：
+    public interface MyFunctionalInterface{
+        void myMethod();
+    }
+    
+@FunctionalInterface注解
