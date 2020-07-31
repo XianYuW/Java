@@ -1,0 +1,15 @@
+1.文件名称写死问题
+    服务端，保存文件的名称如果写死，那么最终导致服务器硬盘只保存一个文件，建议使用系统时间优化，保证文件名唯一，例：
+          FileOutputStream fos = new FileOutputStream(System.currentTimeMillis()+".jpg");//文件名称
+          BufferedOutputStream bos = new BufferedOutputStream(fos);
+          
+2.循环接收问题
+    服务端，保存一个文件就关闭了，这是不合理的，建议循环改进，可以不断接受不同用户的文件，例：
+          while(true){
+              Socket socket = server.accept();
+              ...
+          }
+          
+3.效率问题(多线程)
+    服务端在接收大文件时，可能需要时间比较久，此时不能接收其他客户上传，因此使用多线程进行优化：
+        
