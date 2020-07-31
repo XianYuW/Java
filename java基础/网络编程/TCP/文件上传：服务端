@@ -1,0 +1,50 @@
+/**
+	文件上传案例：服务器，读取客户端上传的文件，保存到服务器的硬盘，给客户端回写“上传成功”
+	
+	明确：
+		数据源：客户端上传的文件
+		目的地：服务器的硬盘D:\Workspaces\Eclipse\Java\Test\src\DemoTCP\copy.jpg
+	
+	实现步骤：
+		1.创建一个服务器ServerSocket对象，绑定系统指定的端口号
+		2.使用ServerSocket对象中的方法accept，获取到请求的客户端socket对象
+		3.使用socket对象中的方法getInputStream，获取到网络输入流InputStream
+		4.判断目的地路径是否存在，如果不存在，则创建
+		5.创建一个本地字节输出流FileOutputStream对象，在构造方法中绑定要输出的目的地
+		6.使用网络字节输入流InputStream对象中的方法read，读取客户端上传的文件
+		7.使用本地字节输出流FileOutputStream对象中的方法write，把读取到的文件保存到服务器硬盘上
+		8.使用socket对象中的方法getOutputStream，获取网络字节输出流OutputStream对象
+		9.使用网络字节输出流OutputStream对象中的方法write，给客户端回写上传成功
+		10.释放资源(FileOutputStream,ServerSocket,Socket)
+ */
+public class FileTCPServer {
+	public static void main(String[] args) throws IOException {
+		//1.创建一个服务器ServerSocket对象，绑定系统指定的端口号
+		ServerSocket server = new ServerSocket(8888);
+		//2.使用ServerSocket对象中的方法accept，获取到请求的客户端socket对象
+		Socket socket = server.accept();
+		//3.使用socket对象中的方法getInputStream，获取到网络输入流InputStream
+		InputStream is = socket.getInputStream();
+		//4.判断目的地路径是否存在，如果不存在，则创建*******************************************
+		File file = new File("d:\\upload");
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		//5.创建一个本地字节输出流FileOutputStream对象，在构造方法中绑定要输出的目的地
+		FileOutputStream fos = new FileOutputStream(file+"\\copy.jpg");
+		//6.使用网络字节输入流InputStream对象中的方法read，读取客户端上传的文件
+		byte[] b = new byte[1024];
+		int len;
+		while((len = is.read(b))!=-1) {
+			//7.使用本地字节输出流FileOutputStream对象中的方法write，把读取到的文件保存到服务器硬盘上
+			fos.write(b, 0, len);
+		}
+		//8.使用socket对象中的方法getOutputStream，获取网络字节输出流OutputStream对象
+		//9.使用网络字节输出流OutputStream对象中的方法write，给客户端回写上传成功
+		socket.getOutputStream().write("上传成功".getBytes());
+		//10.释放资源(FileOutputStream,ServerSocket,Socket)
+		fos.close();
+		server.close();
+		socket.close();
+	}
+}
