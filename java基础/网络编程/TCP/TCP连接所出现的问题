@@ -1,0 +1,45 @@
+当进入到字节输入流时，代码：
+    TCPClient{
+        ...
+        //4.使用本地字节输入流FileInputStream对象中的方法read，读取本地文件
+        byte[] b = new byte[1024];
+        int len;
+        while((b = fis.read(b))!= -1){                                                                //在这里fi.read(b)读取本地文件，结束标记是读取到-1结束
+            o.write(b,0,len); ------------------------------------------------------------------------//而while循环会读取-1嘛？
+        }                                                                                             //不会，因此while循环也不会结束，也不会把结束标记写给服务器
+        //6.使用Socket中的方法getInputStream，获取网络字节输入流InputStream对象
+        InputStream is = socket.getInputStream();
+        //7.使用网络字节输入流InputStream对象中的方法read读取服务器回写的数据
+        while(){------------------------------------------------------------------------------------ //is.read读取不到啊服务器回写的数据，进入堵塞状态
+            System.out.println(new String(b,0,len));
+        }
+        ...
+    }
+    TCPServer{
+        ...
+        //6.使用网络字节输入流InputStream对象中的方法read，读取客户端上传到额文件
+        byte[] b = new byte[1024];
+        int len;
+        while((len = is.read(b))!= -1){--------------------------------------------------------------//is.read读取客户端上传文件，永远也读不到文件的结束标记
+            //7.使用本地字节输出流FileOutputStream对象中的方法write，把读取到的文件保存到服务器硬盘-----//read方法进入堵塞状态，一直死循环等待结束标记
+            fos.write(b,0,len);
+        }
+        
+        //*********************8 9 10不会执行，也不会给客户端回写上传成功 ********************
+        ...
+    }
+    
+那么，为什么会堵塞呢？
+    java.io.InputStream类的方法read，从API文档中可知：
+        public void read(byte[] b) throw IOexcepton
+            从此输入流中将最多b.length个字节的数据读入一个byte数组中。在某些输入可用前，此方法将堵塞。
+    实际上就是指客户端读取完了本地文件之后，输入文件流结束了，
+    但是服务器中的网络流(网络流读取客户端上传的文件)没有结束标记，就不会结束循环，因此就堵塞在了那里
+    
+    
+解决方法：
+    上传完文件，给服务器一个结束标记
+    java.net.Socket类中有一个方法
+        void shutDownOutput()禁用此套接字的输出流，对于TCP套接字，任何以前写的数据都将发送，并且后跟TCP的正常连接终止序列
+    既在TCPClient中第4步的while循环结束之后加上：
+        socket.shutDowmOutput();
