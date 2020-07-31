@@ -1,0 +1,45 @@
+/**
+ *文件上传案例的客户端：读取本地文件，上传到服务器，读取服务器回写数据
+ *明确：
+ *		数据源：
+ *		目的地：服务器
+ *
+ *实现步骤：
+ *		1.创建一个本地字节输入流FileInputStream对象，构造方法中绑定要读取的数据源
+ *		2.创建一个用户Socket对象，构造方法中绑定服务器的IP地址和端口号
+ *		3.使用Socket对象的方法getOutputStream对象，获取网络字节输出流OutputStream对象
+ *		4.使用本地字节输入流FileInputStream对象中的方法read，读取本地文件
+ *		5.使用网络字节输出流OutputStream对象中的方法write，把读取到的文件上传到服务器
+ *		6.使用socket对象中的方法getInputStream，获取字节输入流InputStream对象
+ *		7.使用网络字节输入流InputStream对象中的方法read读取服务器回写的数据
+ *		8.释放资源(FileInputStream,socket)
+ */
+public class FileTCPClinet {
+	public static void main(String[] args) throws IOException {
+		//1.创建一个本地字节输入流FileInputStream对象，构造方法中绑定要读取的数据源
+		FileInputStream fis = new FileInputStream("src\\DemoTCP\\1.jpg");
+		//2.创建一个用户Socket对象，构造方法中绑定服务器的IP地址和端口号
+		Socket socket = new Socket("127.0.0.1",8888);
+		//3.使用Socket对象的方法getOutputStream对象，获取网络字节输出流OutputStream对象
+		OutputStream os = socket.getOutputStream();
+		//4.使用本地字节输入流FileInputStream对象中的方法read，读取本地文件
+		byte[] b = new byte[1024];
+		int len;
+		while((len = fis.read(b))!=-1) {
+//			System.out.println();
+			//5.使用网络字节输出流OutputStream对象中的方法write，把读取到的文件上传到服务器
+			os.write(b, 0, len);
+		}
+		//6.使用socket对象中的方法getInputStream，获取字节输入流InputStream对象
+		InputStream is = socket.getInputStream();
+		//7.使用网络字节输入流InputStream对象中的方法read读取服务器回写的数据
+//		byte[] b1 = new byte[1024];
+//		int len1;
+		while((len = is.read(b))!=-1) {
+			System.out.println(new String(b,0,len));
+		}
+		//8.释放资源(FileInputStream,socket)
+		fis.close();
+		socket.close();
+	}
+}
