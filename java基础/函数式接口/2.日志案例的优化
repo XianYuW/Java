@@ -1,0 +1,58 @@
+/**
+ * 日志案例：
+ * 发现以下代码存在一些问题:
+	调用showLog方法，传递的第二个参数是一个拼接之后的字符串
+	先把字符串拼接好，再调用方法
+	showLog方法中如果传递日志等级的不是1，那么就不会调用拼接后的字符串
+	所以字符串就白拼接了，存在了浪费
+
+ */
+public class Demo3Logger {
+	public static void showLog(int level ,String message) {
+		if(level ==1) {
+			System.out.println(message);
+		}
+
+	}
+	public static void main(String[] args) {
+		String msg1 = "Hello";
+		String msg2 = "World";
+		String msg3 = "Java";
+		//调用showLog方法
+		showLog(1,msg1+msg2+msg3);
+	}
+}
+//接口
+@FunctionalInterface
+public interface Demo3MessageBuilder {
+	String builderMessage();
+}
+/**
+	使用lambda表达式优化日志案例
+	Lambda特点：延迟加载
+	Lambda的使用前提，必须存在函数式接口
+
+ */
+public class Demo3Lambda {
+	public static void showLog(int level ,Demo3MessageBuilder mb) {
+		if(level ==1) {
+			System.out.println(mb.builderMessage());
+		}
+	}
+	/**
+	 使用Lambda表达式作为参数传递，仅仅是把参数传递到showLog方法中
+	 		只有满足条件，日志的等级是1时
+	 			才会调用接口Demo3MessageBuilder中的方法builderMessage
+	 			才会进行字符串的拼接
+	 		如果条件不满足，日志的等级不是1
+	 			那么Demo3MessageBuilder中的方法builderMessage不会执行
+	 			拼接字符串的代码也不会执行
+	 		所以不存在性能的浪费
+	 */
+	public static void main(String[] args) {
+		String msg1 = "Hello";
+		String msg2 = "World";
+		String msg3 = "Java";
+		showLog(2,()-> msg1+msg2+msg3);
+	}
+}
