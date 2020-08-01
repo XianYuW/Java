@@ -21,3 +21,57 @@
         可以检测接口是否是一个函数式接口
             是：编译成功
             否：编译失败(接口中没有抽象方法/抽象方法的个数多于一个)
+//代码练习
+
+@FunctionalInterface
+public interface Demo1FunctionalInterface{
+	public abstract  void method();
+//	void method2();
+}
+/**
+ * @Override注解
+ * 检测方法是否为重写的方法
+ * 		是：编译成功
+ * 		否：编译失败
+*
+ */
+public class Demo1FunctionalInterfaceImpl implements Demo1FunctionalInterface {
+	@Override
+	public void method() {
+		// TODO Auto-generated method stub
+
+	}
+//	@Override
+//	public void method2() {
+//		// TODO Auto-generated method stub
+//
+//	}
+}
+/**
+ * 函数式接口的使用：一般可以作为方法的参数和返回值类型
+*
+ */
+public class Demo2FunctionalInterfaceUsed {
+	//定义一个方法，参数使用函数式接口Demo1FunctionalInterface
+	public static void show(Demo1FunctionalInterface inter) {
+		inter.method();
+	}
+	public static void main(String[] args) {
+		//调用show方法，方法的参数是一个接口，所以可以传递接口的实现类对象
+		show(new Demo1FunctionalInterfaceImpl());
+		//调用show方法，方法的参数是一个接口，所以我们可以传递接口的匿名内部类
+		show(new Demo1FunctionalInterface() {
+			@Override
+			public void method() {
+				// TODO Auto-generated method stub
+				System.out.println("使用匿名内部类重写接口中的方法");
+			}
+		});
+		//调用show方法，方法的参数是一个接口，使用lambda
+		show(()->{
+			System.out.println("使用Lambda表达式重写接口中的方法");
+		});
+		//简化lambda表达式
+		show(()->System.out.println("使用Lambda表达式重写接口中的方法"));
+	}
+}
