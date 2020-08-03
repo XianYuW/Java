@@ -1,1 +1,31 @@
+java.util.function.Supplier<T>接口，仅包含一个无参的方法： T get()
+    用来获取一个泛型参数指定类型的对象数据，
+    这就意味着Lambda需要提供一个符合泛型类型的对象数据
 
+
+Supplier<T>接口被称之为生产型接口，指定接口的反省是什么类型，那么get方法就会生产什么类型的数据
+
+public class Demo2Supplier {
+    public static String getString(Supplier<String> sup){
+        return sup.get();
+    }
+
+    public static void main(String[] args) {
+        //调用getString方法
+        String s1 = getString(new Supplier<String>() {
+            @Override
+            public String get() {
+                return "方法一";
+            }
+        });
+        System.out.println(s1);
+
+        String s2 = getString(() -> {
+            return "Lambda";
+        });
+        System.out.println(s2);
+
+        String s3 = getString(() -> "Lambda简化");
+        System.out.println(s3);
+    }
+}
