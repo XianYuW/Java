@@ -8,3 +8,9 @@
                 after.accept(t);
             };
         }
+        
+        
+        不用andThen，
+            public static void method(String s,Comsumer<String> con1,Consumer<String con2>){
+                
+            }
