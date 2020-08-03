@@ -1,0 +1,10 @@
+默认方法：andThen
+    如果一个方法的参数和返回值全都是Consumer类型，那么就可以实现效果，消费数据的时候，首先做一个操作，然后在做一个操作，实现组合。
+    这就是Consumer方法中的default方法andThen，源码为：
+        default Consumer<T> andThen(Consumer<? super T> after){
+            Objects.requireNonNull(after);
+            return (T t)->{
+                accept(t);
+                after.accept(t);
+            };
+        }
