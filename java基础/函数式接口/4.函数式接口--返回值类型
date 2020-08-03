@@ -1,0 +1,42 @@
+如果一个方法的返回值类型是一个函数式接口，那么既可以直接返回一个Lambda表达式。
+    例如：
+        当如果通过一个方法来获取一个java.util.Comparator接口类型的对象作为排序器时，就可以调该方法获取
+        
+//代码练习
+
+public class Demo2Comparator {
+    //定义一个方法，方法的返回值类型使用函数式接口Comparator
+
+    //匿名内部类
+    public static Comparator<String> getComparator1(){
+        return new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
+        };
+    }
+    //Lambda**********************************************************************
+    public static Comparator<String> getComparator2(){
+        return (o1,o2)->{
+            return o2.length() - o1.length();
+        };
+    }
+    //Lambda简化
+    public static Comparator<String> getComparator3(){
+        return (o1,o2)->o1.length() - o2.length();
+    }
+    public static void main(String[] args) {
+        String[] arr = {"aaa","b","ccccccccccc","dddd"};
+        //排序前的数组
+        System.out.println(Arrays.toString(arr));
+        //调用Arrays中的sort方法，进行排序
+        Arrays.sort(arr,getComparator1());
+        System.out.println("方法一"+Arrays.toString(arr));
+        Arrays.sort(arr,getComparator2());
+        System.out.println("方法二 "+Arrays.toString(arr));
+        Arrays.sort(arr,getComparator3());
+        System.out.println("方法三"+Arrays.toString(arr));
+    }
+}
+        
