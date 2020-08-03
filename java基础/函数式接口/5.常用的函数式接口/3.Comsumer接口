@@ -1,0 +1,25 @@
+java.util.function.Consumer<T>接口则正好与Supplier接口相反，它不是生产一个数据，而是消费一个数据，其数据类型由泛型指定
+
+抽象方法：accept
+    void accpet(T t)：消费一个指定泛型的数据
+    
+//代码练习
+
+public class Demo2Consumer {
+    public static void method(String name, Consumer<String> con){
+        con.accept(name);
+    }
+
+    public static void main(String[] args) {
+        //Lambda
+        method("马儿扎哈",(name)->{
+            //消费方式一：直接输出
+            System.out.println(name);
+            //消费方式二：逆序输出
+            String s = new StringBuffer(name).reverse().toString();
+            System.out.println(s);
+        });
+        //Lambda简化
+        method("马尔扎哈",(name)->System.out.println(new StringBuffer(name).reverse().toString()));
+    }
+}
