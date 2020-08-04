@@ -10,3 +10,25 @@ java.util.function.Predicate<T>接口：
     and
     or
     negate
+
+//代码练习
+
+//*********************************一、抽象方法*****************************
+                public class Demo03Predicate {
+                    /*
+                        定义一个方法：
+                            参数传递一个String类型的字符串
+                            传递一个Perdicate接口，泛型使用String
+                            使用Predicate中的方法test对字符串进行判断，把判断的结果返回
+                     */
+                    public static boolean checkString(String s , Predicate<String> pre){
+                        return pre.test(s);
+                    }
+
+                    public static void main(String[] args) {
+                        String str = "abcdef";
+                        boolean b = checkString(str, (t) -> t.length() > 5);
+                        System.out.println(b);
+                    }
+                }
+                
