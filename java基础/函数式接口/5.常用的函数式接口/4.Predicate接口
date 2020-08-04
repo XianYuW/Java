@@ -20,7 +20,7 @@ java.util.function.Predicate<T>接口：
 
 //代码练习
 
-//*********************************一、抽象方法*****************************
+//*********************************一、抽象方法:test*****************************
                 public class Demo03Predicate {
                     /*
                         定义一个方法：
@@ -38,4 +38,33 @@ java.util.function.Predicate<T>接口：
                         System.out.println(b);
                     }
                 }
-                
+//**************************************默认方法：and*********************************
+                public class Demo03PredicateAnd {
+                    /*
+                        定义一个方法，方法的参数，传递一个字符串，传递两个Predicate接口
+                                一个用于判断字符串的长度是否大于5，
+                                一个用于判断字符串中是否包含a
+                                两个条件必须同时满足
+                     */
+                    public static boolean checkString1(String s, Predicate<String> pre1,Predicate<String> pre2){
+                        return pre1.test(s)&&pre2.test(s);
+                    }
+                    //使用and
+                    public static boolean checkString2(String s, Predicate<String> pre1,Predicate<String> pre2){
+                        return pre1.and(pre2).test(s);
+                    }
+
+                    public static void main(String[] args) {
+                        String s = "abcdef";
+                        boolean b1 = checkString1(s,
+                                (t) -> {
+                                    return t.length() > 5;
+                                },
+                                (t) -> {//判断字符串中是否包含a
+                                    return t.contains("a");
+                                });
+                        System.out.println(b1);
+                        boolean b2 = checkString2(s, (t) -> t.length() > 5, (t) -> t.contains("g"));
+                        System.out.println(b2);
+                    }
+                }
