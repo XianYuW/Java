@@ -7,7 +7,14 @@ java.util.function.Predicate<T>接口：
         不符合，返回false
     
 默认方法：
-    and
+    既然是条件判断，就会有与或非三种逻辑关系。
+    and：
+        逻辑与，将两个Predicate条件使用“与”逻辑连接起来实现“并且”的效果，
+        JDK源码为：
+            default Predicate<T> and(Predicate<? super T> other){
+                Objects.requireNonNull(other);
+                return (t)-> test(t)&&other.test(t);
+            }
     or
     negate
 
