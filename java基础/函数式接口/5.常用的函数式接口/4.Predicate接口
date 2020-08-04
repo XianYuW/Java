@@ -1,0 +1,12 @@
+java.util.function.Predicate<T>接口：
+    当我们需要对某种类型的数据进行判断，从而得到一个boolean值结果
+    
+抽象方法：
+    boolean test(T t):用于条件判断
+        符合，返回true
+        不符合，返回false
+    
+默认方法：
+    and
+    or
+    negate
