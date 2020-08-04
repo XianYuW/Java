@@ -1,1 +1,29 @@
-
+/**
+ * 练习：
+ *      字符串数组中有多条信息，请按照“姓名：Xxx。性别：XX。”的格式打印出来
+ *      要求将打印姓名的动作作为第一个Consumer接口的Lambda实例
+ *      将打印性别的动作作为第二个Consumer接口的Lambda实例
+ *      将两个Consumer接口按顺序拼接到一起
+ */
+public class Demo02Test {
+    public static void printInfo(String[] arr, Consumer<String>con1,Consumer<String> con2){
+        //遍历字符串数组
+        for (String message : arr){
+            con1.andThen(con2).accept(message);
+        }
+    }
+    public static void main(String[] args) {
+        String[] arr = {"迪丽热巴,女","古力娜扎,女","马尔扎哈,男"};
+        printInfo(arr,
+                (message)->{
+                    //消费方式，对mssage进行切割，获取姓名，按照指定格式输出
+                    String[] split = message.split(",");
+                    System.out.print("姓名：" + split[0] + "。");
+                },
+                (message)->{
+                    //消费方式，对mssage进行切割，获取性别，按照指定格式输出
+                    String[] split = message.split(",");
+                    System.out.println("性别：" + split[1] + "。");
+                } );
+    }
+}
