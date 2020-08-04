@@ -13,9 +13,15 @@ java.util.function.Predicate<T>接口：
         JDK源码为：
             default Predicate<T> and(Predicate<? super T> other){
                 Objects.requireNonNull(other);
-                return (t)-> test(t)&&other.test(t);
+                return (t)-> test(t) && other.test(t);
             }
-    or
+    or:
+        逻辑或
+        JDK源码：
+            default Predicate<T> or(Predicate<? super T> other){
+                Objects.requireNonNull(other);
+                return (t)-> test(t) || other.test(t);
+            }
     negate
 
 //代码练习
