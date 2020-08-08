@@ -1,0 +1,47 @@
+实现过程：
+    私有化构造方法，使用private关键字修饰。
+    申明本类类型的引用指向本类类型的对象，并使用private，static关键字共同修饰
+    提供公有的get方法负责将对象返回出去，并使用public static关键字修饰
+    
+实现方式有两种：
+    懒汉式：
+        private static Singleton sin = new Singleton();//懒汉式
+    饿汉式：
+        private static Singleton sin = null;//饿汉式
+    其中第三步中加了一个判断sin == null：
+        public static Singleton getInstance(){
+            if(sin==null) {
+                sin = new Singleton();
+            }
+            return sin;
+        }
+
+//代码实现
+
+public class Singleton {
+    //2.申明本类类型的引用指向本类类型的对象
+
+    //如果这样写static Singleton sin = new Singleton();
+    //其他类：Singleton.sin = null;则会使引用变量无效
+//    private static Singleton sin = new Singleton();//懒汉式
+    //懒汉式中第3步直接 return sin;
+    private static Singleton sin = null;//饿汉式
+    //1.私有化构造方法，使用private关键字修饰
+    private Singleton(){
+
+    }
+    //3.提供公有的get方法负责将对象抛出,使用public，static 关键字共同修饰
+    public static Singleton getInstance(){
+        if(sin==null) {
+            sin = new Singleton();
+        }
+        return sin;
+    }
+}
+public class SingletonTest {
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+        System.out.println(s1==s2);//true
+    }
+}
