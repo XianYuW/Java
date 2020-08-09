@@ -1,0 +1,33 @@
+/**
+ * 所有的枚举类都继承自java.lang.Enum;类，常用方法：
+ *      static EnumType[] values(); 返回当前枚举类型的所有对象
+ *      String toString(): 返回当前枚举对象的名称
+ *      int ordinal():获取枚举对象在枚举类中的索引位置
+ *      static EnumType valueOf(String str):将参数指定的字符串名转换为当前枚举类的对象
+ *      int compareTo(E o):比较两个枚举对象在定义时的顺序
+ */
+public class DirectionEnumTest1 {
+    public static void main(String[] args) {
+        //1.获取DirectionEnum类型中所有 的枚举对象
+        DirectionEnum[] arr = DirectionEnum.values();
+        //2.打印每个枚举对象在枚举类型中的名称和索引位置
+        for (int i = 0;i <arr.length;i++){
+            System.out.println("获取到的枚举对象的名称是："+arr[i].toString());
+            System.out.println("获取到的枚举对象对应的索引位置："+arr[i].ordinal());
+        }
+        System.out.println("----------------------------");
+        //3.根据参数指定的字符串得到枚举类新的对象，既 将字符串转换为对象
+        //**要求字符串名称必须在枚举对象中存在
+        //DirectionEnum d1 = DirectionEnum.valueOf("向上");//编译OK，运行时发成错误，产生IlleagleArgumentException非法参数异常
+        DirectionEnum d1 = DirectionEnum.valueOf("DOWN");
+        System.out.println("转换出来的枚举对象名称为："+d1.toString());
+        System.out.println("转换出来的枚举对象对应的索引位置："+d1.ordinal());
+        System.out.println("转换出来的枚举对象名称为："+d1);//当打印引用变量时，会自动调用toStrng方法
+
+        System.out.println("----------------------------");
+        //4,使用获取到的枚举对象与枚举类中已有的对象比较先后顺序
+        for (int i = 0;i<arr.length;i++){
+            System.out.println("调用对象与数组中对象比较的先后顺序结果时："+d1.compareTo(arr[i]));
+        }
+    }
+}
