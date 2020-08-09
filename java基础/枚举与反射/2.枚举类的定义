@@ -1,4 +1,15 @@
-类：public class Xxx{
+枚举类的定义：
+        
+        1.使用public static final表示的常量比较繁琐，使用enum关键字里定义枚举类型常量，
+                        枚举类型是JAVA5开始增加的一种引用数据类型
+        2.枚举值就是当前类的类型，也就是指向本类的对象，默认使用public static fianl关键字共同修饰，
+                因此采用【枚举类型.枚举值】 的方式调用
+        3.枚举类可以自定义构造方法，但是构造方法的修饰符必须是private
+                默认也是私有的
+
+
+
+类：public class Direction{
         //1.
         ...
         //2.申明本类的引用指向本类的类型的对象
@@ -10,7 +21,7 @@
         ....
     }
 
-枚举类：public enukm Xxx{
+枚举类：public enukm DirectionEnum{
             //2.申明本类的引用指向本类的类型的对象,枚举类型要求所有的枚举值必须在枚举类型的最前面
             UP("向上"),DOWN("向下"),LEFT("向左"),RIGHT("向右");
             //1.
