@@ -3,10 +3,10 @@
 元注解主要有：
     @Retention :
         1.@Retention应用到一个注解上用于说明该注解的生命周期，取值如下 
-        2.RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视
-        3.RetentionPolicy.CLASS 注解只保留到编译进行的时候，他并不会被加载到JVM中，默认方法
-        4.RetentionPolicy,RUNTIME 注解可以保留到程序运行的时候，它会被加载到JVM中，
-            所以在程序运行的时候可以获取到他们
+            2.RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视
+            3.RetentionPolicy.CLASS 注解只保留到编译进行的时候，他并不会被加载到JVM中，默认方法
+            4.RetentionPolicy,RUNTIME 注解可以保留到程序运行的时候，它会被加载到JVM中，
+                所以在程序运行的时候可以获取到他们
 
     
     @Documented :
@@ -16,22 +16,106 @@
         3.定义为@Documented的注解必须设置Retention值为RUNTIME
     
     @Target :
+        @Target用于指定被修饰的注解能用于哪些元素的修饰，取值如下：
+            ElementType.ANNOTATION_TYPE     可以给一个注解进行注解
+            ElementType.CONSTRUCTOR         可以给构造方法进行注解
+            ElementType.FIELD               可以给属性进行注解
+            ElementType.LOCAL_VARIABLE      可以给局部变量进行注解
+            ElementType.METHOD              可以给方法进行注解
+            ElementType.PACKAGE             可以给一个包进行注解
+            ElementType.PARAMETER           可以给一个方法内的参数进行注解
+            ElementType.TYPE                可以给类型进行注解，比如类、接口、枚举
     
     @Inherited :
+        @Inherited并不是说注解本身可以继承，而是说如果一个超类被该注解标记过的注解进行注解时，
+            例如在MyAnnotation注解中，所修饰的类Person中的注解可以被子类继承
+            如果子类没有被任何注解应用时，则子类就会继承超类的注解
     
     @Repeatable :
+        @Repeatable表示自然可重复的含义，从java8开始增加的新特性
     
     
 //代码练习
 
-//@Retention 
+//MyAnnotation 
 
+//若一个注解中没有任何的成员，这样的注解叫做标记注解/标识注解
 //@Retention(RetentionPolicy.SOURCE)//表示下面的注解在源代码中有效
 //@Retention(RetentionPolicy.CLASS) //表示下面的注解在字节码文件中有效，默认方法
 @Retention(RetentionPolicy.RUNTIME) //表示下面的注解在运行时有效
+@Documented                         //表示下面的注解信息可以被javadoc工具提取到API文档中，很少使用
+@Target({ElementType.TYPE,ElementType.CONSTRUCTOR,ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
+                                    //表示下面的注解可以用于类型,构造方法、成员变量、成员方法、参数的修饰
+@Inherited                          //表示下面的注解所修饰的类中的注解可以被子类继承
 public @interface MyAnnotation {
     public String value() default  "123";//声明一个String类型的成员变量，名字为value
                             //通过default “123”设置默认值123
     public String value2();
 }
-    
+
+//Persn
+//表示将标签MyAnnotation贴在Person类的代码中,使用注解时采用 成员参数名 = 成员参数值，...
+//@MyAnnotation(value = "hello",value2 = "world")
+//value设置了默认值
+@MyAnnotation(value2 = "456")
+public class Person {
+    /**
+     * 描述姓名的额成员变量
+     */
+    @MyAnnotation(value2 = "2")
+    private String name;
+    /**
+     * 描述年龄的成员变量
+     */
+    private int age;
+
+    /**
+     * 无参的构造方法
+     */
+    @MyAnnotation(value2 = "1")
+    public Person() {
+    }
+
+    /**
+     * 有参构造方法
+     * @param name
+     * @param age
+     */
+    public Person(@MyAnnotation(value2 = "4") String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    /**
+     * get方法获取name
+     * @return
+     */
+    @MyAnnotation(value2 = "3")
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * set方法设置name
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * get方法获取age
+     * @return
+     */
+    public int getAge() {
+        return age;
+    }
+
+    /**
+     * set方法获取set
+     * @param age
+     */
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
