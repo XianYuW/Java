@@ -1,0 +1,64 @@
+从java8开始对元注解@Target的参数类型ElementType枚举值增加了两个
+    其中ElementType.TYPE_PARAMETER 表示该注解能写在类型变量的声明语句中，如：泛型
+    其中ElementType.TYPE_USE表示该注解能写在使用类型的任何语句中，相当于在任意语句中都能加注解，
+        例如下面的Person类中的main方法中char c = ( @ManType char)i;
+
+
+
+//java8以前处理多个注解的方式
+
+      //ManType
+      /**
+       * 自定义注解，描述人类的角色
+       */
+
+      public @interface ManType {
+          String value() default "";
+      }
+      //ManTypes
+      /**
+       * 自定义注解，没描述多种角色
+       */
+      public @interface ManTypes {
+          ManType[] value();
+      }
+
+      //Man
+      //@ManType(value = "职工")
+      //@ManType(value = "超人")
+      @ManTypes({@ManType(value = "职工"),@ManType(value = "超人")})      //java8以前处理多个注解的方式
+      public class Man {
+      }
+
+//Java8之后
+
+//ManType
+/**
+ * 自定义注解，描述人类的角色
+ */
+@Repeatable(value = ManTypes.class)
+@Target(ElementType.TYPE_USE)
+public @interface ManType {
+    String value() default "";
+}
+
+//ManTypes
+/**
+ * 自定义注解，没描述多种角色
+ */
+ @Target(ElementType.TYPE_USE)
+public @interface ManTypes {
+    ManType[] value();
+}
+
+//Man
+@ManType(value = "职工")
+@ManType(value = "超人")
+//@ManTypes({@ManType(value = "职工"),@ManType(value = "超人")})      //java8以前处理多个注解的方式
+public class Man {
+    public static void main(String[] args) {
+        int i =97;
+        char c = ( @ManType char)i;
+    }
+}
+
