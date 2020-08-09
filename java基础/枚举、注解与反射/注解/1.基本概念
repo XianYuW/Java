@@ -1,1 +1,39 @@
 注解(Annotation)，又叫标注,是java5开始增加的一种引用数据类型
+
+
+注解本质上就是代码中的特殊标记，通过这些标记可以在编译、类加载以及运行时执行指定的处理
+
+注解的语法格式：
+    访问修饰符 @interface 注解名称{
+        注解成员;
+    }
+    
+自定义注解自动继承java.lang.annotation.Annotation接口
+
+通过@注解名称的方式可以修饰包、类、成员方法、成员变量、构造方法、参数、局部变量的声明等
+
+注解的使用方式：
+    1.注解中只有成员变量没有成员方法，而注解的成员变量以【无形参的方法】形式来声明，
+          其方法名定义了该成员变量的名字，返回值类型定义了该成员变量的类型
+          
+    2.如果注解只有一个参数成员，建议使用参数名为value，
+          而类型只能是8种基本数据类型、String类型、Class类型、enum类型以及Annotation类型
+          
+          
+//代码练习
+
+//若一个注解中没有任何的成员，这样的注解叫做标记注解/标识注解
+public @interface MyAnnotation {
+    public String value() default  "123";//声明一个String类型的成员变量，名字为value
+                            //通过default “123”设置默认值123
+    public String value2();
+}
+
+//表示将标签MyAnnotation贴在Person类的代码中,使用注解时采用 成员参数名 = 成员参数值，...
+//@MyAnnotation(value = "hello",value2 = "world")
+//value设置了默认值
+@MyAnnotation(value2 = "456")
+public class Person {
+    private String name;
+    private int age;
+}
