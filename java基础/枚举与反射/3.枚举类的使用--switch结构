@@ -1,0 +1,46 @@
+//代码实现
+
+public class DirectionEnumTest {
+    public static void main(String[] args) {
+        method1(DirectionEnum.UP.getDesc());
+        method2(DirectionEnum.DOWN);
+    }
+
+    private static void method2(DirectionEnum de) {
+        switch(de){
+            case UP:
+                System.out.println("↑↑↑");
+                break;
+            case DOWN:
+                System.out.println("↓↓↓");
+                break;
+            case LEFT:
+                System.out.println("←←←");
+                break;
+            case RIGHT:
+                System.out.println("→→→");
+                break;
+            default:
+                System.out.println("无无无");
+        }
+    }
+
+    private static void method1(String str) {
+        switch(str){
+            case "向上":
+                System.out.println("↑");
+                break;
+            case "向下":
+                System.out.println("↓");
+                break;
+            case"向左":
+                System.out.println("←");
+                break;
+            case"向右":
+                System.out.println("→");
+                break;
+            default:
+                System.out.println("无");
+        }
+    }
+}
