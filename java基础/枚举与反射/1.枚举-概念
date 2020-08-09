@@ -1,3 +1,48 @@
 基本概念：
     事物的取值都可以一一列举出来，而这些列举出来的类型，就叫做枚举类型
-    
+
+//代码练习
+/**
+ *  编程实现所有方向的枚举，所有方向：上，下，左，右
+ */
+public class Direction {
+    private final String desc;//用于描述方向字符串的成员变量
+
+    //2.申明本类的引用指向本类的类型的对象
+    public static final Direction UP = new Direction("向上");
+    public static final Direction DOWN = new Direction("向下");
+    public static final Direction LEFT = new Direction("向左");
+    public static final Direction RIGHT = new Direction("向右");
+    //1.私有化构造方法只能在本类的内部使用
+    private Direction(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+}
+
+//实现类
+public class DirectionTest {
+    public static void main(String[] args) {
+//        Direction d1 = new Direction("向上");
+//        System.out.println("获取到的方向是："+d1.getDesc());
+//
+//        Direction d2 = new Direction("向下");
+//        System.out.println("获取到的方向是："+d2.getDesc());
+//
+//        Direction d3 = new Direction("向左");
+//        System.out.println("获取到的方向是："+d3.getDesc());
+//
+//        Direction d4 = new Direction("向右");
+//        System.out.println("获取到的方向是："+d4.getDesc());
+//
+//        System.out.println("-------------------------------------");
+//        Direction d5 = new Direction("向$");
+//        System.out.println("获取到的方向是："+d5.getDesc());
+
+        Direction d1 = Direction.UP;
+        System.out.println(Direction.UP.getDesc());//向上
+    }
+}
