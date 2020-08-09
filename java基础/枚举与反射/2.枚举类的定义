@@ -1,1 +1,20 @@
+类：public class Xxx{
+        //1.
+        ...
+        //2.申明本类的引用指向本类的类型的对象
+        public static final Direction UP = new Direction("向上");
+        public static final Direction DOWN = new Direction("向下");
+        public static final Direction LEFT = new Direction("向左");
+        public static final Direction RIGHT = new Direction("向右");
+        //3.
+        ....
+    }
 
+枚举类：public enukm Xxx{
+            //2.申明本类的引用指向本类的类型的对象,枚举类型要求所有的枚举值必须在枚举类型的最前面
+            UP("向上"),DOWN("向下"),LEFT("向左"),RIGHT("向右");
+            //1.
+            ...
+            //3.
+            ...
+        }
