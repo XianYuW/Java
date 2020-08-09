@@ -1,0 +1,37 @@
+元注解 时可以注解到注解上的注解，或者说元注解是一种基本注解，但是它能够应用到其他的注解上面
+
+元注解主要有：
+    @Retention :
+        1.@Retention应用到一个注解上用于说明该注解的生命周期，取值如下 
+        2.RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视
+        3.RetentionPolicy.CLASS 注解只保留到编译进行的时候，他并不会被加载到JVM中，默认方法
+        4.RetentionPolicy,RUNTIME 注解可以保留到程序运行的时候，它会被加载到JVM中，
+            所以在程序运行的时候可以获取到他们
+
+    
+    @Documented :
+        1.使用javadoc工具可以从源码中抽取类、方法、成员等注释形成一个和源代码配套的API帮助文档
+              该工具抽取时默认不包括注解内容
+        2.@Documented用于指定被该注解将被javadoc工具提取成文档
+        3.定义为@Documented的注解必须设置Retention值为RUNTIME
+    
+    @Target :
+    
+    @Inherited :
+    
+    @Repeatable :
+    
+    
+//代码练习
+
+//@Retention 
+
+//@Retention(RetentionPolicy.SOURCE)//表示下面的注解在源代码中有效
+//@Retention(RetentionPolicy.CLASS) //表示下面的注解在字节码文件中有效，默认方法
+@Retention(RetentionPolicy.RUNTIME) //表示下面的注解在运行时有效
+public @interface MyAnnotation {
+    public String value() default  "123";//声明一个String类型的成员变量，名字为value
+                            //通过default “123”设置默认值123
+    public String value2();
+}
+    
