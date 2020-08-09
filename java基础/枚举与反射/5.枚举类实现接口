@@ -1,0 +1,61 @@
+枚举类实现接口的方式：
+  枚举类实现接口后需要重写抽象方法，
+  而重写方法的方式有两种：
+      重写一个
+      每个对象都重写
+      
+//代码练习
+
+//枚举类
+public enum DirectionEnum implements  DirectionInterface{
+    //2.申明本类的引用指向本类的类型的对象,枚举类型要求所有的枚举值必须在枚举类型的最前面
+    UP("向上"){
+        @Override
+        public void show() {
+            System.out.println("UP--实现接口中抽象方法的重写了");
+        }
+    },DOWN("向下") {
+        @Override
+        public void show() {
+            System.out.println("DOWN--实现接口中抽象方法的重写了");
+        }
+    },LEFT("向左") {
+        @Override
+        public void show() {
+            System.out.println("LEFT--实现接口中抽象方法的重写了");
+        }
+    },RIGHT("向右") {
+        @Override
+        public void show() {
+            System.out.println("RIGHT--实现接口中抽象方法的重写了");
+        }
+    };
+    private final String desc;//用于描述方向字符串的成员变量
+
+
+    //1.私有化构造方法只能在本类的内部使用
+    private DirectionEnum(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    //整个枚举类型只重写一次，所有对象调用同一个
+//    @Override
+//    public void show() {
+//        System.out.println("现在可以实现接口中抽象方法的重写了");
+//    }
+}
+
+//测试类
+public class DirectionEnumInterfaceTest {
+    public static void main(String[] args) {
+        DirectionEnum[] arr = DirectionEnum.values();
+        //使用数组中每个对象去调用show方法测试
+        for(int i = 0 ;i<arr.length;i++){
+            arr[i].show();;
+        }
+    }
+}
