@@ -1,0 +1,19 @@
+java.lang.Double类 内部包装了一个double类型的变量作为成员变量，主要用于实现对double类型的包装，并提供double类型到String类之间的转换等方法。
+
+常用的常量：
+    publlic static final int SIZE                           表示double类型的二进制位数
+    publlic static final int BYTES                          表示double类型的字节个数
+    publlic static final Class<Double> TYPE                 表示double类型的class实例
+    
+常用的方法：
+    Double(double value)                                    根据参数指定的浮点数据来构造对象(已过时)
+    Double(String s)                                        根据参数指定的字符串来构造对象(已过时)
+    
+    duble dubleValue()                                      获取调用对象中的浮点数并返回
+    static Double valueOf(double d)                         根据参数指定浮点数据得到Double类型对象
+    boolean equals(Object obj)                              比较调用对象与参数指定的对象是否相等
+    String toString()                                       返回描述调用对象数值的字符串形式
+    
+    static double parseDouble(String s)                     将字符串类型转化为double类型并返回
+    double isNaN()                                          判断调用对象的数值是否为非数字
+    
