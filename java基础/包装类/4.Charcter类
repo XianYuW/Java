@@ -1,0 +1,28 @@
+java.lang.Character类   内部包装了一个char类型的变量作为成员变量，
+      主要用于 实现对char类型的包装并提供字符类别的判断和转化方法
+
+
+常用常量：
+    
+    public static final int SIZE                          表示char类型的二进制位数
+    public static final int BYTES                         表示char类型的字节个数
+    public static final Class<Character> TYPE             表示char类型的Class实例
+    
+常用方法：
+    
+    Character(char value)                                 根据参数指定的字符数据来构造对象(已过时)
+    
+    char charValue()                                      拆箱，获取调用对象中的字符数据并返回 
+    static Character valueOf(char c)                      装箱，根据参数指定字符数据得到Character类型对象
+    
+    boolean equals(Object obj)                            比较调用对象与参数指定的对象是否相等
+    
+    String toString()                                     返回描述调用对象数值的字符串形式
+    
+    static boolean isUpperCase(char ch)                   判断参数指定字符是否为大写字符
+    stati boolean isLowerCase(char ch)                    判断参数指定字符是否为小写字符
+    static boolean isDigit(char ch)                       判断参数指定字符是否为数字字符
+    
+    static char toUpperCase(char ch)                      将参数指定的字符转换为大写字符
+    static char toLowerCase(char ch)                      将参数指定的字符转换为小写字符
+    
