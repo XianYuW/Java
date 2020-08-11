@@ -12,8 +12,9 @@ Integer类内部包装了一个int型的变量作为成员变量，主要用于�
     Integer(int value)                          根据参数指定的整数来构造对象(已过时)
     Integer(String s)                           根据参数指定的字符串来构造对象(已过时)
     
-    int intValue()                              获取调用对象中的整数值并返回
-    static Integer valueOf(int i)               根据参数指定整数值得到Integer类型对象    
+    int intValue()                              拆箱，获取调用对象中的整数值并返回
+    static Integer valueOf(int i)               装箱，根据参数指定整数值得到Integer类型对象    
+    
     boolean equals(Object obj)                  比较调用对象与参数指定的对象是否相等
     String toString()                           返回描述调用对象数值的字符串形式
     
