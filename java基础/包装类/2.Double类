@@ -9,8 +9,9 @@ java.lang.Double类 内部包装了一个double类型的变量作为成员变量
     Double(double value)                                    根据参数指定的浮点数据来构造对象(已过时)
     Double(String s)                                        根据参数指定的字符串来构造对象(已过时)
     
-    duble dubleValue()                                      获取调用对象中的浮点数并返回
-    static Double valueOf(double d)                         根据参数指定浮点数据得到Double类型对象
+    duble dubleValue()                                      拆箱，获取调用对象中的浮点数并返回
+    static Double valueOf(double d)                         装箱，根据参数指定浮点数据得到Double类型对象
+    
     boolean equals(Object obj)                              比较调用对象与参数指定的对象是否相等
     String toString()                                       返回描述调用对象数值的字符串形式
     
