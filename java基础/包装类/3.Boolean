@@ -11,8 +11,8 @@ java.lang.Boolean类型内部包装了一个boolea类型的变量作为成员变
     Boolean(boolean value)                          根据参数指定的布尔值来构造对象(已过时)
     Boolean(String s)                               根据参数指定的字符串来构造对象(已过时)
     
-    boolean booleanValue()                          获取调用对象中的boolean值并返回
-    static Boolean valueOf(boolean b)               根据参数指定的布尔值得到Boolean类型对象
+    boolean booleanValue()                          拆箱，获取调用对象中的boolean值并返回
+    static Boolean valueOf(boolean b)               装箱，根据参数指定的布尔值得到Boolean类型对象
     
     boolean equals(Object obj)                      比较调用对象与参数指定的对象是否相等
     String toString()                               返回描述调用对象数值的字符串形式
