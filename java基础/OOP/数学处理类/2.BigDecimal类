@@ -1,0 +1,10 @@
+由于float类型和double类型在运算时可能会有误差，若希望实现精确运算则借助java.math.BigDecimal类型加以描述
+
+
+常用方法：
+    BigDecimal(String val)                          根据参数指定的字符串来构造对象
+    
+    BigDecimal add(BigDecimal augend)               实现加法运算
+    BigDecimal subtract(BigDecimal subtrahend)      实现减法运算
+    BigDecimal multiply(BigDecimal mulyiplicand)    实现乘法运算
+    BigDecimal divide(BigDemical divisor)           实现除法运算
