@@ -1,0 +1,12 @@
+表示比long类型范围还要大的整数数据，则需要借助java.math.BigInteger类型描述
+
+常用方法：
+    BigInteger(String val)                根据参数指定的字符串来构造对象
+    
+    BigInteger add(BigInteger val)
+    BigInteger aubstract(BigInteger val)
+    BigInteger multiply(BigInteger val)
+    BigInteger divide(BigInteger val)
+    
+    BigInteger remainder(BigInteger val)  实现取余运算
+    BigInteger[] divideAndRemainder(BigInteger val) 实现取商和余数的运算
