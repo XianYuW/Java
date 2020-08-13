@@ -1,0 +1,11 @@
+java.lang.Math类 主要用于提供执行数学运算的方法，如 ：对数，平方根
+
+常用的方法：
+    
+    static int max(int a,int b)           返回两个参数中的最大值
+    static int min(int a,int b)           返回两个参数中的最小值
+    sttic double pow(double a,double b)   返回第一个参数的幂
+    static int abs(int a)                 返回参数指定数值的绝对值
+    static long round(double a)           返回参数四舍五入的结果
+    static double sqrt(double a)          返回参数的平方根
+    static double random()                发挥0.0到1.0的随机数
