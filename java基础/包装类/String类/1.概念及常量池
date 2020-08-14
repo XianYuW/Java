@@ -10,3 +10,18 @@ String类的概念：
     由于String类型描述的字符串内容是常量不可改变，因此java虚拟机将首次出现的字符串放入常量池中，
     若后续代码中出现了相同字符串内容则直接使用常量池中已有的字符串对象
     从而无需再次申请内存以及创建对象，从而提高了性能。
+
+
+//代码练习
+
+
+        String str1 = "hello";//常量池
+        String str2 = "hello";//常量池
+        String str3 = new String("hello");//堆内存
+        String str4 = new String("hello");//堆内存
+        
+        System.out.println(str1 == str2);//true
+        
+        System.out.println(str3 == str4);//false
+        
+        System.out.println(str2 == str4);//false
