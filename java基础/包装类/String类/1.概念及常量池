@@ -20,8 +20,19 @@ String类的概念：
         String str3 = new String("hello");//堆内存
         String str4 = new String("hello");//堆内存
         
-        System.out.println(str1 == str2);//true
+        System.out.println(str1 == str2);//比较地址，true
         
-        System.out.println(str3 == str4);//false
+        System.out.println(str3 == str4);//比较地址，false
         
-        System.out.println(str2 == str4);//false
+        System.out.println(str2 == str4);//比较地址，false
+
+        //常量有优化机制，变量没有
+        String srt5 = "abcd";
+        String str6 = "ab"+"cd";//常量优化机制："abcd"
+        System.out.println(str5 == str6);//比较地址，true
+        
+        String srt7 = "abcd";
+        String str8 = str5+"cd";//str7不是常量，是一个变量，因此不会进行常量优化
+        System.out.println(str7 == str8);//比较地址，false
+
+
