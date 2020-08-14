@@ -1,1 +1,21 @@
+常用的构造方法： 
+    String()                                    使用无参的方法构造对象得到空字符序列
+    
+    String(byte[] bytes,int off,int length)     使用bytes数组中以off位置开始，长度为length个字节，来构造对象
+    String(byte[] bytes)                        使用bytes数组中的所有内容构造对象
+    
+    String(char[] value,int offset,int count)   使用char数组中以offset位置开始，长度为length个字符，来构造对象
+    String(char[] value)                        使用char数组中的所有字符构造对象
+    
+    String(String original)                     根据参数指定的字符串内容来构造对象，新创建对象为参数对象的副本
+    
+    
 
+
+常用成员方法：
+    String toString()                           返回字符串本身
+    byte[] getBytes()                           将当前字符串内容转换为byte数组并返回
+    char[] toCharArray()                        用于将当前字符串内容转换为char数组并返回
+    char charAt(int index)                      返回字符串指定位置的字符
+    int length()                                返回字符串字符序列的长度
+    boolean isEmpty()                           判断字符串是否为空
