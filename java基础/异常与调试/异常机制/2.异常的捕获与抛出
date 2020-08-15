@@ -1,0 +1,38 @@
+应该如何选择异常的捕获or抛出？
+    1.若父类中重写的方法，欸有抛出异常，则子类中重写的方法只能进行异常的捕获处理
+    2.若一个方法内部又以递进的方式分别调用了好几个其他方法，则建议这些方法内部可以使用抛出的方法处理到最后一层进行捕获方法处理
+    
+
+//代码练习
+
+public class ExceptionThrowsTest {
+    public static void show() throws IOException{
+        FileInputStream fis = new FileInputStream(("d:/a.txt"));
+        System.out.println("抛出异常后继续执行？");
+        fis.close();
+    }
+    public static void test1() throws IOException{
+        show();
+    }
+    public static void test2() throws IOException{
+        test1();
+    }
+    public static void test3() throws IOException{
+        test2();
+    }
+
+    public static void main(String[] args) {
+        try {
+            show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("-----------------------");
+        //2。方法内部又以递进的方式分别调用了好几个其他方法
+        try {
+            test1();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
