@@ -1,0 +1,16 @@
+java.lang.Throwable类是java语言中所有错误和异常的超类
+  
+  直接子类：
+      Error，异常
+      
+      Error：主要用于描述java虚拟机无法解决的严重错误
+      异常：主要用于描述因编程错误或偶然外在因素导致的轻微错误
+      
+Exception的分类：
+    java.lang.Exception类是所有异常的超类，主要分为：
+        RuntimeException:运行时异常，也叫非检测性异常
+        IOException和其他异常:也叫检测性异常，指在编译阶段能被编译器检测出来的异常 
+        
+异常的避免：
+    尽量减少if语句的使用
+    过多的if条件判断会导致程序的代码加长、臃肿、可读性差
