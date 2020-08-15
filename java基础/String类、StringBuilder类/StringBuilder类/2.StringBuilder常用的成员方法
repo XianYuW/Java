@@ -1,0 +1,36 @@
+常用的成员方法：
+    int capacity()                                        返回调用对象的容量
+    int length()                                          返回字符串的长度
+    StringBuilder insert(int offset,String str)           插入字符串并返回
+    StringBuilder append(String str)                      追加字符串，
+                                                该方法会进行自动扩容，当字符串长度超过字符串对象的初始容量会自动扩容，默认扩容算法：原师容量*2+2
+    StringBuilder deleteCharAt(int index)                 将当前字符串中下标为index位置的单个字符串删除
+    StringBuilder delete(int start,int end)               删除字符串
+     
+    StringBuilder replace(int start,int end,String str)   替换字符串
+    StringBuilder reverse()                               字符串反转
+    
+    
+返回值设计：
+    该类的很多方法的返回值类型为StringBuilder类型，这些方法的返回值语句均为：return this;
+    由此可见，这些方法在对StringBuilder所封装的字符序列进行改变之后又返回了该对象的引用，
+    -------基于这样的设计的目的在于可以连续调用
+
+//代码示例
+    
+    StringBuilder sb = new StringBuilder("hello");//sb : "hello"
+    sb.append("$$&&");//sb:"hello$$&&"
+    sb.append("world");//sb : "hello$$&&world"
+    
+    sb.deleteCharAt(5);//sb:"hello$&&world"
+    for(int i = 5;i<8;i++){
+        //有结果可知：删除一个字符串后面的字符串会向前补位，因次下标会发生变化
+        sb.deleteCharAt(5);
+    }
+    System.out.println("sb:"+sb);//sb:helloworld
+    
+    sb.append("1234");
+    System.out.println("sb:"+sb);//sb:helloworld1234
+    sb.delete(10,14);
+    System.out.println("sb:"+sb);//sb:helloworld
+    
