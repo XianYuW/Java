@@ -10,3 +10,22 @@ StringBuilder类常用的构造方法：
     StringBuilder()                           使用无参方式构造对象。容量为16
     StringBuilder(int capacity)               使用参数指定的容量来构造对象，容量为参数指定大小
     StringBuilder(String str)                 使用参数指定的字符串来构造对象，容量为：16+字符串长度
+    
+    
+    
+1.既然StringBuilder类的对象本身可以修改，为什么成员方法还有返回值呢？
+        解析：为了连续调用
+        sb.reverse().append("1").insert(0,"2").delete("3")...;
+        
+2.如何实现StringBuilder和String类型的转换？
+        StringBuilder->String:
+             String str = sb.toString();
+        String -> StringBuilder:
+             StringBuilder sb = new StringBuilder(str);
+             
+3.String,StringBuilder,StringBuffer之间效率谁高？排列如何？
+        
+        StringBuilder>StringBuffer>String
+        String类型是常量，任何修改都要重新创建字符串，因此String<StringBuffer
+        而   StringBuffer类时从JDK1.0开始，属于线程安全的类，因此效率较低
+             StringBuilder类是从JDK1.5开始，属于非线程安全的额类，效率比较高
