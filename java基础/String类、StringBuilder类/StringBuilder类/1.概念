@@ -1,0 +1,12 @@
+由于String类描述的字符串内容是个常量，不可改变，
+当需要在java中描述大量类似的字符串时，只能单独申请和存储，会造成内存空间的浪费
+
+为解决上述问题，可以使用java.lang.StringBuilder和java.lang.StringBuffer类来描述字符序列可以改变的字符串
+    
+    StringBuffer类时从JDK1.0开始，属于线程安全的类，因此效率较低
+    StringBuilder类是从JDK1.5开始，属于非线程安全的额类，效率比较高
+    
+StringBuilder类常用的构造方法：
+    StringBuilder()                           使用无参方式构造对象。容量为16
+    StringBuilder(int capacity)               使用参数指定的容量来构造对象，容量为参数指定大小
+    StringBuilder(String str)                 使用参数指定的字符串来构造对象，容量为：16+字符串长度
