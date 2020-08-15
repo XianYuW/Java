@@ -1,0 +1,80 @@
+实现流程：
+    a.自定义xxxException异常类继承Exception类或子类
+          同时可以写一个序列化版本号：
+              
+    b.提供两个版本的构造方法，一个是无参的构造方法，一个是字符串作为参数的构造方法
+    
+异常的产生：
+    throws new 异常类(实参);
+    如：
+        throws new AgewException("年龄不合理！！");
+        
+        
+//代码联系
+
+public class AgeException extends Exception {
+    static final long serialVersionUID = 7818375828146090155L;
+
+    public AgeException() {
+    }
+
+    public AgeException(String message) {
+        super(message);
+    }
+}
+//
+public class Student {
+    private static int sum = 0;//设置静态变量，实现id的自加
+    //学生的信息
+    private int id ;
+    private String name;
+    private int age;
+
+    //构造方法
+    public Student( String name, int age) throws AgeException {
+        id= sum++;//每调用一次该构造方法，学号自动加一
+        setName(name);
+        setAge(age);
+    }
+
+    /**
+     * get和set方法
+     *id只有get方法，不允许set设置
+     */
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) throws AgeException {
+        if(age>0&&age<50){
+            this.age = age;
+        }else{
+            throw new AgeException("年龄不合理！！");
+        }
+    }
+    //展示学生信息
+    public void show(){
+        System.out.println(this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
