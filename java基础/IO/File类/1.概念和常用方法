@@ -1,0 +1,22 @@
+java.io.File类主要用于描述文件或目录路径的抽象表示信息，可以获取文件或目录的特征信息；
+
+常用方法：
+    File(String pathName)                     根据参数指定的路径名来构造对象
+    File(String parent,String child)          根据参数指定的父路径和子路径信息来构造对象
+    File(File parent,String child)            根据参数指定的父抽象路径和子路径信息来构造对象
+    
+    boolean exists()                          测试此抽象路径名表示的文件或目录是否存在
+    String getName()                          获取文件的名称
+    long length()                             返回此抽线路径名表示的文件长度
+    long lastModified()                       用于获取文件最后一次修改时间
+    
+    String getAbsolutePath()                  用于获取绝对路径信息
+    boolean delete()                          用于删除文件，当删除目录时要求是空目录
+    boolean creatNewFile()                    用于创建新的空文件
+    boolean mkdir()                           用于创建目录
+    boolean mkdirs()                          用于创建多级目录
+    
+    File[] isFiles()                          获取该目录下的所有内容
+    booelan isFile()                          判断是否为文件
+    boolean isDirectory                       判断是否为目录
+    File[] listFiles(FileFilter filter)       获取目录下满足筛选器的所有内容
