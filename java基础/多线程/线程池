@@ -30,3 +30,13 @@ java.util.concurret.ExecutorService:线程池接口
         2. 创建一个类，实现Runnabl接口，重写run方法，设置线程任务
         3.调用ExecutorService中的方法submit，传递线程任务(实现类)，开启线程，执行run方法
         4.调用ExecutorService中的方法shutdown销毁线程池(不建议执行)
+
+
+线程池常用方法：
+    submit()：提交任务，能够返回执行结果execute+Future
+　　shutdown()：关闭线程池，等待任务都执行完
+　　shutdownNow()：关闭线程池，不等待任务执行完
+　　getTaskCount()：线程池已执行和未执行的任务总数
+　　getCompletedTaskCount()：已完成的任务数量
+　　getPoolSize()：线程池当前线程数量
+　　getActiveCount()：当前线程池中正在执行任务的线程数量
