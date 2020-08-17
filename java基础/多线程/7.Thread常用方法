@@ -1,0 +1,11 @@
+
+static void yield()                     当前线程让出处理器(离开Running状态)，
+                                        使当前线程进入Runnable状态等待
+static void sleep(times)                
+int getPriority()                       获取线程的优先级
+void setPriority(int newPriority)       修改线程的优先级
+                                        优先级高的线程不一定先执行，但该线程获取到的时间片的机会更多
+void join()                             等待线程终止
+void join(long millis)                  等大参数指定的毫秒数
+boolean isDaemon()                      判断是否为守护线程
+void setDaemon(boolean)                 设置守护线程
