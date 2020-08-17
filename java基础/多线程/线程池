@@ -32,7 +32,7 @@ java.util.concurret.ExecutorService:线程池接口
         4.调用ExecutorService中的方法shutdown销毁线程池(不建议执行)
 
 
-线程池常用方法：
+线程池ThreadPoolExecutor常用方法：
     submit()：提交任务，能够返回执行结果execute+Future
 　　shutdown()：关闭线程池，等待任务都执行完
 　　shutdownNow()：关闭线程池，不等待任务执行完
