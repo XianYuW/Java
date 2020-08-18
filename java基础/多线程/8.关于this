@@ -1,0 +1,16 @@
+Thread中，构造方法 new Thread(Runnable);传递的Runnable参数，
+    最终调用的是Runnable.run()方法
+    
+    Thread的源码:
+        public Thread(Runnable target) {
+            this(null, target, "Thread-" + nextThreadNum(), 0);
+        }
+        ...
+    run方法的源码：
+        public void run() {
+            if (target != null) {
+                target.run();
+            }
+        }
+        
+    因此，在Thread中，this指代的是Runnable类型的引用
