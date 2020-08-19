@@ -1,0 +1,32 @@
+例如：
+    在自定义异常中
+    
+        1.抛出异常：
+        throw new 自定义异常("自定义异常类抛出的语句")：(异常没有被处理)
+            
+             public void setAge(int age) throws AgeException{
+                if(age>=0&&age<50){
+                    this.age = age;
+                }else{
+                    throw new AgeException("年龄不合理！！");
+                }
+            }
+        2.try{}catch{}处理异常：(异常被处理):
+            
+             public void setAge(int age) /*throws AgeException*/ {
+                if(age>=0&&age<50){
+                    this.age = age;
+                }else{
+                    try {
+                        throw new AgeException("年龄不合理！！");
+                    } catch (AgeException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            
+   1.Student stu = new Student(name,-1);
+   System.out.println(stu);//stu = null;
+   
+   2.Student stu = new Student(name,-1);
+   System.out.println(stu);//stu = {name,0};
