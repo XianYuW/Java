@@ -1,2 +1,15 @@
 java.lang.Class类的实例可以用于描述java应用程序中的类和接口，也就是一种数据类型
-该类没有公共构造方法，该类的实例由java虚拟机和类加载器自动构造完成，本质上就是加载到内存中的运行时类；
+该类没有公共构造方法，该类的实例由java虚拟机和类加载器自动构造完成，本质上就是加载到内存中的运行时类。
+
+获取Class对象的方式：
+    1.使用数据类型.class的方式获取对应类型的class对象
+    2.使用引用/对象.getClass()的方式可以获取对应类型的Class对象
+    3.用包装类.TYPE的方式可以获取对应基本类型的Class对象
+    4.使用Class.forName()的方式来获取参数指定类型的Class对象
+    5.使用类加载器ClassLoader的方式获取指定类型的Class对象
+    
+    
+常用的方法：
+    static Class<?> forName(String className)       用于获取参数指定类型对应的Class对象并返回
+    T newInstance()                                 用于创建该Class对象所表示类的新实例
+    
