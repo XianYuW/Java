@@ -1,0 +1,16 @@
+java.lang.reflect.Method类 主要用于描述获取到的单个成员方法信息
+
+Class类常用的方法：
+    Method getMethod(String name,Class<?>...parameterTypes)
+                                          用于获取该Class对象表示类中名字为name参数
+                                          为parameter的指定公共成员方法
+    Method[] getMethods()                 用于获取该Class对象表示类中所有公共成员方法                   
+    
+Method类的常用方法：
+    Object invoke(Object obj,Object...args)使用对象obj来调用此Method对象所表示的成员方法
+                                          实参传递args
+    int getModifiers()                    获取方法的访问修饰符
+    Class<?> getReturnType()              获取方法的返回值类型
+    String getName()                      获取方法的名称
+    Class<?> getParameterTypes()          获取方法所有参数的类型
+    Class<?> getExceptionTypes()          获取方法的异常信息
