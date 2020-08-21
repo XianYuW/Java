@@ -1,0 +1,13 @@
+java.lang.reflect.Constructor类主要用于描述获取到的构造方法信息
+
+Class类的常用方法：
+    Constructor<T> getConstructor(Class<?>...parameterTypes)
+                                        用于获取此Class对象所表示类型中参数指定的公共构造方法
+    Constructor<?>[] getConstructors()  用于获取此Class对象所表示类型中所有的公共构造方法
+    
+    
+Constructor类的常用方法：
+    T newInstance(Object...initargs)      使用此Constructor对象描述的构造方法来构造Class对象代表类型的新实例
+    int getModifiers()                    获取方法的访问修饰符
+    String getName()                      获取方法的名称
+    Class<?>[]getParameterTypes()         获取方法所有参数的类型
