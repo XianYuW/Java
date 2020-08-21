@@ -1,0 +1,14 @@
+java.lag.reflect.Field类主要用于描述获取到的单个成员变量信息
+
+Class类的常用方法：
+    Field getDeclaredField(String name)       用于获取此Class对象所表示类中参数指定的单个成员变量信息
+    Field[] getDeclaredFields()               用于获取此Class对象所表示类中所有成员变量信息
+    
+
+Field类的常用方法：
+    Object get(Object obj)                    获取参数对象obj中此Field对象所表示成员变量的数值
+    void set(Object obj,Object value)         将参数对象obj中此Field对象所表示成员变量的数值修改为参数value的数值
+    void setAccessible(boolean flag)
+    int getModiffiers()
+    Class<?> getType()
+    String getName()
