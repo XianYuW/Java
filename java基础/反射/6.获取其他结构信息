@@ -1,0 +1,55 @@
+* 获取其他结构的信息
+*      Class方法：
+*             Package getPackage()                 获取所在的包信息
+*             Class<? super T> getSuperclass()     获取继承的父类信息
+*             Class<?>[] getInterfaces()           获取实现的所有接口
+*             Annotation[] getAnnotations()        获取注解信息
+*             Type[] getGenericInterfaces()        获取泛型信息
+
+//代码练习
+
+public class OtherTest {
+    public static void main(String[] args) throws Exception {
+        //获取到的Student类型的Class对象
+        Class c1 = Class.forName("DemoReflect.Person");
+
+
+        System.out.println("---------------------------------------");
+        //获取所在的包信息
+        Package c1Package = c1.getPackage();
+        System.out.println("获取所在的包信息:"+c1Package);
+
+        System.out.println("---------------------------------------");
+        //获取继承的父类信息
+        Class superclass = c1.getSuperclass();
+        System.out.println("获取继承的父类信息:"+superclass);
+
+        System.out.println("---------------------------------------");
+        //获取实现的所有接口
+        Class[] interfaces = c1.getInterfaces();
+        System.out.println("获取实现的所有接口:");
+        for(Class ct : interfaces){
+            System.out.print(ct+"\t");
+        }
+        System.out.println();
+
+        System.out.println("---------------------------------------");
+        //获取注解信息
+        Annotation[] annotations = c1.getAnnotations();
+        System.out.println("获取注解信息:");
+        for(Annotation a :annotations){
+            System.out.println(a+"\t");
+        }
+        System.out.println();
+
+        System.out.println("---------------------------------------");
+        //获取泛型信息
+        Type[] genericInterfaces = c1.getGenericInterfaces();
+        System.out.println("获取泛型信息:");
+        for(Type t : genericInterfaces){
+            System.out.print(t+ "\t");
+        }
+        System.out.println();
+
+
+    }
