@@ -1,0 +1,22 @@
+假设现在创建了一个类，使用懒汉式模式：
+public class Singleton {
+    //2.声明本类类型的引用指向本类类型的对象并使用private static 关键字修饰
+    private  static Singleton singleton = null;
+    //1.私有化构造方法，使用private关键字修饰
+    public Singleton() {
+    }
+    //3.提供公有的get方法将上述对象返回出去，使用public static 关键字修饰
+    public static Singleton getSingleton() {
+        if(singleton == null){
+            new Singleton();
+        }
+        return singleton;
+    }
+}
+
+同时，有两个线程调用Singleton类，
+线程一 先执行，执行到getSingleton()方法，进入if判断同时还未return；
+      线程一 会new Singleton();
+这时线程二执行，因为线程一还未return，因此进入i判断时，singleton == null；
+    因此，线程二也会new Singleton();
+两个线程创建了两个Singleton对象，这就于单例模式冲突了。
