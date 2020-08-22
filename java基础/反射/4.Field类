@@ -12,3 +12,56 @@ Field类的常用方法：
     int getModiffiers()                       获取成员变量的访问修饰符
     Class<?> getType()                        获取成员变量的数据类型
     String getName()                          获取成员变量的名称
+
+
+//代码练习
+
+public class FieldTest {
+    public static void main(String[] args) throws Exception {
+        //1.使用原始的方式来构造对象以及获取成员变量的数值并打印
+        Person p1 = new Person("张飞",30);
+        System.out.println("获取到的成员变量数值为"+p1.getName());//张飞
+
+        System.out.println("---------------------------------------------");
+        //2使用反射机制来构造对象以及获取成员变量的数值并打印
+
+        //     2.1获取class对象
+        Class c1 = Class.forName("DemoReflect.Person");
+        //      2.2根据Class对象获取对应的有参构造方法
+        Constructor constructor = c1.getConstructor(String.class,int.class);
+        //      2.3使用有参构造方法得到Person类型的对象
+        Object obj = constructor.newInstance("张飞", 30);
+
+        //      2.4根据Class获取对应的变量的信息
+        Field name = c1.getDeclaredField("name");
+        Field age = c1.getDeclaredField("age");
+        //当实参传递true时，则反射对象再使用时应取消java语言访问检查
+        name.setAccessible(true);
+        age.setAccessible(true);
+        //      2.5使用Person类型的对象来获取成员变量的数值并打印
+        System.out.println("获取到的成员变量数值为:"+name.get(obj)+"\t"+age.get(obj));
+
+        System.out.println("---------------------------------------------");
+        //3.使用原始方式修改指定对象中成员变量的数值后再次打印
+        p1.setName("马儿扎哈");
+        p1.setAge(18);
+        System.out.println("原始方式修改后的数值为"+p1);
+
+        System.out.println("---------------------------------------------");
+        //4.使用反射机制修改指定对象中成员变量的数值后再次打印
+        name.set(obj,"马儿扎哈");
+        age.set(obj,18);
+        System.out.println("反射机制修改后获取到的成员变量数值为:"+name.get(obj)+"\t"+age.get(obj));
+
+        System.out.println("---------------------------------------------");
+        //获取Class对象对应类中所有的成员变量
+        Field[] fields = c1.getDeclaredFields();
+        for(Field f :fields){
+            System.out.println("获取到的访问修饰符为："+f.getModifiers());//  2---private
+            System.out.println("获取到的数据类型为："+f.getType());
+            System.out.println("获取到的成员变量名称为："+f.getName());
+            System.out.println("---------------------------------------------");
+        }
+
+    }
+}
