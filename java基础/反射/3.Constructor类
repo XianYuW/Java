@@ -11,3 +11,8 @@ Constructor类的常用方法：
     int getModifiers()                    获取方法的访问修饰符
     String getName()                      获取方法的名称
     Class<?>[]getParameterTypes()         获取方法所有参数的类型
+
+
+//代码练习
+
+同上一小节
