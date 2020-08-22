@@ -2,3 +2,64 @@
 同时希望同各国运行时的传递的参数来决定，该机制叫做动态编程技术，也叫反射机制
 
 通俗来讲，反射机制就是用于动态创建对象并且动态调用方法的机制
+
+常用Class方法：
+    Class c1 = Class.forName("DemoReflect.Person")；//c1=class DemoReflect.Person
+    Class c1 = Person.class;//c1=class DemoReflect.Person
+    
+//代码练习
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+        //使用数据类型.Class的方式可以获取对应类型的class对象
+        Class c1 = String.class;
+        System.out.println("c1="+c1);//c1 = class java.lang.String
+
+        c1 = int.class;
+        System.out.println("c1="+c1);//c1 = int
+
+        c1 = void.class;
+        System.out.println("c1="+c1);//c1 = void
+
+        System.out.println("-----------------------------------------");
+        //2.使用.getClass()的方式获取对应的class对象
+        String str1 = new String("hello");
+        c1 = str1.getClass();
+        System.out.println("c1="+c1);//c1 = class java.lang.String
+
+        Integer int1 = 1;
+        c1 = int1.getClass();
+        System.out.println("c1="+c1);//c1 = class java.lang.Integer
+
+        int num = 5;
+        //c1 = num.getClass();error 基本数据类型的变量不能调用方法getClasss()
+
+        System.out.println("-----------------------------------------");
+        //3.用包装类.TYPE的方式可以获取对应基本类型的Class对象
+        c1 = Integer.TYPE;
+        System.out.println("c1 = "+c1);//c1 = int
+        c1 = Integer.class;
+        System.out.println("c1 = "+c1);//c1 = class java.lang.Integer
+
+        System.out.println("-----------------------------------------");
+        //4.使用Class.forName()的方式来获取参数指定类型的Class对象
+//        c1= Class.forName("Integer");//java.lang.ClassNotFoundException: Integer
+        c1= Class.forName("java.lang.Integer");
+        System.out.println("c1 = "+c1);//c1 = class java.lang.Integer
+
+        c1 = Class.forName("java.util.Date");
+        System.out.println("c1 = "+c1);//c1 = class java.util.Date
+
+        //c1 = Class.forName("int");
+        //System.out.println("c1 = "+c1);//不能获取基本数据类型的class对象
+
+        System.out.println("-----------------------------------------");
+        //5.使用类加载器ClassLoader的方式获取指定类型的Class对象
+        //ClassLoader classLoader = String.class.getClassLoader();
+        //System.out.println("classloader = "+classLoader);//classloader = null;
+        ClassLoader classLoader = Test.class.getClassLoader();
+        System.out.println("classloader = "+classLoader);//
+        c1 = classLoader.loadClass("java.lang.String");
+        System.out.println("c1 = "+c1);//c1 = class java.lang.String
+    }
+}
