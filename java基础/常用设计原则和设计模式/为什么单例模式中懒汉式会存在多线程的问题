@@ -20,3 +20,32 @@ public class Singleton {
 这时线程二执行，因为线程一还未return，因此进入i判断时，singleton == null；
     因此，线程二也会new Singleton();
 两个线程创建了两个Singleton对象，这就于单例模式冲突了。
+
+改动：
+     可以给getSingleton()方法加锁：
+                public static synchronized Singleton getSingleton() {
+                    if(singleton == null){
+                        new Singleton();
+                    }
+                    return singleton;
+                }
+                或者
+                public static /*synchronized*/ Singleton getSingleton() {
+                    synchronized (Singleton.class){
+                        if(singleton == null){
+                            new Singleton();
+                        }
+                        return singleton;
+                    }
+                }
+    但是我们需要的只是第一次调用getSingleton()方法才需要加锁，第一次之后就不用锁上，因此可以优化：
+                public static /*synchronized*/ Singleton getSingleton() {
+                    if (singleton == null) {
+                        synchronized (Singleton.class){
+                            if(singleton == null){
+                                new Singleton();
+                            }
+                        }
+                    }
+                    return singleton;
+                }
