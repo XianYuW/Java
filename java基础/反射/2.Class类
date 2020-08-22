@@ -13,3 +13,73 @@ java.lang.Class类的实例可以用于描述java应用程序中的类和接口�
     static Class<?> forName(String className)       用于获取参数指定类型对应的Class对象并返回
     T newInstance()                                 用于创建该Class对象所表示类的新实例
     
+//代码练习
+
+public class ConstructorTest {
+    public static void main(String[] args) throws Exception {
+        //1.原始方式以无参形式下构造Person对象
+        Person p1 = new Person();
+        System.out.println("无参方式创建的对象为"+p1);//Person{name='null', age=0}
+
+        System.out.println("-----------------------------------");
+        //2.以反射机制，无参形式下构造Person对象
+        Class c1 = Class.forName("DemoReflect.Person");
+        System.out.println("无参方式创建的对象为"+c1.newInstance());//Person{name='null', age=0}
+
+        //从键盘输入要创建的对象
+        /*System.out.println("请输入要创建的对象的类型");
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine().strip();
+        Class c1 = Class.forName(str);
+        System.out.println("无参方式创建的对象为"+c1.newInstance());//Person{name='null', age=0}
+        scan.close();*/
+
+        //从配置文件读取要创建的对象
+        /*BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("src/DemoReflect/a.txt")));
+        String str = br.readLine();
+        Class c2 = Class.forName(str);
+        System.out.println("无参方式创建的对象为"+c1.newInstance());//Person{name='null', age=0}
+        br.close();*/
+
+        System.out.println("-----------------------------------");
+        //------无参方式构造对象的优化------
+        //获取Class对象对应类中的无参构造方法，也就是Person类中的无参构造方法
+        c1 = Class.forName("DemoReflect.Person");
+        Constructor constructor = c1.getConstructor();
+        //使用获取到的无参构造方法来构造对应类型的对象，也就是Person类型的对象
+        System.out.println("无参方式创建的对象是："+constructor.newInstance());//Person{name='null', age=0}
+
+        //优化，先获取类，再通过类获取构造方法，通过构造方法获取对象
+        Constructor<?> constructor1 = Class.forName("DemoReflect.Person").getConstructor();
+        System.out.println("优化之后的无参方式创建的对象是："+constructor1.newInstance());//Person{name='null', age=0}
+
+        System.out.println("-----------------------------------");
+        //3.使用原始方式以有参方式构造Person类型的对象并打印
+        Person p2 = new Person("张飞",30);
+        System.out.println("有参方式构造的对象："+ p2);//Person{name='张飞', age=30}
+
+        System.out.println("-----------------------------------");
+        //4.使用反射机制以有参方式构造Person类型的对象并打印
+        //获取Class对象对应类中的有参构造方法，也就是Person类中的有参构造方法
+        Constructor constructor2 = c1.getConstructor(String.class, int.class);
+        //使用获取到的有参鼓噪方法来构造对应类型的对象，也就是Person类型的对象
+        //newInstance方法中的实参是用于给有参构造方法的形参进行初始化的，也就是给name和age进行初始化
+        System.out.println("有参方式构造的对象是："+constructor2.newInstance("张飞",30));//Person{name='张飞', age=30}
+
+        System.out.println("-----------------------------------");
+        //5.使用反射机制获取Person类中所有的公共构造方法并打印
+        Constructor[] constructors = c1.getConstructors();
+        for(Constructor cons : constructors){
+            System.out.println("构造方法的访问修饰符："+cons.getModifiers());
+            System.out.println("构造方法的方法名称："+cons.getName());
+            Class[] parameterTypes = cons.getParameterTypes();
+            System.out.print("构造方法的所有参数类型：");
+            for(Class type : parameterTypes){
+                System.out.print(type+"\t\t");
+            }
+            System.out.println();
+            System.out.println("-----------------------------------");
+        }
+
+    }
+}
