@@ -1,0 +1,10 @@
+方法引用：
+    主要通过方法的名字来指向一个方法而不需要为方法引用提供方法体，该方法的调用交给函数式接口执行
+    方法引用使用一对冒号::将类或对象与方法名进行连接，通常使用方式：
+        °对象的非静态方法引用         ObjectName::MethodName
+        °类的静态方法引用             ClassName::StaticMethodName
+        °类的非静态方法引用           ClassName::MethodName
+        °构造器的引用                ClassName::new 
+        °数组的引用                  TypeName[]::new
+        
+    方法引用是在特定场景下lambda表达式的一种简化表示，可以进一步简化代码的编写使代码更紧凑简洁，从而减少冗余代码
