@@ -14,3 +14,50 @@ Method类的常用方法：
     String getName()                      获取方法的名称
     Class<?> getParameterTypes()          获取方法所有参数的类型
     Class<?> getExceptionTypes()          获取方法的异常信息
+
+
+//代码练习
+
+public class MethodTest {
+    public static void main(String[] args) throws Exception {
+        //1.使用原始方式构造对象并调用方法打印结果
+        Person p1 = new Person("马儿扎哈",18);
+        System.out.println("调用方法的返回值："+p1.getName());//马儿扎哈
+
+        System.out.println("------------------------------------");
+        //2.使用反射机制构造对象并调用方法打印结果
+        //      2.1获取此LClass对象
+        Class c1 = Class.forName("DemoReflect.Person");
+        //      2.2根据Class对象来获取应有的构造方法
+        Constructor constructor = c1.getConstructor(String.class,int.class);
+        //      2.3使用有参构造方法构造对象并记录
+        Object obj = constructor.newInstance("马儿扎哈", 18);
+        //      2.4根据Class对象来获取对应的成员
+        Method method = c1.getMethod("getName");
+        //      2.5使用对象调用成员方法进行打印
+        //表示使用obj对象调用method表示的方法 ，也就是调用getName方法来获取name
+        System.out.println("调用方法的返回值是："+method.invoke(obj));//马儿扎哈
+
+        System.out.println("------------------------------------");
+        //3.使用反射机制来获取类中的所有成员方法并打印
+        Method[] methods = c1.getMethods();
+        for(Method m: methods){
+            System.out.println("成员方法的修饰符："+m.getModifiers());
+            System.out.println("成员方法的返回值类型："+m.getReturnType());
+            System.out.println("成员方法的方法名称："+m.getName());
+            System.out.println("成员方法的返回值类型：");
+            Class<?>[] parameterTypes = m.getParameterTypes();
+            for (Class ct : parameterTypes) {
+                System.out.print(ct+" ");
+            }
+            System.out.println();
+            System.out.println("成员方法的异常类型列表：");
+            Class<?>[] exceptionTypes = m.getExceptionTypes();
+            for(Class ct:exceptionTypes){
+                System.out.print(ct +" ");
+            }
+            System.out.println();
+            System.out.println("---------------------------------------");
+        }
+    }
+}
