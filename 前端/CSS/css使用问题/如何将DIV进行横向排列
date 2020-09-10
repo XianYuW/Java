@@ -1,0 +1,8 @@
+一、使用css float并排显示
+  我们对div设置一个float浮动属性即可解决不并排显示，
+  只要你的并排div盒子总宽度小于或等于最外层盒子宽度即可实现多个div对象并排显示
+  
+二、使用css display同行显示
+  CSS代码如下：
+
+  .div-inline{ display:inline} 
