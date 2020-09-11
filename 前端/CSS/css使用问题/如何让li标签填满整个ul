@@ -2,7 +2,7 @@
   ul{
         width: 100%;
         height: 100px;
-        display: flex;
+        display: flex;/*li纵向水平排列*/
     }
     ul>li{
         width: 100%;
