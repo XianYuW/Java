@@ -1,0 +1,10 @@
+方式一：设置百分比动态参数
+  ul{
+        width: 100%;
+        height: 100px;
+        display: flex;
+    }
+    ul>li{
+        width: 100%;
+        height: 100%;
+    }
