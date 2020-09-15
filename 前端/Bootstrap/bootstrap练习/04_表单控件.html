@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body style="padding: 100px;">
+    <form>
+        <div class="form-gruop">
+            <label >输入框</label>
+            <input type="text" class="form-control" placeholder="请输入...">
+        </div>
+        <div class="form-gruop">
+            <label >文本框</label>
+            <textarea class="form-control" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox">抽烟
+            </label>
+        </div>
+        <div  class="checkbox">
+            <label>
+                <input type="checkbox">喝酒
+            </label>
+        </div>
+
+        <hr color="red">
+        <div class="checkbox-inline">
+            <label>
+                <input type="checkbox">洗澡澡
+            </label>
+        </div>
+        <div  class="checkbox-inline">
+            <label>
+                <input type="checkbox">烫头头  
+            </label>
+        </div>
+        <br>
+        <div class="btn-group" data-toggle="buttons"> 
+            <!--data-toggle="buttons" 忽略复选框按钮-->
+            <label class="btn btn-primary">
+                <input type="checkbox">吃饭
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox">看书
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox">学习
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox">快乐
+            </label>
+        </div>
+        <hr>
+
+        <!-- 单选框-->
+        <label class="radio">
+            <input type="radio" name="sex">male
+        </label>
+    
+        <label class="radio">
+            <input type="radio" name="sex">female
+        </label>
+        <hr>
+        <!--inline-->
+        <label class="radio-inline">
+            <input type="radio" name="gender">male
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="gender">female
+        </label>
+        <hr>
+        <!--单选按钮-->
+        <div class="btn-gruop" data-toggle="buttons">
+            <label class="btn btn-primary">
+                <input type="radio" name="gender">male
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="gender">female
+            </label>
+        </div>
+
+    </form>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
