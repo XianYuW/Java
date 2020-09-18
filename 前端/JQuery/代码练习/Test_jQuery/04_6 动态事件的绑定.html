@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="del">hello world</h1>
+    <h1 class="del">hello java!!</h1>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(".del").on("click",function(){
+            alert($(this).text());
+        });
+        $(".del").on("mouseover mouseout",function(){
+            alert("鼠标悬停或者移开了");
+        });
+    </script>
+</body>
+</html>

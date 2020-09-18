@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="img/3.jpg" width="400"> 
+    <form action=""> 
+        <p>帐号: <input id="a" value="请输入帐号..."> </p> 
+        <p>电话: <input id="b"> </p> 
+    </form> 
+    <script src="js/jquery-3.4.1.min.js"></script> 
+    <script> 
+        $("img").hover( 
+            function(){ 
+                $(this).css("border","5px solid red"); 
+            },
+            function(){ 
+                $(this).css("border","5px solid white"); 
+            } 
+        ); 
+        $("#a").hover(
+            function(){
+                $(this).val("放入");
+            },
+            function(){
+                $(this).val("移出");
+            }
+        );
+    </script>
+</body>
+</html>

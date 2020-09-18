@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        color: white;
+        font-size: 3em;
+    }
+</style>
+<body>
+    <button class="btn btn-default" id="btn1">点击使他变绿,变淡</button>
+    <button class="btn btn-warning" id="btn2">点击恢复</button>
+    <button class="btn btn-info" id="btn3">点击</button>
+    <div>
+        hello world
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $("#btn1").on("click",function(){
+            $("div").css("background-color","white").css("color","green").hide("slow").slideDown("slow").fadeTo("slow",0.6);
+        });
+        $("#btn2").on("click",function(){
+            $("div").css("background-color","black").css("color","white").fadeTo("slow",1).slideUp("slow").show("slow");
+        });
+        $("#btn3").click(function(){ 
+            $("div").css("background- color","pink").css("color","green").slideUp(1000).slideDown(1000); 
+        });
+    </script>
+</body>
+</html>

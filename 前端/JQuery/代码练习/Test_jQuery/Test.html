@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title></title>
+<link href="css/style.css" mce_href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+
+    $().ready(function(){
+      $("#txtName").keyup(
+        function(){          
+          $("table tr:gt(0)").hide();
+          //:contains() 选择器选取包含指定字符串的元素
+          var $d = $("table tr:gt(0)").filter(":contains('"+$.trim($("#txtName").val())+"')");
+          $d.show();          
+        }
+      )
+    })
+
+  </script>
+
+ </head>
+<body>
+<p><strong>实现动态列表内容查询</strong></p>
+<div>
+    <input type="text" id="txtName" />
+  </div>
+  <br />
+ <table width="438" height="auto" border="1">
+   <tr>
+     <td>编号</td>
+     <td>名称</td>
+     <td>类别</td>
+     <td>著作</td>
+   </tr>
+   <tr>
+     <td>1001</td>
+     <td>天龙八部</td>
+     <td>武侠</td>
+     <td>金庸</td>
+   </tr>
+          <tr>
+     <td>1002</td>
+     <td>小李飞刀</td>
+     <td>武侠</td>
+     <td>古龙</td>
+   </tr>
+      <tr>
+     <td>1003</td>
+     <td>逆水寒</td>
+     <td>言情</td>
+     <td>温瑞安</td>
+   </tr>
+      <tr>
+     <td>1004</td>
+     <td>天涯明月刀</td>
+     <td>武侠</td>
+     <td>古龙</td>
+   </tr>
+      <tr>
+     <td>1005</td>
+     <td>朝天一棍</td>
+     <td>武侠</td>
+     <td>温瑞安</td>
+   </tr>
+      <tr>
+     <td>1006</td>
+     <td>侠骨丹心</td>
+     <td>武侠</td>
+     <td>梁羽生</td>
+   </tr>
+      <tr>
+     <td>1007</td>
+     <td>神雕侠侣</td>
+     <td>武侠</td>
+     <td>金庸</td>
+   </tr>
+      <tr>
+     <td>1008</td>
+     <td>陆小凤传奇</td>
+     <td>武侠</td>
+     <td>古龙</td>
+   </tr>
+      <tr>
+     <td>1009</td>
+     <td>xxxxx</td>
+     <td>xxxxx</td>
+     <td>xxxxx</td>
+   </tr>
+ </table>
+</body>
+</html>

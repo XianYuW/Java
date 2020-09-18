@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn btn-default" id="btn1">点我试试</button>
+    <button class="btn btn-primary" id="btn2">复原</button>
+    <hr>
+    <img src="img/1.jpg" title="二次元" width="300px">
+    <hr>
+
+    <button class="btn btn-default" id="btn3">点击就送</button>
+    <hr>
+    <input id="username">
+    <div>
+        <h1><i>请先在输入框中输入！！，再点击</i></h1>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $("#btn1").on("click",function(){
+            $("img").attr("src","img/2.jpg").attr("title","三次元").attr( {width:"200",height:"200"} );
+            
+        });
+        $("#btn2").on("click",function(){
+            $("img").attr("src","img/1.jpg").attr("title","二次元").attr( {width:"300"} );
+        });
+        $("#btn3").on("click",function(){
+            if($("input").val() == ""){
+                alert("输入为空,请先在输入框中输入！！，再点击");
+                return;
+            }
+            alert($("input").val());
+            $("input").val("我就改你的值怎么了");
+            alert("我不仅改，我还弹窗，你气不气...");
+
+            alert($("div").html());
+            alert($("div").text());
+            $("div").text("我不仅改，我还改下面的，你气不气...");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery-3.4.1.min.js"></script>
+<body>
+    <p id="title" >hello world</p>
+    <script>
+        //js方式获取dom对象
+        //alert(document.getElementById("title").innerHTML);
+        //JQ方式获取dom对
+        //alert($("p").text());
+        //alert($("p").html());
+
+        var jsDom = document.getElementById("title");
+        var jqDom = $("p");
+        //alert(jsDom.html()); 使用jq对象，调用js的函数，报错，混搭不允许
+        
+        //就想用js对象调用jq的方法，必须进行对象的转换
+        jqDom = $(jsDom) ; //将js对象---转换-->jq对象
+        alert(jqDom.html());
+
+        jsDom = jqDom.get(0);//将jq对象---转换-->js对象
+        alert(jsDom.innerHTML);
+    </script>
+</body>
+</html>

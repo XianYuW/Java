@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body style="padding: 100px;">
+    <div>
+        <label >用户信息</label>
+    </div>
+    <table class="table table-responsive" id="tb">
+        
+        <hr>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">增加</button>
+        <div class="modal" id="mymodal"   tabindex="-1" data-backdrop="static" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        <h4 class="modal-title">添加</h4>
+                    </div>
+                    <!-- 2.框内信息 -->
+                    <div class="modal-body">
+                        <span>工号：</span><input type="text" id="addId" placeholder="请输入工号"><br>
+                        <span>姓名：</span><input type="text" id="addName" placeholder="请输入姓名">
+                    </div>
+                    <!-- 3.模态窗口的底部设置样式 -->
+                    <div class="modal-footer">
+                        <button class="btn btn-info" data-dismiss="modal"id="add">确定</button>
+                        <button class="btn btn-default" data-dismiss="modal" >取消</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <button class="btn btn-primary inline" id="del">
+            删除
+            <span class="badge" id="badge_0">0</span>
+        </button>
+        <button class="btn btn-info" data-toggle="modal" data-target="#mymodal2" id="btn_edit">编辑<span class="badge" id="badge_1">0</span></button>
+        <div class="modal" id="mymodal2"   tabindex="-1" data-backdrop="static" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        <h4 class="modal-title">编辑</h4>
+                    </div>
+                    <!-- 2.框内信息 -->
+                    <div class="modal-body">
+                        <span>工号：</span><input type="text" id="editId" placeholder="请输入要修改的工号"><br>
+                        <span>姓名：</span><input type="text" id="editName" placeholder="请输入要修改的姓名">
+                    </div>
+                    <!-- 3.模态窗口的底部设置样式 -->
+                    <div class="modal-footer">
+                        <button class="btn btn-info" data-dismiss="modal"id="edit">确定</button>
+                        <button class="btn btn-default" data-dismiss="modal" >取消</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <button class="btn btn-primary inline" id="search" >查询</button>
+        <input type="text" id="idSearch" class="form-control-inline" placeholder="按工号查询">
+        <input type="text" id="nameSearch" class="form-control-inline" placeholder="按姓名查询">
+        
+        
+        <hr>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>工号</th>
+                <th>姓名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="info">
+                <td><input type="checkbox" name="user" class="check_box"></td>
+                <td class="id">1001</td>
+                <td class="name">张三</td>
+            </tr>
+            <tr class="active">
+                <td><input type="checkbox" name="user" class="check_box"></td>
+                <td class="id">1002</td>
+                <td class="name">李四</td>
+            </tr>
+            <tr class="info">
+                <td><input type="checkbox" name="user" class="check_box"></td>
+                <td class="id">1003</td>
+                <td class="name">王五</td>
+            </tr>
+            <tr class="active">
+                <td><input type="checkbox" name="user" class="check_box"></td>
+                <td class="id">1004</td>
+                <td class="name">李四</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        //删除
+        $("#del").on("click",function(){
+            $("input[type='checkbox']:checked").parent().parent().remove();
+        });
+        //编辑
+        
+        $("#btn_edit").on("click",function(){
+            if($("input[type='checkbox']:checked").length == 0){
+                alert(`请先勾选要修改的对象`);
+                //$('#mymodal2').dialog('close');
+                $("#mymodal2").modal("hide");//隐藏某个模态框
+               
+            }
+        });
+
+        $("#edit").on("click",function(){
+            var id_edit = $("input#editId").val();
+            var name_edit = $("input#editName").val();
+            alert($("input[type='checkbox']:checked").parent().parent().find("td").eq(1).text());
+            alert($("input[type='checkbox']:checked").parent().parent().find("td").eq(2).text());
+            $("input[type='checkbox']:checked").parent().parent().find("td").eq(1).text(id_edit);
+            $("input[type='checkbox']:checked").parent().parent().find("td").eq(2).text(name_edit);
+            //console.log($arr.children().val());
+        });
+        
+        //按工号查询
+        $(document).ready(function(){
+            $("#idSearch").on("keyup",function(){
+                $("table tr:gt(0)").hide();
+                //:contains() 选择器选取包含指定字符串的元素
+                //trim函数功能是去掉字符串两段空格符
+                var $id = $("table tr:gt(0)").filter(":contains('"+$.trim($("#idSearch").val())+"')");
+                $id.show();
+                
+            });
+        });
+        //按姓名查询
+        $(document).ready(function(){
+            $("#nameSearch").on("keyup",function(){
+                $("table tr:gt(0)").hide();
+                //:contains() 选择器选取包含指定字符串的元素
+                //trim函数功能是去掉字符串两段空格符
+                var $id = $("table tr:gt(0)").filter(":contains('"+$.trim($("#nameSearch").val())+"')");
+                $id.show();
+                
+            });
+        });
+        $(document).ready(function(){
+            var num=1;
+            $("#add").on("click",function(){
+                //alert(num%2);
+                if($("input#addId").val() == ""){
+                    alert("未输入工号");
+                    return;
+                }
+                if($("input#addName").val() == ""){
+                    alert("未输入姓名");
+                    return;
+                }
+                if(num%2==0){
+                    var str="active";
+                }else{
+                    var str="info";
+                }
+                var uid = $("input#addId").val();
+                var name = $("input#addName").val();
+                var newTr = $(`<tr class="`+str+`" > <td><input type="checkbox" name="user" class="check_box"></td>
+                <td>`+uid+`</td>
+                <td>`+name+`</td>
+                </tr>`);
+                $("#tb tbody").append(newTr);
+                num++;
+            });
+        });
+        //获取选中的个数
+        $(document).ready(function(){
+            $(".check_box").on("click",function(){
+                $(".badge").html($("input[type='checkbox']:checked").length);
+                //alert($("input[type='checkbox']:checked").length);
+            });
+        });
+    </script>
+</body>
+</html>

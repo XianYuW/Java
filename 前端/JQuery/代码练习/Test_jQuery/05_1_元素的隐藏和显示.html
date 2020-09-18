@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color:black;
+    }
+</style>
+<body>
+    
+    <button class="btn btn-default" id="btn1">显示</button>
+    <button class="btn btn-default active" id="btn2">隐藏</button>
+    <button class="btn btn-primary" id="btn3">切换</button>
+    <div></div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        //fast:快速的
+        //slow：缓慢的
+        //毫秒：自定义
+        $("#btn1").click(function(){
+            $("div").show(2000);
+        });
+        $("#btn2").click(function(){
+            $("div").hide(`slow`);
+        });
+        $("#btn3").click(function(){
+            $("div").toggle(`slow`);
+        });
+
+    </script>
+    
+</body>
+</html>

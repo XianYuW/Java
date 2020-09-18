@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery-3.4.1.min.js"></script>
+<body>
+    <p>迪丽热巴</p>
+    <p>古力娜扎</p>
+    <p class="a">马尔扎哈</p>
+    <p id="name">虚空恐惧</p>
+    <h3 class="c">hello world</h3>
+    <script>
+        $("p").css("color","black");//标签选择器,全部的p标签丢设置为黑色
+        $(".a").css("font-family","字魂49号-逍遥行书");//类选择器,将类为a的标签的字体设置为fon-family
+        $("#name").css("background","red");//ID选择器,更具备唯一性,将id为name的标签背景颜色设置为红色
+        $(".a,#name,.c").css("border"," 2px solid black");//并集选择器,.a 和#name和.c 都设置黑色边界
+        $("h3.c").css("font-size","90px");//交集选择器,将h3.c的标签字体大小设置为90像素
+    </script>
+</body>
+</html>

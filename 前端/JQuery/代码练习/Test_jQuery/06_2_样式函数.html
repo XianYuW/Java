@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+    }
+</style>
+<body>
+    <button class="btn btn-default" id="btn1">改变颜色</button>
+    <button class="btn btn-info" id="btn2">改变大小</button>
+    <button class="btn btn-warning" id="btn3">改变颜色和大小</button>
+    <button class="btn btn-success" id="btn4">复原</button>
+    <div></div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        //css( "属性"); 获得该属性值
+        //css( "属性","值"); 设置属性的值
+        //css( { json} ); 设置多个属性的值
+        $("#btn1").on("click",function(){
+            alert('当前颜色为\n'+$("div").css("background-color"));
+            $("div").css("background-color","red");
+        });
+        // width(); 获得元素的宽度
+        // width( number ); 修改元素的宽度
+        // height(); 获得元素的高度
+        // height( number ); 修改元素的高度
+        $("#btn2").on("click",function(){
+            alert('当前的大小参数为\n宽度: '+$("div").width() + '\n高度：'+$("div").height());
+            $("div").width(300);
+            $("div").height(300);
+            alert('改变后的大小参数为\n宽度: '+$("div").width() + '\n高度：'+$("div").height());
+        });
+        $("#btn3").on("click",function(){
+            $("div").css({"background-color":"red","width":"300px","height":"300px"});
+        });
+        $("#btn4").on("click",function(){
+            $("div").css("background-color","black");
+            $("div").width(200);
+            $("div").height(200);
+        });
+    </script>
+</body>
+</html>

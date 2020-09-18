@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+    }
+</style>
+<body>
+    <button class="btn btn-default" id="btn1">显示</button>
+    <button class="btn btn-primary" id="btn2">隐藏</button>
+    <button class="btn btn-primary" id="btn3">切换</button>
+    <button class="btn btn-primary" id="btn4">淡化</button>
+    <button class="btn btn-primary" id="btn5">恢复</button>
+    <div></div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        
+        $("#btn1").on("click",function(){
+            $("div").fadeIn("slow");
+        });
+        $("#btn2").on("click",function(){
+            $("div").fadeOut("slow");
+        });
+        $("#btn3").on("click",function(){
+            $("div").fadeToggle("slow");
+        });
+        $("#btn4").on("click",function(){
+            $("div").fadeTo("slow",0.5);
+        });
+        $("#btn5").on("click",function(){
+            $("div").fadeTo("slow",1);
+        });
+    </script>
+</body>
+</html>

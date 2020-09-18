@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 100px; 
+        height: 100px; 
+        background-color: #000; 
+    }
+    .a{ 
+        background: palevioletred; 
+        border-radius: 50%; 
+    }
+    .b{ 
+        border:5px dashed darkcyan; 
+        opacity: 0.6; 
+    }
+    .cn{
+        background: #000; 
+        color:#FFF; 
+        font-family: 字魂49号-逍遥行书; 
+    }
+</style>
+<body>
+    <button class="btn btn-default" id="btn1">试试</button> 
+    <button id="btn2">取消透明度</button> 
+    <button id="btn3">样式切换</button> 
+    <button id="btn4">复原</button> 
+    <hr> 
+    <div></div> 
+    <h1>你好，世界！</h1>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        //addClass(); 为元素添加类样式
+        //removeClass(); 将元素的类样式移除
+        //toggleClass(); 样式的切换（有->无，无->有）
+        $("#btn1").on("click",function(){
+            $("div").addClass(" a b");
+        });
+        $("#btn2").on("click",function(){
+            $("div").removeClass("b");
+        });
+        $("#btn3").on("click",function(){
+            $("h1").toggleClass("cn");
+        });
+        $("#btn4").on("click",function(){
+            $("div").removeClass("a b");
+            $("h1").removeClass("cn");
+        });
+    </script>
+</body>
+</html>

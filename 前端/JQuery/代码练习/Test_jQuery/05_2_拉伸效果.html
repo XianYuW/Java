@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color:black;
+    }
+</style>
+<body>
+    <button class="btn btn-default active" id="btn1">显示</button>
+    <button class="btn btn-primary" id="btn2">隐藏</button>
+    <button class="btn btn-primary" id="btn3">切换</button>
+    <div></div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        //slideDown( speed ) ：显示
+        //slideUp( speed )：隐藏
+        //slideToggle( speed )等价于slideDown+slideUp
+        // speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒
+        $("#btn1").on("click",function(){
+            $("div").slideDown("slow");
+        });
+        $("#btn2").on("click",function(){
+            $("div").slideUp("slow");
+        });
+        $("#btn3").on("click",function(){
+            $("div").slideToggle("slow");
+        });
+    </script>
+</body>
+</html>
