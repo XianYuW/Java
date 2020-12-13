@@ -786,7 +786,7 @@ maven_children的pom.xml
 ① 父工程lagou_edu_home_parent构建
 修改pom.xml,添加依赖
 
-```
+```xml
     <properties>
         <spring.version>5.1.5.RELEASE</spring.version>
         <springmvc.version>5.1.5.RELEASE</springmvc.version>
@@ -993,16 +993,29 @@ maven_children的pom.xml
 ```
 
 ② 子工程ssm_utils构建
+
 ③ 子工程ssm_domain构建
+
+引入依赖
+
+```xml
+	<dependencies>
+        <dependency>
+            <groupId>com.lagou</groupId>
+            <artifactId>ssm_utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+```
 
 ④ 子工程ssm_dao构建
 配置ssm_domain工程的pom.xml文件
 
-```
+```xml
 	<dependencies>
         <dependency>
             <groupId>com.lagou</groupId>
-            <artifactId>ssm-domain</artifactId>
+            <artifactId>ssm_domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -1108,7 +1121,7 @@ jdbc.password=123456
 	<dependencies>
         <dependency>
             <groupId>com.lagou</groupId>
-            <artifactId>ssm-dao</artifactId>
+            <artifactId>ssm_dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -1181,7 +1194,7 @@ public class TestServiceImpl implements TestService {
 	<dependencies>
         <dependency>
             <groupId>com.lagou</groupId>
-            <artifactId>ssm-service</artifactId>
+            <artifactId>ssm_service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
