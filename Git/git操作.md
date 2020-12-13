@@ -371,6 +371,35 @@ git rm Readme.txt # 删除已被提交过的Readme.txt
 
 **一般在工程初始化时，提前准备好需要忽略的文件列表**
 
+### 如何将文件推送至远端？
+
+```
+git add .
+git commit -m '评论'
+
+git remote add origin git@github.com:XianYuW/Java.git 	# 关联到远程库
+
+git pull --rebase origin master	# 获取远程库与本地同步合并
+(如果远程库不为空必须做这一步，否则后面的提交会失败)
+
+git push -u origin master	# 本地库的内容推送到远程
+```
+
+### 其他指令
+
+```
+# 状态查询命令
+git status
+
+# git查看远程仓库地址命令
+git remote -v
+
+如果想要修改远程仓库地址
+	git remote set-url origin git@github.com:mkl34367803/WebAjax.git
+	# 然后再push
+	git push origin master
+```
+
 
 
 ### 分支管理
