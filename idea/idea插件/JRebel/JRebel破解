@@ -1,0 +1,8 @@
+步骤1:生成一个GUID：
+在线生成GUID地址:https://www.guidgen.com/
+步骤2: 根据反向代理服务器地址拼接激活地址
+服务器地址： https://jrebel.qekang.com/{GUID}
+
+PS：如果失效刷新GUID替换就可以！
+
+步骤3: 打开jrebel 激活面板 . 选择Connect to online licensing service .
