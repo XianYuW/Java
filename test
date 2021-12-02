@@ -1,0 +1,2 @@
+jps			JVM进程状态工具(JVM Process Status Tool)，在目标系统上列出HotSpot Java虚拟机进程的描述信息
+jstat		JVM统计监控工具(JVM statistics Monitoring Tool),根据参数指定的方式收集和记录指定的jvm进程的性能统计信息
